@@ -22,7 +22,7 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 ## Download and install Artemis
 
-<![if !supportLists]>· <![endif]>Windows:
+* Windows:
 
 [https://github.com/sanger-pathogens/Artemis/releases/download/v18.0.0/artemis-windows-release-18.0.0.zip](https://github.com/sanger-pathogens/Artemis/releases/download/v18.0.0/artemis-windows-release-18.0.0.zip)
 
@@ -36,5 +36,6 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 <![if !supportLists]>· <![endif]>64-bit: [https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUxODE0MDgxLDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTExNzUxMTExMzgsNjUxODE0MDgxLDczMD
+k5ODExNl19
 -->
