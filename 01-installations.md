@@ -11,17 +11,16 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 ## Download and install FileZilla
 
-* Windows (32-bit): [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe](https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe)
+* Windows (32-bit): 
+[https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe](https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe)
 
-<![if !supportLists]>· <![endif]>Windows (64-bit):
-
+* Windows (64-bit): 
 [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win64-setup.exe](•https:/filezilla-project.org/download.php?details=FileZilla_3.39.0_win64-setup.exe)
 
-<![if !supportLists]>· <![endif]>MacOS:
-
+* MacOS:
 [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_macosx-x86.app.tar.bz2](•https:/filezilla-project.org/download.php?details=FileZilla_3.39.0_macosx-x86.app.tar.bz2)
 
-**Download and install Artemis**
+## Download and install Artemis
 
 <![if !supportLists]>· <![endif]>Windows:
 
@@ -37,5 +36,5 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 <![if !supportLists]>· <![endif]>64-bit: [https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5NTAyMDQ1Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbNjUxODE0MDgxLDczMDk5ODExNl19
 -->
