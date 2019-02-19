@@ -3,19 +3,15 @@
 Before our first class on **04.03.19**, please do the following steps.  
 If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.fi) and I will help you out.
 
-**Register to CSC**
+## Register to CSC
 
-<![if !supportLists]>· <![endif]>Go to [https://sui.csc.fi/web/guest](https://sui.csc.fi/web/guest)
+* Go to [https://sui.csc.fi/web/guest](https://sui.csc.fi/web/guest)
+* Click on HAKA login
+* Follow the instructions
 
-<![if !supportLists]>· <![endif]>Click on HAKA login
+## Download and install FileZilla
 
-<![if !supportLists]>· <![endif]>Follow the instructions
-
-**Download and install FileZilla**
-
-<![if !supportLists]>· <![endif]>Windows (32-bit):
-
-[https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe](https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe)
+* Windows (32-bit): [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe](https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe)
 
 <![if !supportLists]>· <![endif]>Windows (64-bit):
 
@@ -41,5 +37,5 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 <![if !supportLists]>· <![endif]>64-bit: [https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNDQ1MjgyNSw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTI5NTAyMDQ1Myw3MzA5OTgxMTZdfQ==
 -->
