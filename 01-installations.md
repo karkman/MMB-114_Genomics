@@ -1,7 +1,7 @@
 # Installations
 
 Before our first class on **04.03.19**, please do the following steps.  
-If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.fi) ([igor.pessi@helsinki.fi](igor.pessi@helsinki.fi)) and I will help you out._
+If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.fi) and I will help you out.
 
 **Register to CSC**
 
@@ -41,5 +41,5 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 <![if !supportLists]>· <![endif]>64-bit: [https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2NzE1Nzk5Niw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbMTUxNDQ1MjgyNSw3MzA5OTgxMTZdfQ==
 -->
