@@ -11,9 +11,9 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 ## Download and install FileZilla
 
-* Windows (32-bit): 
+* Windows (32-bit):
 [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe](https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win32-setup.exe)
-* Windows (64-bit): 
+* Windows (64-bit):
 [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_win64-setup.exe](https:/filezilla-project.org/download.php?details=FileZilla_3.39.0_win64-setup.exe)
 * MacOS:
 [https://filezilla-project.org/download.php?details=FileZilla_3.39.0_macosx-x86.app.tar.bz2](https:/filezilla-project.org/download.php?details=FileZilla_3.39.0_macosx-x86.app.tar.bz2)
@@ -29,7 +29,3 @@ If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.f
 
 * 32-bit: [https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.70-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.70-installer.msi)
 * 64-bit: [https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi](https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi)
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNjEyMzI5Myw2NTE4MTQwODEsNzMwOT
-k4MTE2XX0=
--->
