@@ -1,7 +1,7 @@
 # Software installations
 
 Before our first class on **04.03.19**, please do the following steps.  
-If you ran into problems, just send me and [e-mail](mailto:igor.pessi@helsinki.fi) and I will help you out.
+If you run into problems, just send me an [e-mail](mailto:igor.pessi@helsinki.fi) and I will help you out.
 
 ## Register to CSC
 

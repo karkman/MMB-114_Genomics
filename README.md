@@ -1,11 +1,5 @@
 # MMB-114 Exploratory microbial research - lab course 2019
 
-Shared folder:
-
-```bash
-/wrk/stelmach/SHARED/MMB-114
-```
-
 ## Table of contents
 
 * [Software Installations](https://github.com/igorspp/MMB-114/blob/master/00-software-installations.md)
