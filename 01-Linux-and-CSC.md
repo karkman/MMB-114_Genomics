@@ -15,7 +15,7 @@
 
 * Launch Terminal
 (e.g. open the Launchpad and type **terminal**)
-* Type **ssh <user\>@taito.csc.fi**
+* Type **ssh <user\>@taito.csc.fi**
 * In the following dialogue,type **yes**
 * Type your password
 * To quit Terminal first type **exit** and then close the window
