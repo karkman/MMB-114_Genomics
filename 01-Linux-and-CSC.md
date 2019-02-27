@@ -24,7 +24,7 @@
 
 ### Important notes
 
-1. Things inside a box like this...
+Things inside a box like this...
 
 ```bash
 mkdir MMB-114
@@ -33,7 +33,7 @@ mkdir MMB-114
 
 ---
 
-2. When you see something like this...
+When you see something like this...
 
 ```bash
 cd /wrk/<yourusername>
@@ -47,5 +47,4 @@ cd /wrk/stelmach
 
 ---
 
-3. Commands have to be written in one line.  
-To execute the command, simply hit "Enter".
+Commands have to be written in one line. To execute the command, simply hit "Enter".
