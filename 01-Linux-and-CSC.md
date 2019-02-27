@@ -24,7 +24,7 @@
 
 ### Important notes
 
-Things inside a box like this...
+1. Things inside a box like this...
 
 ```bash
 mkdir MMB-114
@@ -33,13 +33,13 @@ mkdir MMB-114
 
 ---
 
-When you see something like this...
+2. When you see something like this...
 
 ```bash
 cd /wrk/<yourusername>
 ```
 
-...it means you'll need to change the text, in this example, with you own username **(but without the < > !!!)**, like this:
+...it means you'll need to change the text, in this example, with you own username **(but without the < >)**, like this:
 
 ```bash
 cd /wrk/stelmach
@@ -47,5 +47,5 @@ cd /wrk/stelmach
 
 ---
 
-Commands have to be written in one line.  
+3. Commands have to be written in one line.  
 To execute the command, simply hit "Enter".
