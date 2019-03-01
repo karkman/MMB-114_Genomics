@@ -93,7 +93,7 @@ pwd
 
 ### Creating a new file
 
-Let's create a new file called "myfile.txt" by launching the text editor "nano":
+Let's create a new file called "myfile.txt" by launching the text editor **nano**:
 
 ```bash
 nano myfile.txt
@@ -213,7 +213,7 @@ rm newfile.txt
 
 Let's list the contents of the folder. What happened to "newfile.txt"?  
 
-To skip the confirmation dialogue and force the deletion, we can modify the command by adding the force flag (**-f**). Flags can be used to customize commands and, in some cases, to identify different inputs and outputs. Let's try again, but pay attention in what you are doing, if you accidently remove the wrong file, it is gone forever!
+To skip the confirmation dialogue and force the deletion, we can modify the command by adding the force flag (**-f**). Flags are used to pass additional options to the commands. Let's try again, but pay attention in what you are doing, if you accidently remove the wrong file, it is gone forever!
 
 ```bash
 rm -f myfile.txt
