@@ -11,9 +11,7 @@ If you run into problems, just send me an [e-mail](mailto:igor.pessi@helsinki.fi
 
 ## Download and install FileZilla
 
-* [Windows (32-bit)](https://dl3.cdn.filezilla-project.org/client/FileZilla_3.40.0_win32-setup.exe?h=3TBqfqUvMyw0Qj5T0rGwWw&x=1551445236)
-* [Windows (64-bit)](https://dl3.cdn.filezilla-project.org/client/FileZilla_3.40.0_win64-setup.exe?h=5DI494zelobVexFhYoNhcA&x=1551445236)
-* [MacOS](https://dl3.cdn.filezilla-project.org/client/FileZilla_3.40.0_macosx-x86.app.tar.bz2?h=kNTw4SL-pRe4_in_Z5YL1A&x=1551445236)
+* [https://filezilla-project.org/download.php?show_all=1](https://filezilla-project.org/download.php?show_all=1)
 
 ## Download and install Artemis
 
