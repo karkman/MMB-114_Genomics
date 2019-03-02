@@ -56,7 +56,7 @@ Now we will run a program called FASTQC for quality assessment of the raw genome
 sinteractive
 ```
 
-The next step is to load the **biokit:**  environment, which contains several programs widely used in bioinformatics:
+The next step is to load the **biokit**  environment, which contains several programs widely used in bioinformatics:
 
 ```bash
 module load biokit
