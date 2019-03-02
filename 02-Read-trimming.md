@@ -56,7 +56,7 @@ Now we will run a program called FASTQC for quality assessment of the raw genome
 sinteractive
 ```
 
-**Load biokit:**
+The next step is to load the **biokit:**  environment, which contains several programs widely used in bioinformatics:
 
 ```bash
 module load biokit
@@ -87,7 +87,7 @@ Take a look at the FASTQC reports. How does the data look like?
 * What is the mean sequence quality for the majority of the reads?
 * The "Per base sequence content" module shows a problem. Why?
 * The "Adapter content" module also shows a problem. Why?
-* Are there adapters in our reads? In which part of the reads? What are adapters and why should we remove them?
+* Are there adapters in our reads? In which part of the reads? What are adapters and why should we remove them?
 * Do you see differences between the R1 and R2 reads?
 
 To help you answering the questions above, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/).
@@ -98,15 +98,10 @@ To help you answering the questions above, you can read more about the FASTQC re
 
 Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions.
 
-Connect to the Taito shell
+First, let's connect to the Taito-shell and load **biokit**:
 
 ```bash
 sinteractive
-```
-
-**Load biokit:**
-
-```bash
 module load biokit
 ```
 
@@ -146,7 +141,7 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o R1_q20_m60.fastq -p R2_q20_m60.fastq -q 20 -m 60 ../RAW/A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq ../RAW/A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq > log_cutadapt.txt
 ```
 
-When CUTADAPT has finished, list the contents of the directory. Why do the names look so different from before? Also, take a look at the file "log_cutadapt.txt" with **less**. How many times adapters were trimmed in R1 and R2? How many reads were removed because they were too short? How many low-quality bases were trimmed?
+When CUTADAPT has finished, list the contents of the directory. Why do the names look so different from before? Also, take a look at the file "log_cutadapt.txt" with the command **less**. How many times adapters were trimmed in R1 and R2? How many reads were removed because they were too short? How many low-quality bases were trimmed?
 
 
 Now let's run FASTQC again, this time using the trimmed genome data:
