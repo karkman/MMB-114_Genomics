@@ -3,7 +3,7 @@
 ## Table of contents
 
 * [Software Installations](00-software-installations.md)
-* [Day 1: Unix and CSC](01-UNIX-and-CSC.md)
+* [Day 1: UNIX and CSC](01-UNIX-and-CSC.md)
 * [Day 2: Read trimming](02-Read-trimming.md)
 * [Day 3: Genome assembly](03-Genome-assembly.md)
 * Day 4: Checkup (no activities)
