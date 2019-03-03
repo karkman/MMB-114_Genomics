@@ -44,7 +44,7 @@ Things starting with a pound sign (or hashtag)...
 
 ---
 
-We will be using different commands with different syntaxes. Different commands expect different types of arguments. Some times the order matters, some times it doesn't. If you are unsure, the best way to check how to run a command is by taking a look at its manual with the command **man**. For example, if you want to look at the manual for the command **mkdir** used to create folders, you can do:
+We will be using different commands with different syntaxes. Different commands expect different types of arguments. Some times the order matters, some times it doesn't. If you are unsure, the best way to check how to run a command is by taking a look at its manual with the command **man**. For example, if you want to look at the manual for the command **mkdir** you can do:
 
 ```bash
 man mkdir
@@ -120,7 +120,7 @@ First let's create a new folder:
 mkdir newfolder
 ```
 
-And now let's make a copy of "myfile.txt". Here, the command **cp** expects two arguments: the first is the name of the file we want to copy, and the second is the name of the new file:
+And now let's make a copy of "myfile.txt". Here, the command **cp** expects two arguments. The first is the name of the file we want to copy, and the second is the name of the new file:
 
 ```bash
 cp myfile.txt newfile.txt
@@ -244,4 +244,7 @@ Let's list the contents of the folder. What happened to "newfolder"?
 
 ## Finished and want to learn more?
 
-Try taking this online interactive tutorial: https://www.codecademy.com/learn/learn-the-command-line
+Try taking some online tutorials:
+
+* https://www.codecademy.com/learn/learn-the-command-line
+* http://rik.smith-unna.com/command_line_bootcamp/
