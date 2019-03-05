@@ -49,7 +49,7 @@ We will be using different commands with different syntaxes. Different commands 
 ```bash
 man mkdir
 
-# You can scroll down by hitting "backspace".
+# You can scroll down by hitting "backspace"
 # To quit, hit "q"
 ```
 

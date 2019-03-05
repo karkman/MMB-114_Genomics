@@ -2,13 +2,13 @@
 
 ## Connecting to Taito
 
-See the instructions [here](01-Linux-and-CSC.md#connecting-to-Taito).
+See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
 
 ## PART 1
 
 ### Downloading the raw genome data of our *Lactobacillus* strain
 
-First let's create a folder for the course in our work directory **($WRKDIR)**:
+First let's create a folder for the course in our work directory. Your work directory is located in **/wrk/yourusername**, but it can also be accessed using the variable **($WRKDIR)**:
 
 ```bash
 cd $WRKDIR
@@ -30,7 +30,7 @@ The raw genome data was given to us by the sequencing facility as a tar archive 
 tar -zxf Hultman_kurssinayte_MiSeq-20190221R.tar.gz
 ```
 
-Investigate the contents of the folder. We can see that two GZIP files (**.gz**) were extracted from the tar archive (one for the R1 and the other for the R2 reads). GZIP is a compressed file much like a ZIP file, so to continue we have to uncompress them first. We will do this with the command **gunzip**:
+Investigate the contents of the folder. We can see that two GZIP files (**.gz**) were extracted from the tar archive (one for the R1 and the other for the R2 reads). GZIP is a compressed file much like a ZIP file, so to continue we have to decompress them first. We will do this with the command **gunzip**:
 
 ```bash
 gunzip A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq.gz
@@ -39,13 +39,15 @@ gunzip A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq.gz
 
 Investigate the contents of the folder again. Do you see that the FASTQ files are now uncompressed?  
 
-Now let's take a look at the FASTQ files to see how they look like:
+Now let's take a look at the FASTQ files to see how they look like. Here we will use three useful commands for visualizing text files (**head**, **tail** and **less**):
 
 ```bash
-# head
-# tail
-# less
-# more
+head A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
+tail A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
+less A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
+
+# In less, scroll down by hitting "backspace"
+# To quit, hit "q"
 ```
 
 ### Performing a quality assessment of the raw data
@@ -81,13 +83,15 @@ One of the outputs of FASTQC is a HTML document. Let's look at it by moving it t
 
 Take a look at the FASTQC reports. How does the data look like?
 
-* How many sequences are in R1? In R2?
+* How many sequences are in R1? And in R2?
 * The "Per base sequence quality" module shows a problem. Why?
-* Which part of the reads have the best quality? Beginning, middle, end?
+  * Which part of the reads have the best quality? Beginning, middle, end?
 * What is the mean sequence quality for the majority of the reads?
 * The "Per base sequence content" module shows a problem. Why?
 * The "Adapter content" module also shows a problem. Why?
-* Are there adapters in our reads? In which part of the reads? What are adapters and why should we remove them?
+  * Are there adapters in our reads?
+  * In which part of the reads?
+  * What are adapters and why should we remove them?
 * Do you see differences between the R1 and R2 reads?
 
 To help you answering the questions above, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/).
@@ -129,7 +133,7 @@ Now let's take a look at the help page for CUTADAPT to understand what each of t
 ```bash
 cutadapt -h | less
 
-# You can scroll down by hitting "backspace".
+# You can scroll down by hitting "backspace"
 # To quit, hit "q"
 ```
 
@@ -141,7 +145,13 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o R1_q20_m60.fastq -p R2_q20_m60.fastq -q 20 -m 60 ../RAW/A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq ../RAW/A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq > log_cutadapt.txt
 ```
 
-When CUTADAPT has finished, list the contents of the directory. Why do the names look so different from before? Also, take a look at the file "log_cutadapt.txt" with the command **less**. How many times adapters were trimmed in R1 and R2? How many reads were removed because they were too short? How many low-quality bases were trimmed?
+When CUTADAPT has finished, list the contents of the directory. Why do the names look so different from before?
+
+Now take a look at the file "log_cutadapt.txt" with the command **less**:
+
+* How many times adapters were trimmed in R1 and R2?
+* How many reads were removed because they were too short?
+* How many low-quality bases were trimmed?
 
 
 Now let's run FASTQC again, this time using the trimmed genome data:
@@ -157,7 +167,7 @@ After both tasks are completed, we exit the Taito-shell:
 exit
 ```
 
-Move the HTML documents to your laptop with FileZilla and open them in a web browser. Compare these with the FASTQC reports for the raw genome data. What kind of differences you see?
+Move the new HTML documents to your laptop with FileZilla and open them in a web browser. Compare these with the FASTQC reports for the raw genome data. What kind of differences you see?
 
 * Do the "Per base sequence quality" plots look different now? Why?
 * What is the mean sequence quality for the majority of the reads now?
