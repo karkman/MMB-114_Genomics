@@ -12,22 +12,23 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
 cp ~/.bash_profile ~/.bash_profile_copy
 ```
 
-2. Open ".bash_profile" using **nano**:
+2. Open "bash_profile" using **nano**:
 
+```bash
 nano ~/.bash_profile
+```
 
 3. Copy the text below and paste it at the end:
 
 ```bash
-PS1="\[\033[0;31m\]\u@\h \[\033[1;31m\][ \W ]\[\033[0m\] > "
-
-export CLICOLOR=1
-export LSCOLORS=bxaxaxaxaxaxaxaxaxbxbx
+alias ls='ls --color=auto'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 ```
-
 4. Close **nano** (don't forget to save)
 
 5. Logout Taito and login back again
+
+6. To modify the colours further you can use the colour code generator [here](https://geoff.greer.fm/lscolors/)
 
 ## PART 1
 
