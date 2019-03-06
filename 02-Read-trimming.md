@@ -67,7 +67,7 @@ module load biokit
 And now we run FASTQC:
 
 ```bash
-cd $WRKDIR/MB-114/RAW
+cd $WRKDIR/MMB-114/RAW
 
 fastqc A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
 fastqc A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq
