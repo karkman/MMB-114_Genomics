@@ -137,7 +137,7 @@ module load biokit
 Let's create a new folder for the trimmed genome data:
 
 ```bash
-cd $WRKDIR/MB-114
+cd $WRKDIR/MMB-114
 mkdir TRIMMED
 cd TRIMMED
 ```
