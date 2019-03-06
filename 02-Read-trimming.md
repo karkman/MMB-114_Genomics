@@ -46,7 +46,7 @@ head A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
 tail A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
 less A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
 
-# In less, scroll down by hitting "backspace"
+# In less, scroll down by hitting the space bar
 # To quit, hit "q"
 ```
 
@@ -133,7 +133,7 @@ Now let's take a look at the help page for CUTADAPT to understand what each of t
 ```bash
 cutadapt -h | less
 
-# You can scroll down by hitting "backspace"
+# You can scroll down by hitting the space bar
 # To quit, hit "q"
 ```
 
