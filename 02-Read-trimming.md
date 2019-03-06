@@ -4,6 +4,31 @@
 
 See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
 
+## Additional instructions to colorize your SHELL
+
+1. Make a copy of the file ".bash_profile" in case something goes wrong:
+
+```bash
+cp ~/.bash_profile ~/.bash_profile_copy
+```
+
+2. Open ".bash_profile" using **nano**:
+
+nano ~/.bash_profile
+
+3. Copy the text below and paste it at the end:
+
+```bash
+PS1="\[\033[0;31m\]\u@\h \[\033[1;31m\][ \W ]\[\033[0m\] > "
+
+export CLICOLOR=1
+export LSCOLORS=bxaxaxaxaxaxaxaxaxbxbx
+```
+
+4. Close **nano** (don't forget to save)
+
+5. Logout Taito and login back again
+
 ## PART 1
 
 ### Downloading the raw genome data of our *Lactobacillus* strain
