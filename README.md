@@ -8,4 +8,4 @@
 * [Day 3: Genome assembly](03-Genome-assembly.md)
 * Day 4: Checkup (no activities)
 * [Day 5: Genome annotation](05-Genome-annotation.md)
-* [Day 6: Metabolic pathway analysis](06-Metabolic_pathways.md)
+* [Day 6: Metabolic pathway analysis](06-Metabolic-pathways.md)
