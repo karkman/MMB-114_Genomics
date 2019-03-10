@@ -79,14 +79,15 @@ And now let's run QUAST:
 quast.py spades_contigs.fasta velvet_contigs.fasta -o . -t 4
 ```
 
-When, finished, move the following files to your computer with FileZilla and take a look at them:
+When QUAST has finished, exit the Taito-shell and move the following files to your computer with FileZilla:
 
 * report.html
 * report.pdf
 * icarus.html
 * icarus_viewers (folder)
 
-Compare the assemblies:
+Open the file "report.html" in a web browser. How do assemblies look like?
+
 *	More contigs?
 *	Longer assembly?
 *	Better N50?
