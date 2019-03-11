@@ -102,7 +102,7 @@ Now let's copy the folder that contains the pre-formatted KEGG database:
 ```bash
 cd "$WRKDIR"/MMB-114
 
-cp -p /wrk/stelmach/SHARED/MMB-114/KEGG .
+cp -r /wrk/stelmach/SHARED/MMB-114/KEGG .
 ```
 
 And now we run DIAMOND. Pay attention as it is a long command (you have to scroll to the right to see the full command):
