@@ -25,6 +25,9 @@ cd "$WRKDIR"/MMB-114
 
 prokka SPADES/contigs.fasta --outdir PROKKA_SPADES --prefix "SPADES" --cpus 4
 prokka VELVET_XX/contigs.fa --outdir PROKKA_VELVET --prefix "VELVET" --cpus 4
+
+# If PROKKA gives an error about contig names you might want to add this to the command:
+--centre X --compliant
 ```
 
 Take a look inside the "PROKKA_SPADES" and "PROKKA_VELVET" folders using **ls**. To understand what are these files that PROKKA has created, take a look [here](https://github.com/tseemann/prokka#output-files).
