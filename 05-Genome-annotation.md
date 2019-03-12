@@ -21,10 +21,10 @@ module load prokka
 Now let's run PROKKA (remember to change "XX" to the kmer that was given to you):
 
 ```bash
-cd "$WRKDIR"/MMB-114
+cd $WRKDIR/MMB-114
 
-prokka SPADES/contigs.fasta --outdir PROKKA_SPADES --prefix "SPADES" --cpus 4
-prokka VELVET_XX/contigs.fa --outdir PROKKA_VELVET --prefix "VELVET" --cpus 4
+prokka SPADES/contigs.fasta --outdir PROKKA_SPADES --prefix SPADES --cpus 4
+prokka VELVET_XX/contigs.fa --outdir PROKKA_VELVET --prefix VELVET --cpus 4
 
 # If PROKKA gives an error about contig names you might want to add this to the command:
 --centre X --compliant
@@ -43,7 +43,7 @@ To check the taxonomy of the reads and the possible presence of contamination, w
 First we need to download and install KRAKEN:
 
 ```bash
-cd "$WRKDIR"/MMB-114
+cd $WRKDIR/MMB-114
 
 # Download the KRAKEN source code from GitHub
 git clone https://github.com/DerrickWood/kraken.git
@@ -65,7 +65,7 @@ Now let's run KRAKEN (remember to change "XX" to the kmer that was given to you)
 
 ```bash
 sinteractive
-cd "$WRKDIR"/MMB-114
+cd $WRKDIR/MMB-114
 
 kraken/kraken --preload --db kraken/minikraken_20171013_4GB SPADES/contigs.fasta --output SPADES_kraken.txt --threads 4
 kraken/kraken-translate --db kraken/minikraken_20171013_4GB SPADES_kraken.txt > SPADES_kraken_tax.txt
@@ -100,7 +100,7 @@ module load biokit/4.9.3
 Now let's copy the folder that contains the pre-formatted KEGG database:
 
 ```bash
-cd "$WRKDIR"/MMB-114
+cd $WRKDIR/MMB-114
 
 cp -r /wrk/stelmach/SHARED/MMB-114/KEGG .
 ```
