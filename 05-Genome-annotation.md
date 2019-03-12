@@ -88,7 +88,7 @@ How many different species the contigs were assigned to in each of the assemblie
 
 ### Annotating the CDSs against the KEGG database
 
-Now we will take the protein-coding genes found by PROKKA and annotate them further against the KEGG database using DIAMOND.  
+Now we will take the protein-coding genes found by PROKKA and annotate them further against the KEGG database using DIAMOND. From now on we will work only with the SPADES assembly, as the VELVET one seems to be very problematic.  
 
 Let's start by connecting to the Taito-shell and loading the biokit module. Here we need a specific version of biokit, so we need to specify it:
 
@@ -113,7 +113,7 @@ diamond blastx --query PROKKA_SPADES/SPADES.ffn --out SPADES_diamond.txt --db KE
 
 Investigate the file "SPADES_diamond.txt" using **less**. This is a typical BLAST table showing, among other things, the similarity between each of our CDSs to its best match in the KEGG database. For example, the second column shows the name of the KEGG sequence that our CDS matches to, and the third column shows the similarity between them.
 
-The way that the name of the sequences are encoded in the KEGG database are not very informative. To get the actual gene names we will run a program called KEGG-tools (written by yours truly). Tomorrow we will run KEGG-tools again to map the genes to the metabolic pathways they belong to, but for now let's just get the gene names:
+The way that the name of the sequences are encoded in the KEGG database are not very informative. To get the actual gene names we will run a program called [KEGG-tools](https://github.com/igorspp/KEGG-tools) (written by yours truly). Tomorrow we will run KEGG-tools again to map the genes to the metabolic pathways they belong to, but for now let's just get the gene names:
 
 ```bash
 KEGG/KEGG-tools assign -i SPADES_diamond.txt -o . -k KEGG
