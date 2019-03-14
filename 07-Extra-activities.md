@@ -29,6 +29,8 @@ samtools sort SPADES_map.bam -o SPADES_map_sorted.bam
 samtools index SPADES_map_sorted.bam
 ```
 
+Transfer the files "SPADES_map_sorted.bam" and "SPADES_map_sorted.bam.bai" to your computer and open them in [TABLET](https://ics.hutton.ac.uk/tablet/).
+
 ## Browsing the genome annotation in RAST
 
 * Go to http://rast.nmpdr.org/
