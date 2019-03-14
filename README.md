@@ -11,3 +11,4 @@ Genome analysis module of the course "MMB-114 Exploratory microbial research - l
 * Day 4: Checkup (no activities)
 * [Day 5: Genome annotation](05-Genome-annotation.md)
 * [Day 6: Metabolic pathway analysis](06-Metabolic-pathways.md)
+* [Extra activities: mapping and RAST](07-Extra-activities.md)

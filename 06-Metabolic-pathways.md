@@ -6,7 +6,7 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
 
 ## Mapping annotations to KEGG pathways
 
-Here we will use KEGG-tools again to put the annotations in the context of the KEGG pathways.
+Here we will use KEGG-tools again to put the annotations in the context of the KEGG pathways:
 
 ```bash
 cd $WRKDIR/MMB-114
@@ -21,11 +21,11 @@ Once KEGG-tools is finished, transfer the files "SPADES_diamond_KOtable_pathways
   * Survive in stress
   * Does it use nitrogen? Sulfate? Iron?
 * Look for the phosphotransferase system (PTS)
-  * Is our strain able to carry out the uptake of the sugars metabolized in the biochemical tests?
+  * Can you find the genes that carry out the uptake of the sugars metabolized in the biochemical tests?
 
 ## Investigating further the predicted pathways
 
-One of the problems of pathway analysis is that a lot of genes have roles in multiple pathways. The presence of a gene involved, for example, in methane metabolism, does not necessarily mean that the cell is actually capable of metabolizing methane.
+One of the problems of pathway analysis is that most genes have roles in multiple pathways. The presence of a gene involved, for example, in methane metabolism, does not necessarily mean that the cell is actually capable of metabolizing methane.
 
 To investigate the pathways further and see if all or most of the necessary genes are present we will use a tool from KEGG called "KEGG mapper":
 
@@ -57,4 +57,4 @@ With the KEGG mapper and MinPath results, revise the pathways and answer the que
   * Survive in stress
   * Does it use nitrogen? Sulfate? Iron?
 * Look for the phosphotransferase system (PTS)
-  * Is our strain able to carry out the uptake of the sugars metabolized in the biochemical tests?
+  * Can you find the genes that carry out the uptake of the sugars metabolized in the biochemical tests?
