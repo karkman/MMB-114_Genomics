@@ -1,4 +1,4 @@
-# Day 1: Linux and CSC
+# Day 1: UNIX and CSC
 
 ## Connecting to Taito
 
@@ -32,8 +32,6 @@ cd MMB-114
 ```
 ...represent commands you need to type in the shell. Each line is a command. Commands have to be typed in a single line, one at a time. After each command, hit “Enter” to execute it.
 
----
-
 Things starting with a pound sign (or hashtag)...
 
 ```bash
@@ -41,8 +39,6 @@ Things starting with a pound sign (or hashtag)...
 ```
 
 ...represent comments embedded in the code to give instructions to the user. Anything in a line starting with a "#" is ignored by the shell. You can type it if you want, but nothing will happen (provided you start with a "#").
-
----
 
 We will be using different commands with different syntaxes. Different commands expect different types of arguments. Some times the order matters, some times it doesn't. If you are unsure, the best way to check how to run a command is by taking a look at its manual with the command **man**. For example, if you want to look at the manual for the command **mkdir** you can do:
 
@@ -73,11 +69,18 @@ Let's now create a new folder called "MMB-114". In addition to the command (**mk
 mkdir MMB-114
 ```
 
-Has anything changed? Let's list the contents of the folder again:
+Has anything changed? How to list the contents of the folder again?
 
-```bash
-ls
-```
+<details>
+<summary>
+HINT (CLICK TO EXPAND)
+</summary>
+
+> ls
+
+</details>  
+
+---
 
 And now let's enter the "MMB-114" folder:
 
@@ -87,9 +90,14 @@ cd MMB-114
 
 Did it work? Where are we now?
 
-```bash
-pwd
-```
+<details>
+<summary>
+HINT
+</summary>
+
+> pwd
+
+</details>  
 
 ### Creating a new file
 
@@ -114,11 +122,18 @@ List the contents of the folder. Can you see the file we have just created?
 
 ### Copying, renaming, moving and deleting files
 
-First let's create a new folder:
+First let's create a new folder called "myfolder":
 
-```bash
-mkdir newfolder
-```
+<details>
+<summary>
+HINT
+</summary>
+
+> mkdir myfolder
+
+</details>  
+
+---
 
 And now let's make a copy of "myfile.txt". Here, the command **cp** expects two arguments. The first is the name of the file we want to copy, and the second is the name of the new file:
 
@@ -131,42 +146,30 @@ List the contents of the folder. Do you see the new file there?
 Now let's say we want to copy a file and put it inside a folder. In this case, we give the name of the folder as the second argument to **cp**:
 
 ```bash
-cp myfile.txt newfolder
+cp myfile.txt myfolder
 ```
 
-List the contents of "newfolder". Is "myfile.txt" there?
+List the contents of "myfolder". Is "myfile.txt" there?
 
 ```bash
-ls newfolder
+ls myfolder
 ```
 
 We can also copy the file to another folder and give it a different name, like this:
 
 ```bash
-cp myfile.txt newfolder/copy_of_myfile.txt
+cp myfile.txt myfolder/copy_of_myfile.txt
 ```
 
-List the contents of "newfolder" again.  Do you see two files there?
-
-```bash
-ls newfolder
-```
-
----
-
+List the contents of "myfolder" again.  Do you see two files there?
 
 Instead of copying, we can move files around with the command **mv**:
 
 ```bash
-mv newfile.txt newfolder
+mv newfile.txt myfolder
 ```
 
 Let's list the contents of the folders. Where did "myfile.txt" go?
-
-```bash
-ls
-ls newfolder
-```
 
 We can also use the command **mv** to rename files:
 
@@ -176,21 +179,19 @@ mv myfile.txt myfile_renamed.txt
 
 List the contents of the folder again. What happened to "myfile.txt"?
 
----
-
-Now, let's say we want to move things from inside "newfolder" to the current directory. Can you see what the dot (**.**) is doing in the command below? Let's try:
+Now, let's say we want to move things from inside "myfolder" to the current directory. Can you see what the dot (**.**) is doing in the command below? Let's try:
 
 ```bash
-mv newfolder/newfile.txt .
+mv myfolder/newfile.txt .
 ```
 
-Let's list the contents of the folders. The file "newfile.txt" was inside "newfolder" before, where is it now?  
+Let's list the contents of the folders. The file "newfile.txt" was inside "myfolder" before, where is it now?  
 
 The same operation can be done in a different fashion. In the commands below, can you see what the two dots (**..**) are doing? Let's try:
 
 ```bash
 # First we go inside the folder
-cd newfolder
+cd myfolder
 
 # Then we move the file one level up
 mv myfile.txt ..
@@ -199,9 +200,8 @@ mv myfile.txt ..
 cd ..
 ```
 
-Let's list the contents of the folders. The file "myfile.txt" was inside "newfolder" before, where is it now?  
+Let's list the contents of the folders. The file "myfile.txt" was inside "myfolder" before, where is it now?  
 
----
 
 We have so many identical files in our folders. Let's clean things up and delete some files:
 
@@ -219,24 +219,24 @@ To skip the confirmation dialogue and force the deletion, we can modify the comm
 rm -f myfile.txt
 ```
 
-And now let's delete "newfolder":
+And now let's delete "myfolder":
 
 ```bash
-rm -f newfolder
+rm -f myfolder
 ```
 
 It didn't work did it? Because to delete a folder we have to modify the command further by adding the recursive flag (**-r**):
 
 ```bash
-rm -f -r newfolder
+rm -f -r myfolder
 
 # Any of the formats below also work:
-rm -r -f newfolder
-rm -fr newfolder
-rm -rf newfolder
+rm -r -f myfolder
+rm -fr myfolder
+rm -rf myfolder
 
 # The following command also works, but only if the folder is empty:
-rmdir newfolder
+rmdir myfolder
 ```
 
 Let's list the contents of the folder. What happened to "newfolder"?  
