@@ -122,7 +122,7 @@ List the contents of the folder. Can you see the file we have just created?
 
 ### Copying, renaming, moving and deleting files
 
-First let's create a new folder called "myfolder":
+First let's create a new folder called "myfolder". Do you remember how to do this?
 
 <details>
 <summary>
