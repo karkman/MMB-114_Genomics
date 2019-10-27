@@ -1,4 +1,4 @@
-# MMB-114 Exploratory microbial research - lab course 2019
+# MMB-114 Exploratory microbial research - lab course
 
 Genome analysis module of the course "MMB-114 Exploratory microbial research - lab course" of the University of Helsinki.
 
