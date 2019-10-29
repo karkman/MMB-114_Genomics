@@ -120,10 +120,12 @@ And now we run CUTADAPT. But first, take a moment to familiarize yourself the to
 ```bash
 cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
          -A CTGTCTCTTATACACATCTGACGCTGCCGACGA
-         -o R1_q20_m60.fastq
-         -p R2_q20_m60.fastq
+         -o GA001_R1_trimmed.fastq
+         -p GA001_R2_trimmed.fastq
          -q 20
          -m 60
+         A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq
+         A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R2_001.fastq
 ```
 
 Now let's take a look at the help page for CUTADAPT to understand what each of these flags are doing:
@@ -140,7 +142,7 @@ You can also read more about CUTADAPT [here](https://cutadapt.readthedocs.io/en/
 Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command **(you have to scroll to the right to see the full command)**:
 
 ```bash
-cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o GA001_R1_trimmed.fastq -p GA001_R2_trimmed.fastq -q 20 -m 60 A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq > log_cutadapt.txt
+cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o GA001_R1_trimmed.fastq -p GA001_R2_trimmed.fastq -q 20 -m 60 A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R2_001.fastq > log_cutadapt.txt
 ```
 
 When CUTADAPT has finished, list the contents of the directory. Why do the names look so different from before?
