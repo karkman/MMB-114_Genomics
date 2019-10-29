@@ -4,63 +4,36 @@
 
 See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
 
-## Additional instructions to colorize your SHELL
-
-1. Make a copy of the file ".bash_profile" in case something goes wrong:
-
-```bash
-cp ~/.bash_profile ~/.bash_profile_copy
-```
-
-2. Open "bash_profile" using **nano**:
-
-```bash
-nano ~/.bash_profile
-```
-
-3. Copy the text below and paste it at the end:
-
-```bash
-alias ls='ls --color=auto'
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
-```
-4. Close **nano** (don't forget to save)
-
-5. Logout Taito and login back again
-
-6. To modify the colours further you can use the colour code generator [here](https://geoff.greer.fm/lscolors/)
-
 ## PART 1
 
-### Downloading the raw genome data of our *Lactobacillus* strain
+### Downloading the raw genome data
 
-First let's create a folder for the course in our work directory. Your work directory is located in **/wrk/yourusername**, but it can also be accessed using the variable **($WRKDIR)**:
+First let's create a folder for the course in our work directory. Your work directory is located in **/wrk/yourusername**, but it can also be accessed using the variable **$WRKDIR**:
 
 ```bash
-cd $WRKDIR
-mkdir MMB-114
-cd MMB-114
+mkdir $WRKDIR/MMB114
+cd $WRKDIR/MMB114
 ```
 
-Now let's create a folder for the raw genome data and copy them there from my CSC account **(remember: don't just copy the code, but don't write everything either; use the tabulator!)**:
+Now let's copy the raw genome data from my CSC account **(remember: don't just copy the code, but don't write everything either; use the tabulator!)**:
 
 ```bash
-mkdir RAW
-cd RAW
-cp /wrk/stelmach/SHARED/MMB-114/Hultman_kurssinayte_MiSeq-20190221R.tar.gz .
+cp /wrk/stelmach/MMB114/Maunula_Hultman_microbial_genomes_MiSeq-20191018.tar.gz .
 ```
 
 The raw genome data was given to us by the sequencing facility as a tar archive (**.tar.gz**). So the first thing we need to do is extract the archive:
 
 ```bash
-tar -zxf Hultman_kurssinayte_MiSeq-20190221R.tar.gz
+tar -zxf Maunula_Hultman_microbial_genomes_MiSeq-20191018.tar.gz
 ```
 
-Investigate the contents of the folder. We can see that two GZIP files (**.gz**) were extracted from the tar archive (one for the R1 and the other for the R2 reads). GZIP is a compressed file much like a ZIP file, so to continue we have to decompress them first. We will do this with the command **gunzip**:
+Investigate the contents of the folder. We can see that four GZIP files (**.gz**) were extracted from the tar archive (one for the R1 and one for the R2 reads of each genome). GZIP is a compressed file much like a ZIP file, so to continue we have to decompress them first. We will do this with the command **gunzip**:
 
 ```bash
-gunzip A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq.gz
-gunzip A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq.gz
+gunzip A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq.gz
+gunzip A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R2_001.fastq.gz
+gunzip A023-E3-CTTGCCTC-CTGCAGTA-Maunula-Hultman-run20191018R_S23_L001_R1_001.fastq.gz
+gunzip A023-E3-CTTGCCTC-CTGCAGTA-Maunula-Hultman-run20191018R_S23_L001_R2_001.fastq.gz
 ```
 
 Investigate the contents of the folder again. Do you see that the FASTQ files are now uncompressed?  
@@ -68,9 +41,9 @@ Investigate the contents of the folder again. Do you see that the FASTQ files ar
 Now let's take a look at the FASTQ files to see how they look like. Here we will use three useful commands for visualizing text files (**head**, **tail** and **less**):
 
 ```bash
-head A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
-tail A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
-less A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
+head A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq
+tail A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq
+less A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq
 
 # In less, scroll down by hitting the space bar
 # To quit, hit "q"
@@ -90,22 +63,28 @@ The next step is to load the **biokit** environment, which contains several prog
 module load biokit
 ```
 
+Then we go to the folder where we have put the data:
+
+```bash
+cd $WRKDIR/MMB114
+```
+
 And now we run FASTQC:
 
 ```bash
-cd $WRKDIR/MMB-114/RAW
-
-fastqc A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq
-fastqc A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq
+fastqc A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq
+fastqc A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R2_001.fastq
+fastqc A023-E3-CTTGCCTC-CTGCAGTA-Maunula-Hultman-run20191018R_S23_L001_R1_001.fastq
+fastqc A023-E3-CTTGCCTC-CTGCAGTA-Maunula-Hultman-run20191018R_S23_L001_R2_001.fastq
 ```
 
-After both tasks are completed, we exit the Taito-shell by typing:
+After all tasks are completed, we exit the Taito-shell by typing:
 
 ```bash
 exit
 ```
 
-One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop with the file transfer program FileZilla. Remember to download the files for both the R1 and the R2 reads. In your computer, double-click to open them in your favourite web browser.  
+One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop with the file transfer program FileZilla. Remember to download the files for the R1 and the R2 reads of both genomes. In your computer, double-click to open them in your favourite web browser.  
 
 Take a look at the FASTQC reports. How does the data look like?
 
@@ -126,21 +105,14 @@ To help you answering the questions above, you can read more about the FASTQC re
 
 ### Trimming adapters and low-quality regions
 
-Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions.
+Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions. From now on we will work only with the first genome (A022-GA001).
 
-First, let's connect to the Taito-shell and load **biokit**:
+First, let's connect to the Taito-shell, load **biokit** and go to the course folder:
 
 ```bash
 sinteractive
 module load biokit
-```
-
-Let's create a new folder for the trimmed genome data:
-
-```bash
-cd $WRKDIR/MMB-114
-mkdir TRIMMED
-cd TRIMMED
+cd $WRKDIR/MMB114
 ```
 
 And now we run CUTADAPT. But first, take a moment to familiarize yourself the tool. Look at the command below and see which flags (**-LETTER**) we are passing to CUTADAPT (**DO NOT RUN**):
@@ -168,7 +140,7 @@ You can also read more about CUTADAPT [here](https://cutadapt.readthedocs.io/en/
 Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command **(you have to scroll to the right to see the full command)**:
 
 ```bash
-cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o R1_q20_m60.fastq -p R2_q20_m60.fastq -q 20 -m 60 ../RAW/A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R1_001.fastq ../RAW/A024-Lct2-CAACTATC-AAGACACC-Hultman-run20190221R_S24_L001_R2_001.fastq > log_cutadapt.txt
+cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o GA001_R1_trimmed.fastq -p GA001_R2_trimmed.fastq -q 20 -m 60 A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq A022-GA001-TTGCATGT-ATTCCATG-Maunula-Hultman-run20191018R_S22_L001_R1_001.fastq > log_cutadapt.txt
 ```
 
 When CUTADAPT has finished, list the contents of the directory. Why do the names look so different from before?
@@ -179,12 +151,11 @@ Now take a look at the file "log_cutadapt.txt" with the command **less**:
 * How many reads were removed because they were too short?
 * How many low-quality bases were trimmed?
 
-
 Now let's run FASTQC again, this time using the trimmed genome data:
 
 ```bash
-fastqc R1_q20_m60.fastq
-fastqc R2_q20_m60.fastq
+fastqc GA001_R1_trimmed.fastq
+fastqc GA001_R2_trimmed.fastq
 ```
 
 After both tasks are completed, we exit the Taito-shell:
