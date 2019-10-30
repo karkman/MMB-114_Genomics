@@ -13,8 +13,8 @@ The first thing we will do is to launch the genome assembly jobs as they take so
 First, let's copy the SPADES batch script to your course folder:
 
 ```bash
-cd $WRKDIR/MMB-114
-cp /wrk/stelmach/SHARED/MMB-114/spades.sh .
+cd $WRKDIR/MMB114
+cp /wrk/stelmach/MMB114/spades.sh .
 ```
 
 Take a look at the script using **less**. This is how a batch script looks like. Don't worry about it now, we will go through it in detail later. For the moment let's submit the SPADES script to the batch job system:
@@ -26,7 +26,7 @@ sbatch spades.sh
 Now let's copy the VELVET batch script to your course folder. In the code below, change "XX" to the kmer that was given to you:
 
 ```bash
-cp /wrk/stelmach/SHARED/MMB-114/velvet_XX.sh .
+cp /wrk/stelmach/MMB114/velvet_XX.sh .
 ```
 
 And now we submit the VELVET script (remember to change "XX" again):
@@ -55,28 +55,18 @@ seff JOBID
 
 If it shows "State: COMPLETED (exit code 0)", then it means the job has finished succesfully without errors. Take a look also at the fields "CPU Efficiency" and "Memory Efficiency". Based on these values we can adjust our future scripts to allocate less resources. In Taito, the more resources you use the higher the costs to the project and potential waiting time in the queue.  
 
-Now we will run a program called QUAST to evaluate the quality of the assemblies. We start by connecting to the Taito-shell and loading **biokit**:
+Now we will run a program called QUAST to evaluate the quality of the assemblies. We start by connecting to the Taito-shell, loading **biokit** and navigating to the course folder:
 
 ```bash
 sinteractive
 module load biokit
+cd $WRKDIR/MMB114
 ```
 
-Now let's make a new folder for QUAST and copy the assembled contigs from VELVET and SPADES there. Remember to change "XX" to the kmer that was given to you:
+And now let's run QUAST. Remember to change "XX" to the kmer that was given to you:
 
 ```bash
-cd $WRKDIR/MMB-114
-mkdir QUAST
-cd QUAST
-
-cp ../SPADES/contigs.fasta spades_contigs.fasta
-cp ../VELVET_XX/contigs.fa velvet_contigs.fasta
-```
-
-And now let's run QUAST:
-
-```bash
-quast.py spades_contigs.fasta velvet_contigs.fasta -o . -t 4
+quast.py SPADES/contigs.fasta VELVET_XX/contigs.fa -o QUAST -t 4
 ```
 
 When QUAST has finished, exit the Taito-shell and move the following files to your computer with FileZilla:
