@@ -5,7 +5,7 @@
 ### Windows users
 
 * Launch PuTTY
-* In “Host Name (or IP address)”, type **puhti.csc.fi** and click “Open”
+* In “Host Name (or IP address)”, type **taito.csc.fi** and click “Open”
 * In the following dialogue window, choose “Yes”
 * Type your CSC username and hit "Enter"
 * Type your password and hit "Enter"
