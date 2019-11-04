@@ -16,7 +16,7 @@ Let's start by connecting to the Taito-shell, loading the biokit and PROKKA modu
 sinteractive
 module load biokit
 module load prokka
-cd $WRKDIR/MMB-114
+cd $WRKDIR/MMB114
 ```
 
 Now let's run PROKKA:
