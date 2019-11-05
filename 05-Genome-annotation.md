@@ -84,8 +84,8 @@ Let's start by connecting to the Taito-shell and loading the biokit module. Here
 
 ```bash
 sinteractive
-cd $WRKDIR/MMB114
 module load biokit/4.9.3
+cd $WRKDIR/MMB114
 ```
 
 Now let's copy the folder that contains the pre-formatted KEGG database:
@@ -105,15 +105,11 @@ Investigate the file "diamond.txt" using **less**. This is a typical BLAST table
 The way that the name of the sequences are encoded in the KEGG database are not very informative. To get the actual gene names we will run a program called [KEGG-tools](https://github.com/igorspp/KEGG-tools) (written by yours truly). Tomorrow we will run KEGG-tools again to map the genes to the metabolic pathways they belong to, but for now let's just get the gene names:
 
 ```bash
-KEGG/KEGG-tools assign.py -i diamond.txt -a KEGG
+module load biopython-env/2.7.13
+KEGG/KEGG-tools-assign.py -i diamond.txt -a KEGG
 ```
 
-Look at the file "diamond_KOtable.txt" using **less**. Now we have got some proper gene names we can work with! Now let's join the PROKKA and KEGG annotations into one single file. Just copy and paste the code below (remember to scroll to the right to get the full command):
-
-```bash
-awk -F '\t' '{if ($2 == "CDS") {print}}' PROKKA/PROKKA.tsv | join -1 1 -2 1 -a 1 -t $'\t' - <(cut -f 1,4 diamond_KOtable.txt) > diamond_KEGG.txt
-```
-
-Now download the file "diamond_KEGG.txt" to your computer using FileZilla and open it in Excel. Scroll through the list and see:
+Copy the file "diamond_KOtable.txt" to your computer using FileZilla and open it on excel. Do the same for the file "PROKKA.tsv" from before and compare the annotations. Scroll through the lists and check:
 * Which genes have been found? Do you see something interesting?
+* Why some genes found by PROKKA are not present in the KEGG results?
 * Do the PROKKA and KEGG annotations agree with each other?
