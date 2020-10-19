@@ -1,7 +1,9 @@
 # Software installations
 
 Before our first class on **26.10.20**, please do the following steps.  
-If you run into problems, just send me an [e-mail](mailto:igor.pessi@helsinki.fi) or come to my office (Biokeskus 1, room 3016) and I will help you out.
+If you run into problems, just send me an [e-mail](mailto:igor.pessi@helsinki.fi) or come to my office (Biokeskus 1, room 3016) and I will help you out.  
+If you don't have access to a suitable laptop computer, please contact me in advance.  
+We have 5 Linux laptops that you can borrow for the duration of the course.
 
 ## Register to CSC
 
