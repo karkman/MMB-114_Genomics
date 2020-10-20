@@ -25,8 +25,8 @@ https://github.com/sanger-pathogens/Artemis/releases/download/v18.0.0/artemis-ma
 
 ## Windows users ONLY: download and install PuTTY
 
-* 32-bit: https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.73-installer.msi
-* 64-bit: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.73-installer.msi
+* 32-bit: https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.74-installer.msi
+* 64-bit: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.74-installer.msi
 
 Not sure whether you want the 32-bit or the 64-bit version?  
 Read the [FAQ](https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html#faq-32bit-64bit) entry.

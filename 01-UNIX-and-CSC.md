@@ -1,11 +1,11 @@
 # Day 1: UNIX and CSC
 
-## Connecting to Taito
+## Connecting to Puhti
 
 ### Windows users
 
 * Launch PuTTY
-* In “Host Name (or IP address)”, type **taito.csc.fi** and click “Open”
+* In “Host Name (or IP address)”, type **puhti.csc.fi** and click “Open”
 * In the following dialogue window, choose “Yes”
 * Type your CSC username and hit "Enter"
 * Type your password and hit "Enter"
@@ -15,7 +15,7 @@
 
 * Launch Terminal
 (e.g. open the Launchpad and type **terminal**)
-* Type **ssh user<span>@taito.csc.fi** and hit "Enter" (change "user" for your own CSC username)
+* Type **ssh user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username)
 * In the following dialogue, type **yes** and hit "Enter"
 * Type your password and hit "Enter"
 * To logout first type **exit**, hit "Enter", and close the Terminal window
@@ -27,8 +27,8 @@
 Things inside a box like this...
 
 ```bash
-mkdir MMB-114
-cd MMB-114
+mkdir MMB114
+cd MMB114
 ```
 ...represent commands you need to type in the shell. Each line is a command. Commands have to be typed in a single line, one at a time. After each command, hit “Enter” to execute it.
 
@@ -63,10 +63,10 @@ Are there any files here? Let's list the contents of the folder:
 ls
 ```
 
-Let's now create a new folder called "MMB-114". In addition to the command (**mkdir**), we are now passing a term (also known as an argument) which, in this case, is the name of the folder we want to create:
+Let's now create a new folder called "MMB114". In addition to the command (**mkdir**), we are now passing a term (also known as an argument) which, in this case, is the name of the folder we want to create:
 
 ```bash
-mkdir MMB-114
+mkdir MMB114
 ```
 
 Has anything changed? How to list the contents of the folder again?
@@ -82,10 +82,10 @@ HINT (CLICK TO EXPAND)
 
 ---
 
-And now let's enter the "MMB-114" folder:
+And now let's enter the "MMB114" folder:
 
 ```bash
-cd MMB-114
+cd MMB114
 ```
 
 Did it work? Where are we now?
