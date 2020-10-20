@@ -1,18 +1,18 @@
 # Day 2: Read trimming
 
-## Connecting to Taito
+## Connecting to Puhti
 
-See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
+See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 ## PART 1
 
 ### Downloading the raw genome data
 
-First let's create a folder for the course in our work directory. Your work directory is located in **/wrk/yourusername**, but it can also be accessed using the variable **$WRKDIR**:
+First let's create a folder for the course in the home directory. Your home directory is located in **/users/yourusername**, but it can also be accessed using the shortcut **~** or the variable **$HOME**:
 
 ```bash
-mkdir $WRKDIR/MMB114
-cd $WRKDIR/MMB114
+mkdir $HOME/MMB114 # or mkdir ~/MMB114
+cd $HOME/MMB114    # or cd ~/MMB114
 ```
 
 Now let's copy the raw genome data from my CSC account **(remember: don't just copy the code, but don't write everything either; use the tabulator!)**:
