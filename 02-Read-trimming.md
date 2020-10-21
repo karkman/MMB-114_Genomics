@@ -2,7 +2,7 @@
 
 ## Connecting to Puhti
 
-See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
+See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UNIX-and-CSC.md#connecting-to-puhti).
 
 ## PART 1
 
@@ -62,13 +62,6 @@ The next step is to load the **biokit** environment, which contains several prog
 ```bash
 module load biokit
 ```
-
-Then we go to the folder where we have put the data:
-
-```bash
-cd $WRKDIR/MMB114
-```
-
 And now we run FASTQC:
 
 ```bash
@@ -112,7 +105,6 @@ First, let's connect to the Taito-shell, load **biokit** and go to the course fo
 ```bash
 sinteractive
 module load biokit
-cd $WRKDIR/MMB114
 ```
 
 And now we run CUTADAPT. But first, take a moment to familiarize yourself the tool. Look at the command below and see which flags (**-LETTER**) we are passing to CUTADAPT (**DO NOT RUN**):
