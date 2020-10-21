@@ -45,7 +45,7 @@ We will be using different commands with different syntaxes. Different commands 
 ```bash
 man mkdir
 
-# You can scroll down by hitting "backspace"
+# You can scroll down by hitting the space bar
 # To quit, hit "q"
 ```
 
@@ -135,7 +135,7 @@ HINT
 
 ---
 
-And now let's make a copy of "myfile.txt". Here, the command **cp** expects two arguments. The first is the name of the file we want to copy, and the second is the name of the new file:
+And now let's make a copy of "myfile.txt". Here, the command **cp** expects two arguments, and the order of these arguments matter. The first is the name of the file we want to copy, and the second is the name of the new file:
 
 ```bash
 cp myfile.txt newfile.txt
@@ -169,7 +169,7 @@ Instead of copying, we can move files around with the command **mv**:
 mv newfile.txt myfolder
 ```
 
-Let's list the contents of the folders. Where did "myfile.txt" go?
+Let's list the contents of the folders. Where did "newfile.txt" go?
 
 We can also use the command **mv** to rename files:
 
@@ -202,44 +202,41 @@ cd ..
 
 Let's list the contents of the folders. The file "myfile.txt" was inside "myfolder" before, where is it now?  
 
-
-We have so many identical files in our folders. Let's clean things up and delete some files:
+We have so many identical files in our folders. Let's clean things up and delete some files :
 
 ```bash
 rm newfile.txt
-
-# To confirm, type yes and hit "Enter"
 ```
 
 Let's list the contents of the folder. What happened to "newfile.txt"?  
 
-To skip the confirmation dialogue and force the deletion, we can modify the command by adding the force flag (**-f**). Flags are used to pass additional options to the commands. Let's try again, but pay attention in what you are doing, if you accidently remove the wrong file, it is gone forever!
-
-```bash
-rm -f myfile.txt
-```
+When deleting files, pay attention in what you are doing: **if you accidently remove the wrong file, it is gone forever!**
 
 And now let's delete "myfolder":
 
 ```bash
-rm -f myfolder
+rm myfolder
 ```
 
-It didn't work did it? Because to delete a folder we have to modify the command further by adding the recursive flag (**-r**):
+It didn't work did it? An error message came up, what does it mean?
 
 ```bash
-rm -f -r myfolder
+rm: cannot remove ‘myfolder’: Is a directory
+```
 
-# Any of the formats below also work:
-rm -r -f myfolder
-rm -fr myfolder
-rm -rf myfolder
+To delete a folder we have to modify the command further by adding the recursive flag (**-r**). Flags are used to pass additional options to the commands:
 
-# The following command also works, but only if the folder is empty:
+```bash
+rm -r myfolder
+```
+
+PS: the following command also works, but only if the folder is empty:
+
+```bash
 rmdir myfolder
 ```
 
-Let's list the contents of the folder. What happened to "newfolder"?  
+Let's list the contents of the folder. What happened to "myfolder"?  
 
 
 ## Finished and want to learn more?
