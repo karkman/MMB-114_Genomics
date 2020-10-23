@@ -41,10 +41,10 @@ And now let's enter this folder:
 cd MMB114
 ```
 
-Now let's copy the raw genome data from my folder **(remember: don't just copy the code, but don't type everything either; use the tabulator!)**:
+Now let's copy the raw genome data from the main project's folder **(remember: don't just copy the code, but don't type everything either; use the tabulator!)**:
 
 ```bash
-cp /users/stelmach/MMB114/Lundell_MiSeq-20201016.tar.gz .
+cp /projappl/project_2001379/Lundell_MiSeq-20201016.tar.gz .
 ```
 
 The raw genome data was given to us by the sequencing facility as a tar archive (**.tar.gz**). So the first thing we need to do is extract the archive:
