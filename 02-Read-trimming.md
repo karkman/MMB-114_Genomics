@@ -8,7 +8,7 @@ See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UN
 
 ### Downloading the raw genome data
 
-First let's create a folder for the course in the home directory. Your home directory is located in **/users/yourusername**. How to check that you are in the right place?
+Let's enter the MMB114 folder that we created yesterday. But first, let's see where we are; how to do that?
 
 <details>
 <summary>
@@ -21,21 +21,20 @@ HINT (CLICK TO EXPAND)
 
 ---
 
-If you are in your home directory, create the folder using:
+If you are in your home directory (**/users/yourusername**), then you're golden. Let's now check that the folder we created yesterday is still there; how to do that?
 
-```bash
-mkdir MMB114
-```
+<details>
+<summary>
+HINT (CLICK TO EXPAND)
+</summary>
 
-If you're not, you have to go there fist. The home directory can also be accessed using the shortcut **~** or the variable **$HOME**:
+> ls
 
-```bash
-cd $HOME # or cd ~/MMB114
+</details>  
 
-mkdir MMB114
-```
+---
 
-And now let's enter this folder:
+Can you see the folder there? If so, let's enter it:
 
 ```bash
 cd MMB114
