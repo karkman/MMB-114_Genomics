@@ -114,6 +114,7 @@ Take a look at the FASTQC reports. How does the data look like?
 **(To help you answering the questions below, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/))**
 
 * How many sequences we have for each genome? Are these numbers the same for the R1 and R2 files?
+* Is the length of the reads the same in the R1 and R2 files?
 * The "Per base sequence quality" module shows a problem. Why?
   * Which part of the reads have the best quality? Beginning, middle, end?
 * What is the mean sequence quality for the majority of the reads?
@@ -122,7 +123,7 @@ Take a look at the FASTQC reports. How does the data look like?
   * Are there adapters in our reads?
   * In which part of the reads?
   * What are adapters and why should we remove them?
-* Do you see differences between the R1 and R2 reads?
+* Which of the three genomes has the best sequence quality?
 
 ## Trimming adapters and low-quality regions
 
