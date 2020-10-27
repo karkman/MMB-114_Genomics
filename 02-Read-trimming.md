@@ -159,7 +159,7 @@ cutadapt -h | less
 
 You can also read more about CUTADAPT [here](https://cutadapt.readthedocs.io/en/stable/guide.html).  
 
-Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command. You can either type everything in one line or you can use the backslash (**\**) to break it into several lines:
+Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command. You can either type everything in one line or you can use the backslash (**\\**) to break it into several lines:
 
 ```bash
 cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC \
