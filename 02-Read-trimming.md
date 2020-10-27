@@ -4,9 +4,7 @@
 
 See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UNIX-and-CSC.md#connecting-to-puhti).
 
-## PART 1
-
-### Downloading the raw genome data
+## Downloading the raw genome data
 
 Let's enter the MMB114 folder that we created yesterday. But first, let's see where we are; how to do that?
 
@@ -78,7 +76,7 @@ less A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.f
 # To quit, hit "q"
 ```
 
-### Performing a quality assessment of the raw data
+## Performing a quality assessment of the raw data
 
 Now we will run a program called FASTQC for quality assessment of the raw genome data. The tasks we are performing from now on require more memory than simple bash commands. Running them on the login node would make the system slow, and if a task takes more than 30 minutes to complete, it is killed automatically. Instead, we have to connect to another node, called the interactive partition:
 
@@ -88,7 +86,7 @@ sinteractive -A project_2001379
 
 It might take a couple of seconds to minutes until the needed resources become available.  
 
-The next step is to load the **biokit** environment, which is module in CSC containing several programs widely used in bioinformatics:
+The next step is to load the **biokit** environment, which is a module in CSC containing several programs widely used in bioinformatics:
 
 ```bash
 module load biokit
@@ -112,7 +110,8 @@ exit
 
 One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop with the file transfer program FileZilla. Remember to download the HTML files for the R1 and the R2 reads of both genomes. In your computer, double-click to open them in your favourite web browser.  
 
-Take a look at the FASTQC reports. How does the data look like?
+Take a look at the FASTQC reports. How does the data look like?  
+**(To help you answering the questions below, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/))**
 
 * How many sequences we have for each genome? Are these numbers the same for the R1 and R2 files?
 * The "Per base sequence quality" module shows a problem. Why?
@@ -125,11 +124,7 @@ Take a look at the FASTQC reports. How does the data look like?
   * What are adapters and why should we remove them?
 * Do you see differences between the R1 and R2 reads?
 
-To help you answering the questions above, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/).
-
-## PART 2
-
-### Trimming adapters and low-quality regions
+## Trimming adapters and low-quality regions
 
 Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions. From now on we will work only with Antton's genome.
 
@@ -164,10 +159,17 @@ cutadapt -h | less
 
 You can also read more about CUTADAPT [here](https://cutadapt.readthedocs.io/en/stable/guide.html).  
 
-Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command **(you have to scroll to the right to see the full command)**:
+Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command. You can either type everything in one line or you can use the backslash (**\**) to break it into several lines:
 
 ```bash
-cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -o Antton_R1_trimmed.fastq -p Antton_R2_trimmed.fastq -q 30 -m 50 A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R2_001.fastq > cutadapt_log.txt
+cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC \
+         -A CTGTCTCTTATACACATCTGACGCTGCCGACGA \
+         -o Antton_R1_trimmed.fastq \
+         -p Antton_R2_trimmed.fastq \
+         -q 30 \
+         -m 50 \
+         A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq \
+         A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R2_001.fastq > cutadapt_log.txt
 ```
 
 When CUTADAPT has finished, list the contents of the directory. Which files have been created?
