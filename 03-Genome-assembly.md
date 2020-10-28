@@ -18,7 +18,7 @@ cp /projappl/project_2001379/spades_antton.sh .
 Now let's submit the SPADES script to the batch job system:
 
 ```bash
-sbatch spades.sh
+sbatch spades_antton.sh
 ```
 
 To see the status of our job, we can do:
@@ -42,7 +42,7 @@ If it shows "State: COMPLETED (exit code 0)", then it means the job has finished
 Now we will run a program called QUAST to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading **biokit**:
 
 ```bash
-sinteractive
+sinteractive -A project_2001379
 module load biokit
 ```
 
