@@ -49,7 +49,7 @@ module load biokit
 And now let's run QUAST:
 
 ```bash
-quast.py SPADES_ANTON/contigs.fasta -o QUAST -t 4
+quast.py SPADES_ANTTON/contigs.fasta -o QUAST -t 4
 ```
 
 When QUAST has finished, exit the interactive partition and move the following files to your computer with FileZilla:
