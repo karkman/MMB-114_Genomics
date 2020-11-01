@@ -8,10 +8,10 @@ See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UN
 
 First we will annotate our genome using a program called PROKKA. Among other things, PROKKA uses a program called PRODIGAL to find genes and then annotates them using BLAST and HMMER.  
 
-Let's start by connecting to the interactive partition and configure the PROKKA installation:
+Let's start by connecting to the interactive partition and configuring the PROKKA installation. Now we will need a little bit more memory than what we get as default, so we need to specify that:
 
 ```bash
-sinteractive -A project_2001379
+sinteractive -A project_2001379 --mem 10000
 
 export PROJAPPL=/projappl/project_2001379
 module load bioconda
@@ -41,7 +41,7 @@ Let's start by loading the biokit module:
 module load biokit
 ```
 
-And now we run DIAMOND:
+And now we run DIAMOND (this will take some time, be patient):
 
 ```bash
 diamond blastx --query PROKKA_ANTTON/ANTTON.ffn \
@@ -55,17 +55,17 @@ diamond blastx --query PROKKA_ANTTON/ANTTON.ffn \
 
 Investigate the file "KEGG_ANTTON.txt" using **less**. This is a typical BLAST table showing, among other things, the similarity between each of our CDSs to its best match in the KEGG database. In our case, the columns are the following:
 
-1. **qseqid:** query (e.g., unknown gene) sequence id
-2. **sseqid:** subject (e.g., reference genome) sequence id
-3. **stitle:** subject title
-4. **pident:** percentage of identical matches
-5. **qcovhsp:** query coverage
+1. **qseqid:** query sequence id (i.e. the id of our gene)
+2. **sseqid:** subject sequence id (i.e. the id of the gene in the database)
+3. **stitle:** subject title (i.e. the title of the gene in the database)
+4. **pident:** percentage of identical matches (i.e. how similar our gene is to the gene in the database)
+5. **qcovhsp:** query coverage (i.e. how much of our gene aligns with the gene in the database)
 6. **evalue:** expect value
 7. **bitscore:** bit score
 
-Do you know what the evalue and bit score mean? Take a look [here](https://sites.google.com/site/wiki4metagenomics/tools/blast/evalue).
+Don't know what the evalue and bit score mean? Take a look [here](https://sites.google.com/site/wiki4metagenomics/tools/blast/evalue).
 
 Now copy the file "KEGG_ANTTON.txt" to your computer using FileZilla and open it on excel. Do the same for the file "ANTTON.tsv" from PROKKA and compare the annotations. Scroll through the lists and check:
 * Which genes have been found? Do you see something interesting?
-* Why some genes found by PROKKA are not present in the KEGG results?
-* Do the PROKKA and KEGG annotations agree with each other?
+* What does "hypotethical protein" mean?
+* Do the PROKKA and KEGG annotations agree with each other in general?
