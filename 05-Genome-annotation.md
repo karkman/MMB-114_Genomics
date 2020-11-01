@@ -18,9 +18,11 @@ module load bioconda
 source activate prokka
 ```
 
-Now let's run PROKKA:
+Now let's enter the MMB114 folder and run PROKKA:
 
 ```bash
+cd MMB114
+
 prokka SPADES_ANTTON/contigs.fasta \
        --outdir PROKKA_ANTTON \
        --prefix ANTTON \
