@@ -6,7 +6,7 @@ See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UN
 
 ## Mapping annotations to KEGG pathways
 
-First we will use a tool called keggR (written by yours truly) to parse the KEGG annotations that we got on the last class. This will allow us to put the gene annotations in the context of metabolic pathways. keggR is actually an R package (if you don't know what R is take a look [here](https://www.computerworld.com/article/2497143/business-intelligence-beginner-s-guide-to-r-introduction.html)). To use keggR we actually have to configre a bunch of stuff first:
+First we will use a tool called keggR (written by yours truly) to parse the KEGG annotations that we got on the last class. This will allow us to put the gene annotations in the context of metabolic pathways. keggR is actually an R package (if you don't know what R is take a look [here](https://www.computerworld.com/article/2497143/business-intelligence-beginner-s-guide-to-r-introduction.html)). To use keggR we actually have to configure a bunch of stuff first:
 
 ```bash
 # First we launch the interactive partition
