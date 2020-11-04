@@ -17,12 +17,14 @@ export PROJAPPL=/projappl/project_2001379
 module load bioconda
 
 # And then we load keggR
-conda activate /projappl/project_2001379/bioconda3_env/keggR
+source activate /projappl/project_2001379/bioconda3_env/keggR
 ```
 
 Because we don't want to go through the learning curve of having to learn R now so late in the game, let's just copy a script I have prepared for you that will run keggR for us:
 
 ```bash
+cd MMB114
+
 cp /projappl/project_2001379/keggR_antton.R .
 
 Rscript keggR_antton.R
