@@ -1,51 +1,53 @@
 # Day 6: Metabolic pathway analysis
 
-## Connecting to Taito
+## Connecting to Puhti
 
-See the instructions [here](01-UNIX-and-CSC.md#connecting-to-taito).
+See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UNIX-and-CSC.md#connecting-to-puhti).
 
 ## Mapping annotations to KEGG pathways
 
-Here we will use KEGG-tools again to put the annotations in the context of the KEGG pathways:
+First we will use a tool called keggR (written by yours truly) to parse the KEGG annotations that we got on the last class. This will allow us to put the gene annotations in the context of metabolic pathways. keggR is actually an R package (if you don't know what R is take a look [here](https://www.computerworld.com/article/2497143/business-intelligence-beginner-s-guide-to-r-introduction.html)). To use keggR we actually have to configre a bunch of stuff first:
 
 ```bash
-sinteractive
-module load biopython-env/2.7.13
-cd $WRKDIR/MMB114
+# First we launch the interactive partition
+sinteractive -A project_2001379
 
-KEGG/KEGG-tools-assign.py -i diamond.txt -a KEGG --summarise
+# Then we set up the bioconda environment
+export PROJAPPL=/projappl/project_2001379
+module load bioconda
+
+# And then we load keggR
+conda activate /projappl/project_2001379/bioconda3_env/keggR
 ```
 
-Once KEGG-tools is finished, transfer the files "diamond_pathways_level3.txt" and "diamond_modules_level4.txt" to your computer using FileZilla. Open them in Excel and investigate the pathways found:
+Because we don't want to go through the learning curve of having to learn R now so late in the game, let's just copy a script I have prepared for you that will run keggR for us:
 
-* How does the strain
-  * Gets energy
-  * Survives in stress
-  * Does it use nitrogen? Sulfate? Iron?
-* Look for the "phosphotransferase system (PTS)" and "Saccharide, polyol, and lipid transport system" modules
-  * Can you find the genes that carry out the uptake of the sugars metabolized in the biochemical tests?
+```bash
+cp /projappl/project_2001379/keggR_antton.R .
 
-## Investigating further the predicted pathways
+Rscript keggR_antton.R
+```
 
-One of the problems of pathway analysis is that most genes have roles in multiple pathways. The presence of a gene involved, for example, in methane metabolism, does not necessarily mean that the cell is actually capable of metabolizing methane.
+If everything went well we now have a new file called "KEGG_ANTTON_keggR.txt" in our directory. Take a look at this file using **head**. It looks similar to what we had before, but now we have things like this "K12262" in the second column of the file. These are known as KO identifiers and is how we link genes to metabolic pathways in the KEGG database.  
 
-To investigate the pathways further and see if all or most of the necessary genes are present we will use a tool from KEGG called "KEGG mapper":
+## Investigating metabolic pathways
 
-* Download to your computer the file "diamond_pathways_level4.txt" using FileZilla and open it on Excel
+To investigate the pathways further we will use a tool from KEGG called "KEGG mapper". For this:
+
+* Download to your computer the file "KEGG_ANTTON_keggR.txt" using FileZilla and open it on Excel
 * Go to https://www.genome.jp/kegg/tool/map_pathway1.html
-* Copy only the 4th column ("KO") from Excel (without the header) and paste it in the box
+* Copy only the 2nd column from Excel and paste it in the box
 * In "Search mode", select **Reference**
 * Click "Exec"
 * Find the pathway you want to investigate further and click on it.
 * See the genes involved in the pathway. Genes showed in red are the ones found in our genome. Everything else was not (well, at least was not annotated). Do you think that the cell would be able to carry out this pathway?
 
-In moodle under "Course data 2019 fall" you will find a folder called "Genome work". Download the two files there to you computer and take a look at them. The excel file describes the results of a tool for predicting bacterial phenotypes called PhenDB (https://phen.csb.univie.ac.at/phendb/). The png file comes from another tool called KEGGDecoder (https://github.com/bjtully/BioData/tree/master/KEGGDecoder) which looks at the KEGG annotations and determine which pathways are complete.
-
-With these new results in mind, revise the pathways and answer the questions again:
+By looking at the different metabolic pathways encoded by our genome, let's try to answer:
 
 * How does the strain
   * Gets energy
+  * Gets carbon and nitrogen
   * Survives in stress
-  * Does it use nitrogen? Sulfate? Iron?
-* Look for the "phosphotransferase system (PTS)" and "Saccharide, polyol, and lipid transport system" modules
-  * Can you find the genes that carry out the uptake of the sugars metabolized in the biochemical tests?
+  * Move around
+
+This will be a collaborative effort. Once you found something interesting, add it to our metabolic map [here](https://docs.google.com/presentation/d/1FoLNui3AXfuPIHGLP2ZNNRC5GhMnnjaAn4HlUHjCBMY/edit?usp=sharing).
