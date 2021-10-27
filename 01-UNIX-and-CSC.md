@@ -241,7 +241,7 @@ Let's list the contents of the folder. What happened to "myfolder"?
 
 ## Finished and want to learn more?
 
-Try taking some online tutorials:
+Try taking some online tutorials, e.g.:
 
+* https://www.learnenough.com/command-line-tutorial
 * https://www.codecademy.com/learn/learn-the-command-line
-* http://rik.smith-unna.com/command_line_bootcamp/
