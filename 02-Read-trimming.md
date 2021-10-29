@@ -2,7 +2,7 @@
 
 ## Connecting to Puhti
 
-See the instructions [here](https://github.com/igorspp/MMB-114/blob/master/01-UNIX-and-CSC.md#connecting-to-puhti).
+See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 ## Downloading the raw genome data
 
@@ -41,26 +41,26 @@ cd MMB114
 Now let's copy the raw genome data from the main project's folder **(remember: don't just copy the code, but don't type everything either; use the tabulator!)**:
 
 ```bash
-cp /projappl/project_2001379/Lundell_MiSeq-20201016.tar.gz .
+cp /scratch/project_2001379/Hultman_MiSeq-20211021.tar.gz .
 ```
 
 The raw genome data was given to us by the sequencing facility as a tar archive (**.tar.gz**). So the first thing we need to do is extract the archive:
 
 ```bash
-tar -zxf Lundell_MiSeq-20201016.tar.gz
+tar -zxf Hultman_MiSeq-20211021.tar.gz
 ```
 
 Investigate the contents of the folder. We can see that six GZIP files (**.gz**) were extracted from the tar archive (one for the R1 and one for the R2 reads of each genome). GZIP is a compressed file like a ZIP file, so to continue we have to decompress them first. We will do this with the command **gunzip**:
 
 ```bash
-gunzip A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq.gz
-gunzip A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R2_001.fastq.gz
+gunzip A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq.gz
+gunzip A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq.gz
 
-gunzip A290-Suvi-ACAGACAT-TGCGAGTC-Taina-Lundell-run20201016R_S290_L001_R1_001.fastq.gz
-gunzip A290-Suvi-ACAGACAT-TGCGAGTC-Taina-Lundell-run20201016R_S290_L001_R2_001.fastq.gz
+gunzip A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R1_001.fastq.gz
+gunzip A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R2_001.fastq.gz
 
-gunzip A291-Alvar-2-CTTATGCT-TCCTGCCA-Taina-Lundell-run20201016R_S291_L001_R1_001.fastq.gz
-gunzip A291-Alvar-2-CTTATGCT-TCCTGCCA-Taina-Lundell-run20201016R_S291_L001_R2_001.fastq.gz
+gunzip A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R1_001.fastq.gz
+gunzip A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R2_001.fastq.gz
 ```
 
 Investigate the contents of the folder again. Do you see that the FASTQ files are now uncompressed? What has changed?  
@@ -68,9 +68,9 @@ Investigate the contents of the folder again. Do you see that the FASTQ files ar
 Now let's take a look at the FASTQ files to see how they look like. Here we will use three useful commands for visualizing text files (**head**, **tail** and **less**):
 
 ```bash
-head A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq
-tail A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq
-less A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq
+head A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
+tail A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
+less A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
 
 # In less, scroll down by hitting the space bar
 # To quit, hit "q"
@@ -94,12 +94,12 @@ module load biokit
 And now we run FASTQC, once for each FASTQ file:
 
 ```bash
-fastqc A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq
-fastqc A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R2_001.fastq
-fastqc A290-Suvi-ACAGACAT-TGCGAGTC-Taina-Lundell-run20201016R_S290_L001_R1_001.fastq
-fastqc A290-Suvi-ACAGACAT-TGCGAGTC-Taina-Lundell-run20201016R_S290_L001_R2_001.fastq
-fastqc A291-Alvar-2-CTTATGCT-TCCTGCCA-Taina-Lundell-run20201016R_S291_L001_R1_001.fastq
-fastqc A291-Alvar-2-CTTATGCT-TCCTGCCA-Taina-Lundell-run20201016R_S291_L001_R2_001.fastq
+fastqc A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
+fastqc A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq
+fastqc A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R1_001.fastq
+fastqc A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R2_001.fastq
+fastqc A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R1_001.fastq
+fastqc A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R2_001.fastq
 ```
 
 After all tasks are completed, we exit the interactive partition by typing:
@@ -108,7 +108,7 @@ After all tasks are completed, we exit the interactive partition by typing:
 exit
 ```
 
-One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop with the file transfer program FileZilla. Remember to download the HTML files for the R1 and the R2 reads of both genomes. In your computer, double-click to open them in your favourite web browser.  
+One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop with the file transfer program FileZilla. Remember to download the HTML files for the R1 and the R2 reads of all three genomes. In your computer, double-click to open them in your favourite web browser.  
 
 Take a look at the FASTQC reports. How does the data look like?  
 **(To help you answering the questions below, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/))**
@@ -141,12 +141,12 @@ And now we run CUTADAPT. But first, take a moment to familiarize yourself the to
 ```bash
 cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
          -A CTGTCTCTTATACACATCTGACGCTGCCGACGA
-         -o Antton_R1_trimmed.fastq
-         -p Antton_R2_trimmed.fastq
+         -o Matilda_R1_trimmed.fastq
+         -p Matilda_R2_trimmed.fastq
          -q 30
          -m 50
-         A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq
-         A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq
+         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
+         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq
 ```
 
 Now let's take a look at the help page for CUTADAPT to understand what each of these flags are doing:
@@ -165,12 +165,12 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 ```bash
 cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC \
          -A CTGTCTCTTATACACATCTGACGCTGCCGACGA \
-         -o Antton_R1_trimmed.fastq \
-         -p Antton_R2_trimmed.fastq \
+         -o Matilda_R1_trimmed.fastq \
+         -p Matilda_R2_trimmed.fastq \
          -q 30 \
          -m 50 \
-         A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R1_001.fastq \
-         A289-Antton-GAGGATAT-GGATGTAC-Taina-Lundell-run20201016R_S289_L001_R2_001.fastq > cutadapt_log.txt
+         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq \
+         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq > cutadapt_log.txt
 ```
 
 When CUTADAPT has finished, list the contents of the directory. Which files have been created?
@@ -184,8 +184,8 @@ Now take a look at the file "cutadapt_log.txt" with the command **less**:
 Now let's run FASTQC again, this time using the trimmed genome data:
 
 ```bash
-fastqc Antton_R1_trimmed.fastq
-fastqc Antton_R2_trimmed.fastq
+fastqc Matilda_R1_trimmed.fastq
+fastqc Matilda_R1_trimmed.fastq
 ```
 
 After both tasks are completed, we exit the interactive partition:
