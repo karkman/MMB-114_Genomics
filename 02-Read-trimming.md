@@ -200,3 +200,5 @@ Move the new HTML documents to your laptop with FileZilla and open them in a web
 * What is the mean sequence quality for the majority of the reads now?
 * The "Sequence length distribution" module shows a warning now. Have the read lengths changed? Why?
 * Are there still adapter sequences in our reads?
+
+**Now, can you figure out how to run CUTADAPT and FASTQC for the other two geneomes?**
