@@ -22,7 +22,7 @@ Activity                          |                                             
 --------------------------------- | --------------------------------------------------- | ------------------------------------- |
 Day 1: UNIX and CSC               | [Lecture slides](lectures/01_UNIX_and_CSC.pdf)      | [Exercises](01-UNIX-and-CSC.md)       |
 Day 2: Read trimming              | [Lecture slides](lectures/02_Read_trimming.pdf)     | [Exercises](02-Read-trimming.md)      |
-Day 3: Genome assembly            | [Lecture slides]()   | [Exercises]()    |
+Day 3: Genome assembly            | [Lecture slides](lectures/03_Genome_assembly.pdf)   | [Exercises](03-Genome-assembly.md)    |
 Day 4: Checkup                    | No activities                                       | No activities                         |
 Day 5: Genome annotation          | [Lecture slides]() | [Exercises]()  |
 Day 6: Metabolic pathway analysis | No slides                                           | [Exercises]() |
