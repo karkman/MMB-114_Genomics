@@ -12,9 +12,9 @@ First, let's copy the SPADES batch scripts to your course folder:
 
 ```bash
 cd MMB114
-cp /projappl/project_2001379/spades_Matilda.sh .
-cp /projappl/project_2001379/spades_Lilith.sh .
-cp /projappl/project_2001379/spades_Salla.sh .
+cp /scratch/project_2001379/spades_Matilda.sh .
+cp /scratch/project_2001379/spades_Lilith.sh .
+cp /scratch/project_2001379/spades_Salla.sh .
 ```
 
 Now let's submit the SPADES script to the batch job system:
