@@ -28,7 +28,7 @@ Because we don't want to go through the learning curve of having to learn R now 
 ```bash
 cd MMB114
 
-cp /projappl/project_2001379/keggR_salla.R .
+cp /scratch/project_2001379/keggR_salla.R .
 
 Rscript keggR_salla.R
 ```
