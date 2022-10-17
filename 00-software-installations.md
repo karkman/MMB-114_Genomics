@@ -1,7 +1,7 @@
 # Software installations
 
-Before our first class on **01.11.21**, please do the following steps.  
-If you run into problems, just send me an [e-mail](mailto:igor.pessi@helsinki.fi) and I will help you out.  
+Before our first class on **31.10.2022**, please do the following steps.  
+If you run into problems, just send me an [e-mail](mailto:antti.karkman@helsinki.fi) and I will help you out.  
 
 ## Register to CSC
 
@@ -11,17 +11,15 @@ If you run into problems, just send me an [e-mail](mailto:igor.pessi@helsinki.fi
 * After you are done please send me by e-mail your account name so I can add you to the course project on CSC
 * At some point you will receive an e-mail to join the course project; follow the instructions and accept the terms and conditions for access to Puhti
 
-## Download and install FileZilla
+## Download and install the following software to your own computer
 
-* https://filezilla-project.org/download.php?type=client
+* [Virtual Studio Code](https://code.visualstudio.com/Download)
+* [Bandage](https://rrwick.github.io/Bandage/)
+* [IGV](https://software.broadinstitute.org/software/igv/download)
 
-## Windows users ONLY: download and install PuTTY
+## Windows users ONLY, follow the instructions and install OpenSSH if you do not have it already
 
-* 32-bit: https://the.earth.li/~sgtatham/putty/0.76/w32/putty-0.76-installer.msi
-* 64-bit: https://the.earth.li/~sgtatham/putty/0.76/w64/putty-64bit-0.76-installer.msi
-
-Not sure whether you want the 32-bit or the 64-bit version?  
-See [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html#faq-32bit-64bit).  
+* [OpenSSH](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui#install-openssh-for-windows)
 
 **Please let me know if you would like to use a laptop from the university.**  
 **We have Windows/Linux laptops that can be borrowed.**

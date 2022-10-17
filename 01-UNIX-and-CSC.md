@@ -2,18 +2,18 @@
 
 ## Connecting to Puhti
 
-### Windows users
-
-* Launch PuTTY
-* In “Host Name (or IP address)”, type **puhti.csc.fi** and click “Open”
-* In the following dialogue window, choose “Yes”
-* Type your CSC username and hit "Enter"
+* Launch Visual Studio Code
+* Only on the first time: 
+    - Open `Extensions` (one of the icons on the left) and install `Remote - SSH`  
+* Down left corner you will have a green button with "><", click it and choose "Connect to Host..."
+* Type in the **user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username) 
 * Type your password and hit "Enter"
+* In the following dialogue, type **yes** and hit "Enter"
 * To logout just type **exit** and hit "Enter"
 
-### MacOS users
+### Optional for MacOS (and Linux) users 
 
-* Launch Terminal
+* Launch Terminal ()
 (e.g. open the Launchpad and type **terminal**)
 * Type **ssh user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username)
 * In the following dialogue, type **yes** and hit "Enter"
