@@ -8,9 +8,9 @@ Genome analysis module of the course "MMB-114 Exploratory microbial research - l
 * Choose the most adequate platform for your genome sequencing experiment
 * Investigate and judge the quality of sequencing data
 * Make use of a variety of tools to:
-    * Process genome data
-    * Annotate genomes
-    * Predict metabolic pathways
+    * Process whole genome sequencing data
+    * Assemble and annotate whole genome sequencing data
+    * Predict metabolic pathways from assembled and annotated genomes
 
 ## General instructions
 
