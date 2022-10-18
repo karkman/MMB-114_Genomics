@@ -3,8 +3,8 @@
 ## Connecting to Puhti
 
 * Launch Visual Studio Code
-* Only on the first time: 
-    - Open `Extensions` (one of the icons on the left) and install `Remote - SSH`  
+* _Only on the first time:_ 
+    - _Open `Extensions` (one of the icons on the left) and install `Remote - SSH`_  
 * Down left corner you will have a green button with "><", click it and choose "Connect to Host..."
 * Type in the **user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username) 
 * Type your password and hit "Enter"

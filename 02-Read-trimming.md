@@ -139,8 +139,8 @@ module load biokit
 And now we run CUTADAPT. But first, take a moment to familiarize yourself the tool. Look at the command below and see which flags (**-LETTER**) we are passing to CUTADAPT (**DO NOT RUN**):
 
 ```bash
-cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
-         -A CTGTCTCTTATACACATCTGACGCTGCCGACGA
+cutadapt -a CTGTCTCTTATACACATCT
+         -A CTGTCTCTTATACACATCT
          -o Matilda_R1_trimmed.fastq
          -p Matilda_R2_trimmed.fastq
          -q 30
@@ -163,8 +163,8 @@ You can also read more about CUTADAPT [here](https://cutadapt.readthedocs.io/en/
 Now that we understand well what we are doing, let's run CUTADAPT. Pay attention as it is a long command. You can either type everything in one line or you can use the backslash (**\\**) to break it into several lines:
 
 ```bash
-cutadapt -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC \
-         -A CTGTCTCTTATACACATCTGACGCTGCCGACGA \
+cutadapt -a CTGTCTCTTATACACATCT \
+         -A CTGTCTCTTATACACATCT \
          -o Matilda_R1_trimmed.fastq \
          -p Matilda_R2_trimmed.fastq \
          -q 30 \
