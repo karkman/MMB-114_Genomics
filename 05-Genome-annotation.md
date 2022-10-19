@@ -4,11 +4,23 @@
 
 See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
-## Annotating the genome using PROKKA
+## Navigating to the  right folder
 
-First we will annotate our genome using a program called PROKKA. Among other things, PROKKA uses a program called PRODIGAL to find genes and then annotates them using BLAST and HMMER.  
+First things first.  
+When you connect to Puhti, you will be in your home folder and you have  all your course data in your own  folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working. 
+When you are in the right folder, by running `pwd`, you should get somnething like this,  where `$USER` is your own username. 
 
-Let's start by connecting to the interactive partition and configuring the PROKKA installation. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
+```bash
+/scratch/project_2006616/$USER/MMB-114_Genomics
+```
+
+When your there, you can move on. 
+
+## Annotating the genome using Bakta
+
+First we will annotate our genome using a program called Bakta. Among other things, Bakta uses a program called PRODIGAL to find genes and then annotates them using several tools. You can read more about Bakta from (here)[https://github.com/oschwengers/bakta].
+
+Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
 sinteractive -A project_2006616 -m 10000 -c 4
