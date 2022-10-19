@@ -4,25 +4,33 @@
 
 See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
+## Navigating to the  right folder
+
+First things first.  
+When you connect to Puhti, you will be in your home folder and you have  all your course data in your own  folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working. 
+When you are in the right folder, by running `pwd`, you should get somnething like this,  where `$USER` is your own username. 
+
+```bash
+/scratch/project_2006616/$USER/MMB-114_Genomics
+```
+
+When your there, you can move on. 
+
 ## Submitting the genome assembly jobs
 
-The first thing we will do is to launch the genome assembly jobs. We will do this using the batch job system. This is different from the interactive partition in that jobs go to a queue and are executed when the required resources are available. We use the batch system when we are running jobs which 1) take longer to run, so we can logout the system and come back when the job has finished; 2) require more resources than the interactive partition provides (which is set at 4 cores and 128 GB of RAM).  
+The first thing we will do is to launch the genome assembly jobs. We will do this using the batch job system. This is different from the interactive partition in that jobs go to a queue and are executed when the required resources are available. We use the batch system when we are running jobs which 1) take longer to run, so we can logout the system and come back when the job has finished; 2) require more resources than the interactive partition provides (which is set at 8 cores and 76 GB of RAM).  
 
-First, let's copy the SPADES batch scripts to your course folder:
+The batch job script can be  found from the `Scripts` folder indise 
 
 ```bash
 cd MMB114
 cp /scratch/project_2001379/spades_Matilda.sh .
-cp /scratch/project_2001379/spades_Lilith.sh .
-cp /scratch/project_2001379/spades_Salla.sh .
 ```
 
 Now let's submit the SPADES script to the batch job system:
 
 ```bash
 sbatch spades_Matilda.sh
-sbatch spades_Lilith.sh
-sbatch spades_Salla.sh
 ```
 
 To see the status of our job, we can do:
@@ -46,7 +54,7 @@ If it shows "State: COMPLETED (exit code 0)", then it means the job has finished
 Now we will run a program called QUAST to evaluate the quality of the assemblies. We start by connecting to the interactive partition and loading **biokit**:
 
 ```bash
-sinteractive -A project_2001379
+sinteractive -A project_2006616
 module load biokit
 ```
 

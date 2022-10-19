@@ -6,7 +6,7 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 ## Downloading the raw genome data
 
-Let's enter the MMB114 folder that we created yesterday. But first, let's see where we are; how to do that?
+Let's make a new folder for the course, but this time in the `/scratch` folder for the course. But first, let's see where we are; how to do that?
 
 <details>
 <summary>
@@ -32,17 +32,44 @@ HINT (CLICK TO EXPAND)
 
 ---
 
-Can you see the folder there? If so, let's enter it:
+Now we are ready to move to the `/scratch´ folder and make a working directory there. 
+To find the path to this folder we can first list all available projects with `csc-workspcases`.
 
 ```bash
-cd MMB114
+csc-workspaces
+```
+
+Then look for the `/scratch` folder under the project `project_2006616 "MMB-114_Genomics"` and move there with `cd`. 
+
+After that check once more where you are with `pwd`.  
+If you are in the right folder, make a subfolder for yourself. Name it with your username (`$USER`).
+
+```bash
+mkdir $USER
+```
+
+Then move to your own folder with `cd` and clone the github repository under your own folder. 
+```bash
+cd $USER
+git clone https://github.com/karkman/MMB-114_Genomics.git
+```
+
+Now you should have your own copy of the repository in Puhti.  
+Next we make a folder for the raw sequencing data, copy the data (or actually make a link to it to avoid having multiple copies of the same files) and then we are ready to start working on it. 
+
+```bash
+cd MMB-114_Genomics
+mkdir Data
 ```
 
 Now let's copy the raw genome data from the main project's folder **(remember: don't just copy the code, but don't type everything either; use the tabulator!)**:
 
 ```bash
-cp /scratch/project_2001379/Hultman_MiSeq-20211021.tar.gz .
+cd Data
+ln -s /scratch/project_2006616/Data/* .
 ```
+
+Now you can check what is in yourr `Data` folder. You should have links to two sequence files containing the R1 and R2 reads.
 
 The raw genome data was given to us by the sequencing facility as a tar archive (**.tar.gz**). So the first thing we need to do is extract the archive:
 
@@ -81,7 +108,7 @@ less A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
 Now we will run a program called FASTQC for quality assessment of the raw genome data. The tasks we are performing from now on require more memory than simple bash commands. Running them on the login node would make the system slow, and if a task takes more than 30 minutes to complete, it is killed automatically. Instead, we have to connect to another node, called the interactive partition:
 
 ```bash
-sinteractive -A project_2001379
+sinteractive -A project_2006616
 ```
 
 It might take a couple of seconds to minutes until the needed resources become available.  
@@ -132,7 +159,7 @@ Now we will run a program called CUTADAPT to trim the reads of adapters and low-
 First, let's connect to the interactive partition and load **biokit**:
 
 ```bash
-sinteractive -A project_2001379
+sinteractive -A project_2006616
 module load biokit
 ```
 

@@ -11,11 +11,8 @@ First we will annotate our genome using a program called PROKKA. Among other thi
 Let's start by connecting to the interactive partition and configuring the PROKKA installation. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
-sinteractive -A project_2001379 -m 10000 -c 4
+sinteractive -A project_2006616 -m 10000 -c 4
 
-export PROJAPPL=/projappl/project_2001379
-module load bioconda
-source activate prokka
 ```
 
 Now let's enter the MMB114 folder and run PROKKA:
