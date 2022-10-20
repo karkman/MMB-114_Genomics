@@ -61,7 +61,7 @@ Make sure there are some log files and that they are not both empty:
 ls - l slurm_logs/
 ```
 
-One will have the standard output and the other the standard error output. Neither is the assembly, they contain the information Spades prints normally to the screen when its run. 
+One will have the standard output and the other the standard error output. Neither is the assembly, they contain the information Spades prints normally to the screen when it runs. 
 
 ```bash
 more slurm_logs/*out*
