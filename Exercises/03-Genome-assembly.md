@@ -82,10 +82,10 @@ module load biokit
 And now let's run QUAST:
 
 ```bash
-quast.py SPADES/contigs.fasta -o QUAST
+quast.py results/SPADES/contigs.fasta -o results/QUAST
 ```
 
-When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`). Right-click the  files in the `Explorer` and click `Download...`.
+When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
 
 * report.html
 * report.pdf
@@ -103,4 +103,4 @@ Open the file "report.html" in a web browser. How does the assemblies look like?
 Spades also outputs soemthing called an assembly graph. It's a visual representation of the assembly.  
 Download the file `*.gfa` and open it with `Bandage`.
 
-We wil go thru the steps together onvc ethe files is loaded.
+We will go thru the steps together once the file is loaded in `Bandage`.

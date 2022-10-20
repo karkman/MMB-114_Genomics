@@ -7,14 +7,16 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 ## Navigating to the  right folder
 
 First things first.  
-When you connect to Puhti, you will be in your home folder and you have  all your course data in your own  folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working. 
+When you connect to Puhti, you will be in your home folder and you have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working. 
 When you are in the right folder, by running `pwd`, you should get somnething like this,  where `$USER` is your own username. 
+
+Use the `Explorer` tab to open the right folder. Again remeember to add your actual username in place of `$USER`.
 
 ```bash
 /scratch/project_2006616/$USER/MMB-114_Genomics
 ```
 
-When your there, you can move on. 
+When your ready and can see your own course folder, you can move on. 
 
 ## Annotating the genome using Bakta
 
@@ -23,60 +25,35 @@ First we will annotate our genome using a program called Bakta. Among other thin
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
-sinteractive -A project_2006616 -m 10000 -c 4
-
+sinteractive -A project_2006616 -m 10000 -c 4s
 ```
 
-Now let's enter the MMB114 folder and run PROKKA:
+Bakta is not found (yet) from Puhti, so I have installed it under the `Envs` folder on the course project folder.  
+It also needs its own database files and that they can be found from the `DB` folder. 
+We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out. 
 
 ```bash
-cd MMB114
-
-prokka SPADES_SALLA/contigs.fasta \
-       --outdir PROKKA_SALLA \
-       --prefix SALLA \
-       --cpus 4
+ /scratch/project_2006616/Envs/bakta/bin/bakta \
+       results/SPADES/contigs.fasta \
+       --db /scratch/project_2006616/DB/bakta/db/ 
+       --prefix MMB114 
+       --gram
+       --genus
+       --locus MMB114
+       --threads 4
+       --output
 ```
 
-Take a look inside the "PROKKA_SALLA" folder using **ls**. To understand what are these files that PROKKA has created, take a look [here](https://github.com/tseemann/prokka#output-files).
+Take a look inside the output folder using **ls**. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
 
-Now take a look at the "SALLA.txt" file using **less**. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
+Now take a look at the `MMB114.txt` file using **less**. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
 
-## Annotating the CDSs against the KEGG database
+## Extracting KEGG asnnotations from Bakta output
 
-Now we will take the protein-coding genes found by PROKKA and annotate them further against the KEGG database using DIAMOND.  
-
-Let's start by loading the biokit module:
+Bakta also gives the KEGG IDs for different metabolic enzymes in our genome. To reconstruct metabolic pathways based on these annotations, we need to extract them from one the annotation files. 
 
 ```bash
-module load biokit
+grep -o "KEGG:K....." *.gff3 | tr ":" "\t" > MMB114_kegg_ids.txt 
 ```
 
-And now we run DIAMOND (this will take some time, be patient):
-
-```bash
-diamond blastx --query PROKKA_SALLA/SALLA.ffn \
-               --out KEGG_SALLA.txt \
-               --db /scratch/project_2001379/KEGG/PROKARYOTES \
-               --outfmt 6 qseqid sseqid stitle pident qcovhsp evalue bitscore \
-               --max-target-seqs 1 \
-               --max-hsps 1 \
-               --threads 4
-```
-
-Investigate the file "KEGG_SALLA.txt" using **less**. This is a typical BLAST table showing, among other things, the similarity between each of our CDSs to its best match in the KEGG database. In our case, the columns are the following:
-
-1. **qseqid:** query sequence id (i.e. the id of our gene)
-2. **sseqid:** subject sequence id (i.e. the id of the gene in the database)
-3. **stitle:** subject title (i.e. the title of the gene in the database)
-4. **pident:** percentage of identical matches (i.e. how similar our gene is to the gene in the database)
-5. **qcovhsp:** query coverage (i.e. how much of our gene aligns with the gene in the database)
-6. **evalue:** expect value
-7. **bitscore:** bit score
-
-Don't know what the evalue and bit score mean? Take a look [here](https://sites.google.com/site/wiki4metagenomics/tools/blast/evalue).
-
-Now copy the file "KEGG_SALLA.txt" to your computer using FileZilla and open it on excel. Do the same for the file "SALLA.tsv" from PROKKA and compare the annotations. Scroll through the lists and check:
-* Which genes have been found? Do you see something interesting?
-* What does "hypotethical protein" mean?
-* Do the PROKKA and KEGG annotations agree with each other in general?
+Investigate the file `MMB114_kegg_ids.txt` using **less**. 
