@@ -4,7 +4,7 @@
 
 See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
-## Downloading the raw genome data
+## Setting up the the course workspace
 
 Let's make a new folder for the course, but this time in the `/scratch` folder for the course. But first, let's see where we are; how to do that?
 
@@ -32,7 +32,7 @@ HINT (CLICK TO EXPAND)
 
 ---
 
-Now we are ready to move to the `/scratch` folder and make a working directory there. 
+Now we are ready to move to the `/scratch` folder and make our working directory there. 
 To find the path to this folder we can first list all available projects with `csc-workspcases`.
 
 ```bash
@@ -48,7 +48,8 @@ If you are in the right folder, make a subfolder for yourself. Name it with your
 mkdir $USER
 ```
 
-Then move to your own folder with `cd` and clone the github repository under your own folder. 
+Then move to your own folder with `cd` and clone the course github repository in your own folder.  
+
 ```bash
 cd $USER
 git clone https://github.com/karkman/MMB-114_Genomics.git
@@ -62,42 +63,45 @@ cd MMB-114_Genomics
 mkdir Data
 ```
 
-Now let's copy the raw genome data from the main project's folder **(remember: don't just copy the code, but don't type everything either; use the tabulator!)**:
+If you feel lost, don't worry. Breathe, relax, think and check once more with `pwd`.   
+You can always get to your home folder with typing only `cd` and pressing enter. 
+
+Actually everyone can do that and well open the whole course folder to the `Explorer` tab in VS Code.  
+When you are in your home folder, open the `Explorer`tab on the left and click `Open Folder`. 
+Paste this path, but change `$USER` to your actual username. 
+
+```
+/scratch/project_2006616/$USER/MMB-114_Genomics
+```
+
+Now you should see the files and folders on the left. Also you terminal shoul dbe there as well.  
+Let's continue from here. 
+
+## The sequencing data
+
+Next we will copy the sequence dat to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder. The command `cp` will copy the files to a speficified location, so make sure you have the `.` at tthe end (`.` means "here").
 
 ```bash
 cd Data
-ln -s /scratch/project_2006616/Data/* .
+cp /scratch/project_2006616/Data/* .
 ```
 
-Now you can check what is in your `Data` folder. You should have links to two sequence files containing the R1 and R2 reads.
+Now you can check what is in your `Data` folder.  
+You should see two GZIP files (**.gz**), one for the R1 and one for the R2 reads of our genome. GZIP is a compressed file like a ZIP file.
+And before the `.gz` you can see that they have another ending, `fastq`, this is a sequence file format that has in addition to the sequence also the sequence quality values (PHRED scores encoded as ASCII charaters).
 
-The raw genome data was given to us by the sequencing facility as a tar archive (**.tar.gz**). So the first thing we need to do is extract the archive:
+Comnpressing sequence files with GZIP is advisable, since the files might be very big. And most bioinformatic software can handle compressed sequence files. But this time we'll decompress them for clarity. And they are not that big in our case. 
 
 ```bash
-tar -zxf Hultman_MiSeq-20211021.tar.gz
+gunzip *
 ```
 
-Investigate the contents of the folder. We can see that six GZIP files (**.gz**) were extracted from the tar archive (one for the R1 and one for the R2 reads of each genome). GZIP is a compressed file like a ZIP file, so to continue we have to decompress them first. We will do this with the command **gunzip**:
+Now let's take a look at the FASTQ files to see how they look like. Here we will use three useful commands for visualizing text files (**head**, **tail** and **less**).
 
 ```bash
-gunzip A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq.gz
-gunzip A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq.gz
-
-gunzip A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R1_001.fastq.gz
-gunzip A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R2_001.fastq.gz
-
-gunzip A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R1_001.fastq.gz
-gunzip A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R2_001.fastq.gz
-```
-
-Investigate the contents of the folder again. Do you see that the FASTQ files are now uncompressed? What has changed?  
-
-Now let's take a look at the FASTQ files to see how they look like. Here we will use three useful commands for visualizing text files (**head**, **tail** and **less**):
-
-```bash
-head A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
-tail A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
-less A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
+head *
+tail *
+less *
 
 # In less, scroll down by hitting the space bar
 # To quit, hit "q"
@@ -112,7 +116,6 @@ sinteractive -A project_2006616
 ```
 
 It might take a couple of seconds to minutes until the needed resources become available.  
-
 The next step is to load the **biokit** environment, which is a module in CSC containing several programs widely used in bioinformatics:
 
 ```bash
@@ -121,12 +124,8 @@ module load biokit
 And now we run FASTQC, once for each FASTQ file:
 
 ```bash
-fastqc A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
-fastqc A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq
-fastqc A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R1_001.fastq
-fastqc A381-Lilith-TGCTTGAT-GTGACTGG-Hultman-run20211021R_S381_L001_R2_001.fastq
-fastqc A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R1_001.fastq
-fastqc A382-Salla-TAATAGCG-AGTAGGCT-Hultman-run20211021R_S382_L001_R2_001.fastq
+fastqc *
+fastqc *
 ```
 
 After all tasks are completed, we exit the interactive partition by typing:
@@ -135,12 +134,13 @@ After all tasks are completed, we exit the interactive partition by typing:
 exit
 ```
 
-One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop with the file transfer program FileZilla. Remember to download the HTML files for the R1 and the R2 reads of all three genomes. In your computer, double-click to open them in your favourite web browser.  
+One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop. Yuo should see them on the left. Right-click it and select `Download ...`.  
+Remember to download the HTML files for both R1 and R2 reads. In your computer, double-click to open them in your favourite web browser.  
 
 Take a look at the FASTQC reports. How does the data look like?  
 **(To help you answering the questions below, you can read more about the FASTQC report [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/))**
 
-* How many sequences we have for each genome? Are these numbers the same for the R1 and R2 files?
+* How many sequences we have for our genome? Are these numbers the same for the R1 and R2 files?
 * Is the length of the reads the same in the R1 and R2 files?
 * The "Per base sequence quality" module shows a problem. Why?
   * Which part of the reads have the best quality? Beginning, middle, end?
@@ -150,12 +150,10 @@ Take a look at the FASTQC reports. How does the data look like?
   * Are there adapters in our reads?
   * In which part of the reads?
   * What are adapters and why should we remove them?
-* Which of the three genomes has the best sequence quality?
 
 ## Trimming adapters and low-quality regions
 
-Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions. From now on we will work only with Antton's genome.
-
+Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions.  
 First, let's connect to the interactive partition and load **biokit**:
 
 ```bash
@@ -168,12 +166,12 @@ And now we run CUTADAPT. But first, take a moment to familiarize yourself the to
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT
          -A CTGTCTCTTATACACATCT
-         -o Matilda_R1_trimmed.fastq
-         -p Matilda_R2_trimmed.fastq
+         -o *
+         -p *
          -q 30
          -m 50
-         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq
-         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq
+         *
+         *
 ```
 
 Now let's take a look at the help page for CUTADAPT to understand what each of these flags are doing:
@@ -192,12 +190,12 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT \
          -A CTGTCTCTTATACACATCT \
-         -o Matilda_R1_trimmed.fastq \
-         -p Matilda_R2_trimmed.fastq \
+         -o * \
+         -p * \
          -q 30 \
          -m 50 \
-         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R1_001.fastq \
-         A380-Matilda-CTTATGCT-TCGGTAAT-Hultman-run20211021R_S380_L001_R2_001.fastq > cutadapt_log.txt
+         * \
+         * > cutadapt_log.txt
 ```
 
 When CUTADAPT has finished, list the contents of the directory. Which files have been created?
@@ -211,8 +209,8 @@ Now take a look at the file "cutadapt_log.txt" with the command **less**:
 Now let's run FASTQC again, this time using the trimmed genome data:
 
 ```bash
-fastqc Matilda_R1_trimmed.fastq
-fastqc Matilda_R1_trimmed.fastq
+fastqc * 
+fastqc *
 ```
 
 After both tasks are completed, we exit the interactive partition:
@@ -221,11 +219,12 @@ After both tasks are completed, we exit the interactive partition:
 exit
 ```
 
-Move the new HTML documents to your laptop with FileZilla and open them in a web browser. Compare these with the FASTQC reports for the raw genome data. What kind of differences you see?
+Move the new HTML documents to your laptop and open them in a web browser. Compare these with the FASTQC reports for the raw genome data. What kind of differences you see?
 
 * Do the "Per base sequence quality" plots look different now? Why?
 * What is the mean sequence quality for the majority of the reads now?
 * The "Sequence length distribution" module shows a warning now. Have the read lengths changed? Why?
 * Are there still adapter sequences in our reads?
 
-**Now, can you figure out how to run CUTADAPT and FASTQC for the other two geneomes?**
+If everything looks ok, the sequence data is ready ready for assembly.  
+We will assemble the genome oin the next exercise session. 
