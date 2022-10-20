@@ -32,7 +32,7 @@ HINT (CLICK TO EXPAND)
 
 ---
 
-Now we are ready to move to the `/scratch´ folder and make a working directory there. 
+Now we are ready to move to the `/scratch` folder and make a working directory there. 
 To find the path to this folder we can first list all available projects with `csc-workspcases`.
 
 ```bash
@@ -69,7 +69,7 @@ cd Data
 ln -s /scratch/project_2006616/Data/* .
 ```
 
-Now you can check what is in yourr `Data` folder. You should have links to two sequence files containing the R1 and R2 reads.
+Now you can check what is in your `Data` folder. You should have links to two sequence files containing the R1 and R2 reads.
 
 The raw genome data was given to us by the sequencing facility as a tar archive (**.tar.gz**). So the first thing we need to do is extract the archive:
 

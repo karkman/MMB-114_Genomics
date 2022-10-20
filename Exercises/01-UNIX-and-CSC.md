@@ -5,13 +5,19 @@
 * Launch Visual Studio Code
 * _Only on the first time:_ 
     - _Open `Extensions` (one of the icons on the left) and install `Remote - SSH`_  
-* Down left corner you will have a green button with "><", click it and choose "Connect to Host..."
+* Down left corner you will have a (green) button with "><" (hoover over it and it says "Open a Remote Window"), click it 
+* Choose "Connect Current Window to Host..."
 * Type in the **user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username) 
 * Type your password and hit "Enter"
 * In the following dialogue, type **yes** and hit "Enter"
-* To logout just type **exit** and hit "Enter"
 
-### Optional for MacOS (and Linux) users 
+When the down left corner says `SSH:puhti.csc.fi`, you're connected.
+* From the menu select `Terminal > New Terminal` and you should see a new panel. This is the __command line__.
+
+* When you need to logout just type **exit** in the terminal/command line and hit "Enter"  
+(or you can click the down left corner and choose "Close Remote Connection")
+
+### Don not want to use VS Code (MacOS [or Linux or WSL] users)
 
 * Launch Terminal ()
 (e.g. open the Launchpad and type **terminal**)
@@ -21,6 +27,8 @@
 * To logout first type **exit**, hit "Enter", and close the Terminal window
 
 ## Playing around with basic UNIX commands
+
+We start with some very basic UNIX exercises to get familiar with the command line.
 
 ### Important notes
 
