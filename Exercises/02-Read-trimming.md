@@ -227,4 +227,4 @@ Move the new HTML documents to your laptop and open them in a web browser. Compa
 * Are there still adapter sequences in our reads?
 
 If everything looks ok, the sequence data is ready ready for assembly.  
-We will assemble the genome oin the next exercise session. 
+We will assemble the genome on the next exercise session. 

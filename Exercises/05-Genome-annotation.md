@@ -58,6 +58,8 @@ grep -o "KEGG:K....." *.gff3 | tr ":" "\t" > MMB114_kegg_ids.txt
 ```
 
 Investigate the file `MMB114_kegg_ids.txt` using **less**. 
+These are known as KO identifiers and is how we link genes to metabolic pathways in the KEGG database.  
+This will allow us to put the gene annotations in the context of metabolic pathways.
 
 ## Visualising the annotations
 
