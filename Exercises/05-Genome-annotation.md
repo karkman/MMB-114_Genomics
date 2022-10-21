@@ -35,13 +35,13 @@ We can also add some additional data about the strain to guide the annotation. S
 ```bash
  /scratch/project_2006616/Envs/bakta/bin/bakta \
        results/SPADES/contigs.fasta \
-       --db /scratch/project_2006616/DB/bakta/db/ 
-       --prefix MMB114 
-       --gram
-       --genus
-       --locus MMB114
-       --threads 4
-       --output
+       --db /scratch/project_2006616/DB/bakta/db/ \
+       --prefix MMB114 \
+       --gram \
+       --genus \
+       --locus MMB114 \
+       --threads 4 \
+       --output \
 ```
 
 Take a look inside the output folder using **ls**. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
