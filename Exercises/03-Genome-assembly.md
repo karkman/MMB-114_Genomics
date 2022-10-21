@@ -152,7 +152,7 @@ singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
      results/MMB114.sig \
      /db/gtdb-rs207.genomic-reps.dna.k31.zip \
      -n 20  \
-     2> NULL
+     2> /dev/null
 ```
 
 Some questions:
