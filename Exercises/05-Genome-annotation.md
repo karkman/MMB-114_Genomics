@@ -62,5 +62,5 @@ Investigate the file `MMB114_kegg_ids.txt` using **less**.
 ## Visualising the annotations
 
 We will use `IGV` to visualise the annotations and to extract genes for more exact taxonomic annotation.  
-For this you need to download the assembly fasta file and from bakta annotations the `.gff3` file.  
+For this you need to download the assembly fasta file and from bakta annotations the `.gff3` file from Puhti to your own computer.  
 We will go thru the steps in `IGV` together.  
