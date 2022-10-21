@@ -1,5 +1,5 @@
 # MMB-114 Exploratory microbial research - lab course
-:man_technologist:_Antti Karkman, PhD_  
+:man_technologist: __Antti Karkman, PhD__
 [antti.karkman@helsinki.fi](mailto:antti.karkman@helsinki.fi)
 
 
