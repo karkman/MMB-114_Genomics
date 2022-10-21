@@ -104,3 +104,58 @@ Spades also outputs soemthing called an assembly graph. It's a visual representa
 Download the file `*.gfa` and open it with `Bandage`.
 
 We will go thru the steps together once the file is loaded in `Bandage`.
+
+## OPTIONAL: Possible contamination and rough taxonomy using sourmash
+
+We will use a program called [Sourmash](https://sourmash.readthedocs.io/en/latest/) to quickly search our assembly against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)). Sourmash uses k-mers and hash sketches (signatures in sourmash) to speed up the search and can be used for very large data sets (raw reads, metagenomes, ...). You can read more about sourmash and hash sketches by following the link.  
+GTDB is a database and an effort to standardise microbial taxonomy based on genome information. We will use a pre-compiled version suitable for sourmash.   
+Sourmash is not (yet) available in Puhti, so we will run it from a Singularity container. You don't need to worry about what Singularity containers are. In short and simplified, containers enable to pack all the needed software in a single file that can be used to run the program on e.g. Puhti.  
+The Singularity container can be found from The `Env` folder and the GTDB database from `DB` folder. 
+
+First we need to build a hash sketchs from our assembly. And we need an interactive session for that. 
+
+```bash
+sinteractive -A project_2006616 -m 10000 
+```
+
+Then the signature. 
+
+```bash
+singularity exec --bind $PWD:$PWD \
+    /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
+    sourmash sketch dna \
+    -p scaled=1000,k=31 \
+    results/SPADES/contigs.fasta \
+    -o results/MMB114.sig
+```
+
+When we have the signature, we can run a search against the database. 
+
+```bash
+singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
+    /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
+     sourmash search \
+     results/MMB114.sig \
+     /db/gtdb-rs207.genomic-reps.dna.k31.zip \
+     -n 20
+```
+
+You should get a list of possible matches in the database and how simialr they are.
+
+The `search` command in sourmash finds only hits with high similarity in terms of shared kmers.  
+You can also use another command `gather` in sourmash to look for more broadly marching signatures in the database. 
+
+```bash
+singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
+    /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
+     sourmash gather \
+     results/MMB114.sig \
+     /db/gtdb-rs207.genomic-reps.dna.k31.zip \
+     -n 20  \
+     2> NULL
+```
+
+Some questions:
+* Did you find a good match for our genome?
+* Does it seem that there was contamination in the sequences? 
+* What else could you do to find out which speciees our strain is?

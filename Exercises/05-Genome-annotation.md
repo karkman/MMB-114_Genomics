@@ -25,7 +25,7 @@ First we will annotate our genome using a program called Bakta. Among other thin
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
-sinteractive -A project_2006616 -m 10000 -c 4s
+sinteractive -A project_2006616 -m 10000 -c 4
 ```
 
 Bakta is not found (yet) from Puhti, so I have installed it under the `Envs` folder on the course project folder.  
@@ -47,8 +47,9 @@ We can also add some additional data about the strain to guide the annotation. S
 Take a look inside the output folder using **ls**. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
 
 Now take a look at the `MMB114.txt` file using **less**. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
+Look for the 16S rRNA gene from the annotations. Can you locate it from the assembly? We will need this information later today. 
 
-## Extracting KEGG asnnotations from Bakta output
+## Extracting KEGG annotations from Bakta output
 
 Bakta also gives the KEGG IDs for different metabolic enzymes in our genome. To reconstruct metabolic pathways based on these annotations, we need to extract them from one the annotation files. 
 
@@ -57,3 +58,9 @@ grep -o "KEGG:K....." *.gff3 | tr ":" "\t" > MMB114_kegg_ids.txt
 ```
 
 Investigate the file `MMB114_kegg_ids.txt` using **less**. 
+
+## Visualising the annotations
+
+We will use `IGV` to visualise the annotations and to extract genes for more exact taxonomic annotation.  
+For this you need to download the assembly fasta file and from bakta annotations the `.gff3` file.  
+We will go thru the steps in `IGV` together.  
