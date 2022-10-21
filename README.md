@@ -1,6 +1,6 @@
 # MMB-114 Exploratory microbial research - lab course
-:man_technologist: __Antti Karkman, PhD__
-[antti.karkman@helsinki.fi](mailto:antti.karkman@helsinki.fi)
+:man_technologist: __Antti Karkman, PhD__  
+:envelope: [antti.karkman@helsinki.fi](mailto:antti.karkman@helsinki.fi)
 
 
 Genome analysis module of the course "MMB-114 Exploratory microbial research - lab course" of the University of Helsinki.
