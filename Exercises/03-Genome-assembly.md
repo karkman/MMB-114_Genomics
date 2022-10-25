@@ -8,7 +8,7 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 First things first.  
 When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.   
-In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remeember to add your actual username in place of `$USER`.
+In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER`.
 
 ```bash
 /scratch/project_2006616/$USER/MMB-114_Genomics
