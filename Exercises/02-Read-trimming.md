@@ -158,7 +158,7 @@ First, let's connect to the interactive partition and load **biokit**:
 
 ```bash
 sinteractive -A project_2006616
-module load biokit
+module load cutadapt/3.5
 ```
 
 And now we run CUTADAPT. But first, take a moment to familiarize yourself the tool. Look at the command below and see which flags (**-LETTER**) we are passing to CUTADAPT (**DO NOT RUN**):
@@ -166,8 +166,8 @@ And now we run CUTADAPT. But first, take a moment to familiarize yourself the to
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT
          -A CTGTCTCTTATACACATCT
-         -o *
-         -p *
+         -o MMB-114_trimmed_1.fastq.gz
+         -p MMB-114_trimmed_2.fastq.gz
          -q 30
          -m 50
          *
@@ -190,8 +190,8 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT \
          -A CTGTCTCTTATACACATCT \
-         -o * \
-         -p * \
+         -o MMB-114_trimmed_1.fastq.gz \
+         -p MMB-114_trimmed_1.fastq.gz \
          -q 30 \
          -m 50 \
          * \
@@ -209,8 +209,8 @@ Now take a look at the file "cutadapt_log.txt" with the command **less**:
 Now let's run FASTQC again, this time using the trimmed genome data:
 
 ```bash
-fastqc * 
-fastqc *
+fastqc MMB-114_trimmed_1.fastq.gz 
+fastqc MMB-114_trimmed_1.fastq.gz
 ```
 
 After both tasks are completed, we exit the interactive partition:
