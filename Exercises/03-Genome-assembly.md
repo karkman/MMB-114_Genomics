@@ -22,20 +22,20 @@ When your ready and can see your own course folder, you can move on.
 
 The first thing we will do is to launch the genome assembly job. We will do this using the batch job system. This is different from the interactive partition in that jobs go to a queue and are executed when the required resources are available. We use the batch system when we are running jobs which 1) take longer to run, so we can logout the system and come back when the job has finished; 2) require more resources than the interactive partition provides (which is set at 8 cores and 76 GB of RAM).  
 
-The assembly batch job script can be found from the `Scripts` folder inside the course repository.  
+The assembly batch job script can be found from the `scripts` folder inside the course repository.  
 Have a look at the content. Either by clicking it on the left tab.  
 Or on the command line:
 
 ```bash
-cd Scripts
-cat spades.sh
-cd ..
+cat scripts/spades.sh
 ```
 
-Now let's submit the Spades script to the batch job system. Make sure you're in the course repository main folder. 
+
+Now let's submit the Spades script to the batch job system with command `sbatch`.  
+Make sure you're in the course repository main folder. 
 
 ```bash
-sbatch Scripts/spades.sh
+sbatch scripts/spades.sh
 ```
 
 To see the status of our job, we can do:
