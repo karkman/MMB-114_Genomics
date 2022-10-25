@@ -7,10 +7,8 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 ## Navigating to the  right folder
 
 First things first.  
-When you connect to Puhti, you will be in your home folder and you have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working. 
-When you are in the right folder, by running `pwd`, you should get somnething like this,  where `$USER` is your own username. 
-
-Use the `Explorer` tab to open the right folder. Again remeember to add your actual username in place of `$USER`.
+When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.   
+In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remeember to add your actual username in place of `$USER`.
 
 ```bash
 /scratch/project_2006616/$USER/MMB-114_Genomics
@@ -20,7 +18,7 @@ When your ready and can see your own course folder, you can move on.
 
 ## Annotating the genome using Bakta
 
-First we will annotate our genome using a program called Bakta. Among other things, Bakta uses a program called PRODIGAL to find genes and then annotates them using several tools. You can read more about Bakta from (here)[https://github.com/oschwengers/bakta].
+First we will annotate our genome using a program called [Bakta](https://github.com/oschwengers/bakta). Among other things, Bakta uses a program called PRODIGAL to find genes and then annotates them using several tools.s
 
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 

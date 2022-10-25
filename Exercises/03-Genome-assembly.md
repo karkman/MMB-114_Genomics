@@ -7,10 +7,8 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 ## Navigating to the  right folder
 
 First things first.  
-When you connect to Puhti, you will be in your home folder and you have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working. 
-When you are in the right folder, by running `pwd`, you should get somnething like this,  where `$USER` is your own username. 
-
-Use the `Explorer` tab to open the right folder. Again remeember to add your actual username in place of `$USER`.
+When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.   
+In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remeember to add your actual username in place of `$USER`.
 
 ```bash
 /scratch/project_2006616/$USER/MMB-114_Genomics
@@ -22,6 +20,7 @@ When your ready and can see your own course folder, you can move on.
 
 The first thing we will do is to launch the genome assembly job. We will do this using the batch job system. This is different from the interactive partition in that jobs go to a queue and are executed when the required resources are available. We use the batch system when we are running jobs which 1) take longer to run, so we can logout the system and come back when the job has finished; 2) require more resources than the interactive partition provides (which is set at 8 cores and 76 GB of RAM).  
 
+We will use [SPAdes](https://github.com/ablab/spades) for genome assembly.  
 The assembly batch job script can be found from the `scripts` folder inside the course repository.  
 Have a look at the content. Either by clicking it on the left tab.  
 Or on the command line:
@@ -30,6 +29,15 @@ Or on the command line:
 cat scripts/spades.sh
 ```
 
+The batch jos system in Puhti is called SLURM and you can read more about the differnet options to set up your batch job from [here](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/).  
+If you would like to learn more about the options for SPAdes, you can load the spades module and print the help menu.
+Remember to unload the module as well. 
+
+```bash
+module load spades/3.15.5
+spades.py --help
+module purge
+```
 
 Now let's submit the Spades script to the batch job system with command `sbatch`.  
 Make sure you're in the course repository main folder. 
@@ -54,14 +62,14 @@ seff JOBID
 
 If it shows "State: COMPLETED (exit code 0)", then it means the job has finished succesfully without errors. Take a look also at the fields "CPU Efficiency" and "Memory Efficiency". Based on these values we can adjust our future scripts to allocate less resources. In Puhti, the more resources you use the higher the costs to the project and potential waiting time in the queue.  
 
-After the assembly is ready, we can have a look at the output Spades printed for us. Also, if something went wrong, we can try to track the reason from the log files. 
+After the assembly is ready, we can have a look at the output SPAdes printed for us. Also, if something went wrong, we can try to track the reason from the log files. 
 
 Make sure there are some log files and that they are not both empty:
 ```bash
 ls - l slurm_logs/
 ```
 
-One will have the standard output and the other the standard error output. Neither is the assembly, they contain the information Spades prints normally to the screen when it runs. 
+One will have the standard output and the other the standard error output. Neither is the assembly, they contain the information SPAdes prints normally to the screen when it runs. 
 
 ```bash
 more slurm_logs/*out*
@@ -72,11 +80,17 @@ If all looks ok, we can move to the assembly QC.
 
 ## Evaluating the quality of the assemblies
 
-Now we will run a program called QUAST to evaluate the quality of the assemblies. We start by connecting to the interactive partition and loading **biokit**:
+Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assemblies. We start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
 sinteractive -A project_2006616
-module load biokit
+module load quast/5.2.0
+```
+
+First have a look at the different options you have with QUAST.
+
+```bash 
+quast.py --help
 ```
 
 And now let's run QUAST:
@@ -100,8 +114,8 @@ Open the file "report.html" in a web browser. How does the assemblies look like?
 
 ## Assembly graphs
 
-Spades also outputs soemthing called an assembly graph. It's a visual representation of the assembly.  
-Download the file `*.gfa` and open it with `Bandage`.
+SPAdes also outputs soemthing called an assembly graph. It's a visual representation of the assembly.  
+Download the file `assembly_graph.fastg` from thee SPAdes output folder and open it with `Bandage`.
 
 We will go thru the steps together once the file is loaded in `Bandage`.
 
