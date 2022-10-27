@@ -15,7 +15,7 @@ module load spades/3.15.5
 spades.py -1 MMB-114_trimmed_1.fastq.gz \
           -2 MMB-114_trimmed_2.fastq.gz \
           -t $SLURM_CPUS_PER_TASK \
-          --isolate \
+          --isolate \ # --careful
           --tmp-dir $LOCAL_SCRATCH \
           -o results/SPADES
 
