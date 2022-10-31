@@ -79,11 +79,16 @@ Let's continue from here.
 
 ## The sequencing data
 
-Next we will copy the sequence dat to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder. The command `cp` will copy the files to a speficified location, so make sure you have the `.` at tthe end (`.` means "here").
+Next we will copy the sequence dat to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder.   
+There are three different versions of the data (slightly different library preparation protocols) and to make things interesting, you can choose which one you want to work with. So list the content of our `Data` folder and only copy one set of R1 and R2 reads (either _quarter_, _half_ or _full_).  
+The command `cp` will copy the files to a speficified location, so make sure you have the `.` at the end (`.` means "here").
 
 ```bash
 cd Data
-cp /scratch/project_2006616/Data/* .
+# list the files
+ls /scratch/project_2006616/Data/
+# copy one set of sequencing reads. Replace the names below and copy both R1 and R2 files. 
+cp /scratch/project_2006616/Data/FILE_NAMES_HERE .
 ```
 
 Now you can check what is in your `Data` folder.  
