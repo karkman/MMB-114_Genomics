@@ -174,7 +174,6 @@ cutadapt -a CTGTCTCTTATACACATCT
          -A CTGTCTCTTATACACATCT
          -o MMB-114_trimmed_1.fastq.gz
          -p MMB-114_trimmed_2.fastq.gz
-         -q 30
          -m 50
          *
          *
