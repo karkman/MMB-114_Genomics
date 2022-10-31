@@ -80,7 +80,7 @@ Let's continue from here.
 ## The sequencing data
 
 Next we will copy the sequence dat to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder.   
-There are three different versions of the data (slightly different library preparation protocols) and to make things interesting, you can choose which one you want to work with. So list the content of our `Data` folder and only copy one set of R1 and R2 reads (either _quarter_, _half_ or _full_).  
+There are three different versions of the data (slightly different library preparation protocols) and to make things interesting, you can choose whether you want the _half_ or _quarter_ version of the data. So list the content of our `Data` folder and only copy one set of R1 and R2 reads (either _quarter_ or _half_).  
 The command `cp` will copy the files to a speficified location, so make sure you have the `.` at the end (`.` means "here").
 
 ```bash
@@ -88,7 +88,8 @@ cd Data
 # list the files
 ls /scratch/project_2006616/Data/
 # copy one set of sequencing reads. Replace the names below and copy both R1 and R2 files. 
-cp /scratch/project_2006616/Data/FILE_NAMES_HERE .
+cp /scratch/project_2006616/Data/R1_FILE_NAME_HERE .
+cp /scratch/project_2006616/Data/R2_FILE_NAME_HERE .
 ```
 
 Now you can check what is in your `Data` folder.  
@@ -129,8 +130,8 @@ module load biokit
 And now we run FASTQC, once for each FASTQ file:
 
 ```bash
-fastqc *
-fastqc *
+fastqc  # R1_reads here
+fastqc  # R2 reads here
 ```
 
 After all tasks are completed, we exit the interactive partition by typing:
@@ -196,11 +197,12 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 cutadapt -a CTGTCTCTTATACACATCT \
          -A CTGTCTCTTATACACATCT \
          -o MMB-114_trimmed_1.fastq.gz \
-         -p MMB-114_trimmed_1.fastq.gz \
+         -p MMB-114_trimmed_2.fastq.gz \
          -q 30 \
          -m 50 \
-         * \
-         * > cutadapt_log.txt
+         # R1_reads \
+         # R2_reads \
+         > cutadapt_log.txt
 ```
 
 When CUTADAPT has finished, list the contents of the directory. Which files have been created?
@@ -212,10 +214,16 @@ Now take a look at the file "cutadapt_log.txt" with the command **less**:
 * How many low-quality bases were trimmed?
 
 Now let's run FASTQC again, this time using the trimmed genome data:
+But first we need to unload the cutadapt module and reload biokit module
+
+```bash
+module purge
+module load biokit
+```
 
 ```bash
 fastqc MMB-114_trimmed_1.fastq.gz 
-fastqc MMB-114_trimmed_1.fastq.gz
+fastqc MMB-114_trimmed_2.fastq.gz
 ```
 
 After both tasks are completed, we exit the interactive partition:
