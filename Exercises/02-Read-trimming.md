@@ -239,5 +239,5 @@ Move the new HTML documents to your laptop and open them in a web browser. Compa
 * The "Sequence length distribution" module shows a warning now. Have the read lengths changed? Why?
 * Are there still adapter sequences in our reads?
 
-If everything looks ok, the sequence data is ready ready for assembly.  
+If everything looks ok, the sequence data is ready for assembly.  
 We will assemble the genome on the next exercise session. 
