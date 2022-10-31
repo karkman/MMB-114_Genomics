@@ -19,7 +19,7 @@ When the down left corner says `SSH:puhti.csc.fi`, you're connected.
 
 ### Don not want to use VS Code (MacOS [or Linux or WSL] users)
 
-* Launch Terminal ()
+* Launch Terminal
 (e.g. open the Launchpad and type **terminal**)
 * Type **ssh user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username)
 * In the following dialogue, type **yes** and hit "Enter"
