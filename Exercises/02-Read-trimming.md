@@ -96,7 +96,7 @@ Now you can check what is in your `Data` folder.
 You should see two GZIP files (**.gz**), one for the R1 and one for the R2 reads of our genome. GZIP is a compressed file like a ZIP file.
 And before the `.gz` you can see that they have another ending, `fastq`, this is a sequence file format that has in addition to the sequence also the sequence quality values (PHRED scores encoded as ASCII charaters).
 
-Comnpressing sequence files with GZIP is advisable, since the files might be very big. And most bioinformatic software can handle compressed sequence files. But this time we'll decompress them for clarity. And they are not that big in our case. 
+Compressing sequence files with GZIP is advisable, since the files might be very big. And most bioinformatic software can handle compressed sequence files. But this time we'll decompress them just because we can. And because they are easier to view then. And anyways they are not that big in our case. And we will compress them again during trimming. 
 
 ```bash
 gunzip # FILE_NAME_HERE
