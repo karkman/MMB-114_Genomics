@@ -39,7 +39,7 @@ We can also add some additional data about the strain to guide the annotation. S
        --genus \
        --locus MMB114 \
        --threads 4 \
-       --output \
+       --output results/annotation
 ```
 
 Take a look inside the output folder using **ls**. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).

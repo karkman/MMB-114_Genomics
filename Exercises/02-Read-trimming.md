@@ -79,8 +79,8 @@ Let's continue from here.
 
 ## The sequencing data
 
-Next we will copy the sequence dat to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder.   
-There are three different versions of the data (slightly different library preparation protocols) and to make things interesting, you can choose whether you want the _half_ or _quarter_ version of the data. So list the content of our `Data` folder and only copy one set of R1 and R2 reads (either _quarter_ or _half_).  
+Next you will copy the sequence data to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder.   
+List the content of our `Data` folder and only copy the R1 and R2 reads.    
 The command `cp` will copy the files to a speficified location, so make sure you have the `.` at the end (`.` means "here").
 
 ```bash
@@ -99,15 +99,15 @@ And before the `.gz` you can see that they have another ending, `fastq`, this is
 Comnpressing sequence files with GZIP is advisable, since the files might be very big. And most bioinformatic software can handle compressed sequence files. But this time we'll decompress them for clarity. And they are not that big in our case. 
 
 ```bash
-gunzip *
+gunzip # FILE_NAME_HERE
 ```
 
 Now let's take a look at the FASTQ files to see how they look like. Here we will use three useful commands for visualizing text files (**head**, **tail** and **less**).
 
 ```bash
-head *
-tail *
-less *
+head # FILE_NAME_HERE
+tail # FILE_NAME_HERE
+less # FILE_NAME_HERE
 
 # In less, scroll down by hitting the space bar
 # To quit, hit "q"
@@ -175,8 +175,8 @@ cutadapt -a CTGTCTCTTATACACATCT
          -o MMB-114_trimmed_1.fastq.gz
          -p MMB-114_trimmed_2.fastq.gz
          -m 50
-         *
-         *
+         # R1_reads here
+         # R2_reads here
 ```
 
 Now let's take a look at the help page for CUTADAPT to understand what each of these flags are doing:
