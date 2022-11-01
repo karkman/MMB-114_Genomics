@@ -62,5 +62,5 @@ This will allow us to put the gene annotations in the context of metabolic pathw
 ## Visualising the annotations
 
 We will use `IGV` to visualise the annotations and to extract genes for more exact taxonomic annotation.  
-For this you need to download the assembly fasta file and from bakta annotations the `.gff3` file from Puhti to your own computer.  
+For this you need to download the `.fna` and `.gff3` files from bakta annotations folder to your own computer.  
 We will go thru the steps in `IGV` together.  
