@@ -66,7 +66,7 @@ mkdir Data
 If you feel lost, don't worry. Breathe, relax, think and check once more with `pwd`.   
 You can always get to your home folder with typing only `cd` and pressing enter. 
 
-Actually everyone can do that and well open the whole course folder to the `Explorer` tab in VS Code.  
+Actually everyone can do that and we'll open the whole course folder to the `Explorer` tab in VS Code.  
 When you are in your home folder, open the `Explorer`tab on the left and click `Open Folder`. 
 Paste this path, but change `$USER` to your actual username. 
 
@@ -74,7 +74,7 @@ Paste this path, but change `$USER` to your actual username.
 /scratch/project_2006616/$USER/MMB-114_Genomics
 ```
 
-Now you should see the files and folders on the left. Also you terminal shoul dbe there as well.  
+Now you should see the files and folders on the left. Also you terminal should be there as well.  
 Let's continue from here. 
 
 ## The sequencing data
@@ -122,7 +122,7 @@ sinteractive -A project_2006616
 ```
 
 It might take a couple of seconds to minutes until the needed resources become available.  
-The next step is to load the **biokit** environment, which is a module in CSC containing several programs widely used in bioinformatics:
+The next step is to load the **biokit** module, which is a module in CSC containing several programs widely used in bioinformatics:
 
 ```bash
 module load biokit
@@ -140,7 +140,7 @@ After all tasks are completed, we exit the interactive partition by typing:
 exit
 ```
 
-One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop. Yuo should see them on the left. Right-click it and select `Download ...`.  
+One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop. You should see them on the left. Right-click it and select `Download ...`.  
 Remember to download the HTML files for both R1 and R2 reads. In your computer, double-click to open them in your favourite web browser.  
 
 Take a look at the FASTQC reports. How does the data look like?  
@@ -160,7 +160,7 @@ Take a look at the FASTQC reports. How does the data look like?
 ## Trimming adapters and low-quality regions
 
 Now we will run a program called CUTADAPT to trim the reads of adapters and low-quality regions.  
-First, let's connect to the interactive partition and load **biokit**:
+First, let's connect to the interactive partition and load the **cutadapt** module:
 
 ```bash
 sinteractive -A project_2006616
@@ -212,12 +212,14 @@ Now take a look at the file "cutadapt_log.txt" with the command **less**:
 * How many low-quality bases were trimmed?
 
 Now let's run FASTQC again, this time using the trimmed genome data:
-But first we need to unload the cutadapt module and reload biokit module
+But first we need to unload the cutadapt module (`module purge`) and reload biokit module.  
 
 ```bash
 module purge
 module load biokit
 ```
+
+And then run FASTQC on the trimmed sequence data.
 
 ```bash
 fastqc MMB-114_trimmed_1.fastq.gz 
