@@ -56,7 +56,7 @@ git clone https://github.com/karkman/MMB-114_Genomics.git
 ```
 
 Now you should have your own copy of the repository in Puhti.  
-Next we make a folder for the raw sequencing data, copy the data (or actually make a link to it to avoid having multiple copies of the same files) and then we are ready to start working on it. 
+Next we make a folder for the raw sequencing data.   
 
 ```bash
 cd MMB-114_Genomics
