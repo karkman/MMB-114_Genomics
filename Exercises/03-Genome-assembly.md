@@ -26,7 +26,7 @@ Have a look at the content. Either by clicking it on the left tab.
 Or on the command line:
 
 ```bash
-cat scripts/spades.sh
+cat Scripts/spades.sh
 ```
 
 The batch jos system in Puhti is called SLURM and you can read more about the differnet options to set up your batch job from [here](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/).  
