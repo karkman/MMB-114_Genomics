@@ -44,7 +44,7 @@ We can also add some additional data about the strain to guide the annotation. S
 
 Take a look inside the output folder using **ls**. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
 
-Now take a look at the `MMB114.txt` file using **less**. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
+Now take a look at the `MMB114.tsv` file using **less**. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
 Look for the 16S rRNA gene from the annotations. Can you locate it from the assembly? We will need this information later today. 
 
 ## Extracting KEGG annotations from Bakta output
