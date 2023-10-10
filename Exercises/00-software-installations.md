@@ -1,6 +1,6 @@
 # Software installations
 
-Before our first class on **31.10.2022**, please do the following steps.  
+Before our first class on **30.10.2023**, please do the following steps.  
 If you run into problems, just send me an [e-mail](mailto:antti.karkman@helsinki.fi) and I will help you out.  
 
 ## Register to CSC
