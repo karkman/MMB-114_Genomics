@@ -13,7 +13,7 @@ If you run into problems, just send me an [e-mail](mailto:antti.karkman@helsinki
 
 ## Download and install the following software to your own computer
 
-* [Virtual Studio Code](https://code.visualstudio.com/Download)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Bandage](https://rrwick.github.io/Bandage/)
 * [IGV](https://software.broadinstitute.org/software/igv/download)
 
