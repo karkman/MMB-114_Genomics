@@ -10,27 +10,18 @@ Let's make a new folder for the course, but this time in the `/scratch` folder f
 
 <details><summary>HINT (CLICK TO EXPAND)</summary>pwd</details>  
 
-
 If you are in your home directory (**/users/yourusername**), then you're golden. Let's now check that the folder we created yesterday is still there; how to do that?
 
-<details>
-<summary>
-HINT (CLICK TO EXPAND)
-</summary>
+<details><summary>HINT (CLICK TO EXPAND)</summary>ls</details>  
 
-> ls
-
-</details>  
-
-
-Now we are ready to move to the `/scratch` folder and make our working directory there. 
+Now we are ready to move to the `/scratch` folder and make our working directory there.  
 To find the path to this folder we can first list all available projects with `csc-workspcases`.
 
 ```bash
 csc-workspaces
 ```
 
-Then look for the `/scratch` folder under the project `project_2006616 "MMB-114_Genomics"` and move there with `cd`. 
+Then look for the `/scratch` folder under the project `project_2006616 "MMB-114_Genomics"` and move there with `cd`.  
 
 After that check once more where you are with `pwd`.  
 If you are in the right folder, make a subfolder for yourself. Name it with your username (`$USER`).
@@ -124,7 +115,7 @@ NanoPlot and NanoQC are not pre-installed to Puhti, but have been installed for 
 Heavier computation should always be done at computing nodes on Puhti (you're on a login node when you connect). We need to allocate some resources from a computing node using the command `sinteractive`.  
 It might take a couple of seconds to minutes until the needed resources become available.  
 
-### QC
+### Nanopore QC
 
 ```bash
 sinteractive -A project_2006616 -m 20000
@@ -146,7 +137,8 @@ Transfer the nanoplot output folder to your computer and open the report `NanoPl
 * How does your quality distribution look like?
 * And how about the length distribution?
 
-Run the other QC program on your reads. 
+Run the other QC program on your reads.  
+
 ```bash
 /scratch/project_2006616/Envs/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
 ```
@@ -171,13 +163,13 @@ cat path-to/your_raw_nanopore_reads.fastq |\
 ```
 
 ### Optional - Visualizing the trimmed data
+
 ```bash
 NanoPlot -o nanoplot_out -t 4 -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  
 We will assemble the genome on the next exercise session.  
-
 
 ## QC and trimming for Illumina reads (OPTIONAL)
 
@@ -192,6 +184,7 @@ The next step is to load the **biokit** module, which is a module in CSC contain
 ```bash
 module load biokit
 ```
+
 And now we run FASTQC, once for each FASTQ file:
 
 ```bash

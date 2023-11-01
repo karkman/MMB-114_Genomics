@@ -46,7 +46,7 @@ module load quast/5.2.0
 
 First have a look at the different options you have with QUAST.
 
-```bash 
+```bash
 quast.py --help
 ```
 
@@ -69,7 +69,7 @@ Open the file "report.html" in a web browser. How does the assemblies look like?
 * What is the longest contig?
 * Total size of the assembly? Is this more or less in the ballpark of what you expected for these genomes?
 
-## Assembly graphs
+## Nanopore assembly graphs
 
 Flye also outputs an assembly graph. It's a visual representation of the assembly.  
 Download the file `assembly_graph.gfa` from the Flye output folder and open it with `Bandage`.
@@ -91,7 +91,7 @@ cat Scripts/spades.sh
 
 The batch jos system in Puhti is called SLURM and you can read more about the differnet options to set up your batch job from [here](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/).  
 If you would like to learn more about the options for SPAdes, you can load the spades module and print the help menu.
-Remember to unload the module as well. 
+Remember to unload the module as well.  
 
 ```bash
 module load spades/3.15.5
@@ -100,7 +100,7 @@ module purge
 ```
 
 Now let's submit the Spades script to the batch job system with command `sbatch`.  
-Make sure you're in the course repository main folder. 
+Make sure you're in the course repository main folder.  
 
 ```bash
 sbatch Scripts/spades.sh
@@ -122,14 +122,15 @@ seff JOBID
 
 If it shows "State: COMPLETED (exit code 0)", then it means the job has finished succesfully without errors. Take a look also at the fields "CPU Efficiency" and "Memory Efficiency". Based on these values we can adjust our future scripts to allocate less resources. In Puhti, the more resources you use the higher the costs to the project and potential waiting time in the queue.  
 
-After the assembly is ready, we can have a look at the output SPAdes printed for us. Also, if something went wrong, we can try to track the reason from the log files. 
+After the assembly is ready, we can have a look at the output SPAdes printed for us. Also, if something went wrong, we can try to track the reason from the log files.  
 
 Make sure there are some log files and that they are not both empty:
+
 ```bash
 ls - l slurm_logs/
 ```
 
-One will have the standard output and the other the standard error output. Neither is the assembly, they contain the information SPAdes prints normally to the screen when it runs. 
+One will have the standard output and the other the standard error output. Neither is the assembly, they contain the information SPAdes prints normally to the screen when it runs.  
 
 ```bash
 more slurm_logs/*out*
@@ -149,7 +150,7 @@ module load quast/5.2.0
 
 First have a look at the different options you have with QUAST.
 
-```bash 
+```bash
 quast.py --help
 ```
 
@@ -172,7 +173,7 @@ Open the file "report.html" in a web browser. How does the assemblies look like?
 * What is the longest contig?
 * Total size of the assembly? Is this more or less in the ballpark of what you expected for these genomes?
 
-## Assembly graphs
+## Illumina assembly graphs
 
 SPAdes also outputs an assembly graph. It's a visual representation of the assembly.  
 Download the file `assembly_graph.fastg` from the SPAdes output folder and open it with `Bandage`.
@@ -182,17 +183,17 @@ We will go thru the steps together once the file is loaded in `Bandage`.
 ## OPTIONAL: Quick taxonomy and possible contamination detection using sourmash
 
 We will use a program called [Sourmash](https://sourmash.readthedocs.io/en/latest/) to quickly search our assembly against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)). Sourmash uses k-mers and hash sketches (signatures in sourmash) to speed up the search and can be used for very large data sets (raw reads, metagenomes, ...). You can read more about sourmash and hash sketches by following the link.  
-GTDB is a database and an effort to standardise microbial taxonomy based on genome information. We will use a pre-compiled version suitable for sourmash.   
+GTDB is a database and an effort to standardise microbial taxonomy based on genome information. We will use a pre-compiled version suitable for sourmash.  
 Sourmash is not (yet) available in Puhti, so we will run it from a Singularity container. You don't need to worry about what Singularity containers are. In short and simplified, containers enable to pack all the needed software in a single file that can be used to run the program on e.g. Puhti.  
-The Singularity container can be found from The `Env` folder and the GTDB database from `DB` folder. 
+The Singularity container can be found from The `Env` folder and the GTDB database from `DB` folder.  
 
-First we need to build a hash sketchs from our assembly. And we need an interactive session for that. 
+First we need to build a hash sketchs from our assembly. And we need an interactive session for that.  
 
 ```bash
 sinteractive -A project_2006616 -m 10000 
 ```
 
-Then the signature. 
+Then the signature.  
 
 ```bash
 singularity exec --bind $PWD:$PWD \
@@ -203,7 +204,7 @@ singularity exec --bind $PWD:$PWD \
     -o MMB114.sig
 ```
 
-When we have the signature, we can run a search against the database. 
+When we have the signature, we can run a search against the database.  
 
 ```bash
 singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
@@ -217,7 +218,7 @@ singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
 You should get a list of possible matches in the database and how similar our genome is to those matches.
 
 The `search` command in sourmash finds only hits with high similarity in terms of shared kmers.  
-You can also use another command `gather` in sourmash to look for more broadly matching signatures in the database. 
+You can also use another command `gather` in sourmash to look for more broadly matching signatures in the database.  
 
 ```bash
 singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
@@ -230,6 +231,7 @@ singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
 ```
 
 Some questions on these results:
+
 * Did you find a good match for our genome?
-* Does it seem that there was contamination in the sequences? 
-* What else could you do to find out which species our strain is?
+* Does it seem that there was contamination in the sequences?  
+* What else could you do to find out which species our strain is?  
