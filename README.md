@@ -1,20 +1,21 @@
 # MMB-114 Exploratory microbial research - lab course
+
 :man_technologist:  __Antti Karkman__  
 :classical_building: University of Helsinki  
 :envelope: [antti.karkman@helsinki.fi](mailto:antti.karkman@helsinki.fi)
-
 
 Genome analysis module of the course "MMB-114 Exploratory microbial research - lab course" of the University of Helsinki.
 
 ## Learning outcomes
 
 **After completing this module, you will be able to:**
+
 * Choose the most adequate platform for your genome sequencing experiment
 * Investigate and judge the quality of sequencing data
 * Make use of a variety of tools to:
-    * Process whole genome sequencing data
-    * Assemble and annotate whole genome sequencing data
-    * Predict metabolic pathways from assembled and annotated genomes
+  * Process whole genome sequencing data
+  * Assemble and annotate whole genome sequencing data
+  * Predict metabolic pathways from assembled and annotated genomes
 
 ## General instructions
 
