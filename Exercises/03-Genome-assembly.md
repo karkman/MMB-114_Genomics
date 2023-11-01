@@ -16,17 +16,19 @@ In Visual Studio Code you can use the `Explorer` tab to open the right folder. A
 
 When your ready and can see your own course folder, you can move on.  
 
-## Nanoopore assembly
+## Nanopore assembly
 
-We will use [FLye](https://github.com/fenderglass/Flye) to assemble our nanopore data.  
+We will use [Flye](https://github.com/fenderglass/Flye) to assemble our nanopore data.  
 You will need to estimate the genome size of your own isolate. Use the approx. genome size of the closest relatives.  
-Go to https://www.ncbi.nlm.nih.gov/datasets/genome/ and check how many whole genome sequences are available for the genus of your own isolate.  
+Go to https://www.ncbi.nlm.nih.gov/datasets/genome/ and check the average genome size of the closest relatives. If there aren't any, use 5 Mb.   
 
-Allocate a computing node
+Allocate a computing node.
 
 ```bash
 sinteractive -A project_2006616 -m 40000 --cores 6
 ```
+
+Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md).
 
 ```bash
 /scratch/project_2006616/Envs/nano_assembly/bin/flye \
@@ -73,11 +75,11 @@ Open the file "report.html" in a web browser. How does the assemblies look like?
 ## Assembly graphs
 
 Flye also outputs an assembly graph. It's a visual representation of the assembly.  
-Download the file `assembly_graph.gfa` from thee Flye output folder and open it with `Bandage`.
+Download the file `assembly_graph.gfa` from the Flye output folder and open it with `Bandage`.
 
 We will go thru the steps together once the file is loaded in `Bandage`.
 
-## Submitting the Illumina genome assembly jobs
+## Submitting the Illumina genome assembly job
 
 The first thing we will do is to launch the genome assembly job. We will do this using the batch job system. This is different from the interactive partition in that jobs go to a queue and are executed when the required resources are available. We use the batch system when we are running jobs which 1) take longer to run, so we can logout the system and come back when the job has finished; 2) require more resources than the interactive partition provides (which is set at 8 cores and 76 GB of RAM).  
 
@@ -141,7 +143,7 @@ If all looks ok, we can move to the assembly QC.
 
 ## Evaluating the quality of the assemblies
 
-Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assemblies. We start by connecting to the interactive partition and loading the QUAST module:
+Now we will run [QUAST](https://quast.sourceforge.net/quast) on the spades assembly. Start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
 sinteractive -A project_2006616
@@ -175,8 +177,8 @@ Open the file "report.html" in a web browser. How does the assemblies look like?
 
 ## Assembly graphs
 
-SPAdes also outputs soemthing called an assembly graph. It's a visual representation of the assembly.  
-Download the file `assembly_graph.fastg` from thee SPAdes output folder and open it with `Bandage`.
+SPAdes also outputs an assembly graph. It's a visual representation of the assembly.  
+Download the file `assembly_graph.fastg` from the SPAdes output folder and open it with `Bandage`.
 
 We will go thru the steps together once the file is loaded in `Bandage`.
 
