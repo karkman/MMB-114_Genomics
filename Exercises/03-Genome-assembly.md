@@ -19,8 +19,6 @@ When your ready and can see your own course folder, you can move on.
 ## Nanopore assembly
 
 We will use [Flye](https://github.com/fenderglass/Flye) to assemble our nanopore data.  
-You will need to estimate the genome size of your own isolate. Use the approx. genome size of the closest relatives.  
-Go to https://www.ncbi.nlm.nih.gov/datasets/genome/ and check the average genome size of the closest relatives. If there aren't any, use 5 Mb.   
 
 Allocate a computing node.
 
@@ -33,7 +31,6 @@ Before running the command, have a look at the [Flye usage manual](https://githu
 ```bash
 /scratch/project_2006616/Envs/nano_assembly/bin/flye \
     --nano-corr # your trimmed reads here \
-    --genome-size # your estimated genome size \
     --threads 6 \
     --out-dir flye_out \
 ```
