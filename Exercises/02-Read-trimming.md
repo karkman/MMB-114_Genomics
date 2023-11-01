@@ -22,7 +22,6 @@ HINT (CLICK TO EXPAND)
 
 </details>  
 
----
 
 Now we are ready to move to the `/scratch` folder and make our working directory there. 
 To find the path to this folder we can first list all available projects with `csc-workspcases`.
