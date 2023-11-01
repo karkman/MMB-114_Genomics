@@ -143,7 +143,8 @@ Generate graphs for visualizing read quality and length distribution
 Make sure that your in the course folder (`/scratch/project_2006616/$USER/MMB-114_Genomics`) before you run the command.  
 
 ```bash
-/scratch/project_2006616/Envs/nano_tools/bin/NanoPlot -o nanoplot_out -t 4 -f png --fastq path-to/your_raw_nanopore_reads.fastq
+/scratch/project_2006616/Envs/nano_tools/bin/NanoPlot \
+  -o nanoplot_out -t 4 -f png --fastq path-to/your_raw_nanopore_reads.fastq
 ```
 
 Transfer the nanoplot output folder to your computer and open the report `NanoPlot-report.html`
@@ -168,12 +169,14 @@ Copy the resulting `nanoQC.html` file inside the ouput folder of nanoQC to your 
 
 We'll use a program called [chopper](https://github.com/wdecoster/chopper) for quality filtering and trimming.  
 
-The following command will trim the first 30 bases and the last 20 bases of each read, exclude reads with a phred score below 12 and exclude reads with less than 1000 bp. Depending on your own results, you should probably change these, so you won't end up discarding all of your reads.
+The following command will trim the first 30 bases and the last 20 bases of each read, exclude reads with a phred score below 12 and exclude reads with less than 1000 bp. Depending on your own results, you should probably change these, so you won't end up discarding most of your reads.
 
 ```bash
 mkdir trimmed_nanopore
 
-cat path-to/your_raw_nanopore_reads.fastq | chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 | gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
+cat path-to/your_raw_nanopore_reads.fastq |\
+  /scratch/project_2006616/Envs/nano_tools/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 ### Optional - Visualizing the trimmed data
