@@ -24,7 +24,7 @@ Genome analysis module of the course "MMB-114 Exploratory microbial research - l
 
 Activity | | |
 -- | -- | -- |
-Day 1: UNIX and CSC | [Lecture slides](lectures/01_UNIX_and_CSC.pdf) | [Exercises](Exercises/01-UNIX-and-CSC.md) |
+Day 1: UNIX and CSC | [Lecture slides](lectures/01_UNIX-and-CSC.pdf) | [Exercises](Exercises/01-UNIX-and-CSC.md) |
 Day 2: Read trimming | [Lecture slides](lectures/02_Read_trimming.pdf) | [Exercises](Exercises/02-Read-trimming.md) |
 Day 3: Checkup  | No activities | No activities |
 Day 4: Genome assembly | [Lecture slides](lectures/03_Genome_assembly.pdf) | [Exercises](Exercises/03-Genome-assembly.md) |
