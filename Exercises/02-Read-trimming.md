@@ -80,7 +80,7 @@ Let's continue from here.
 ## The sequencing data
 
 Next you will copy the sequence data to your own `data` folder. So everyone will have their own copy. The sequencing data can be found from `data` folder under the course `scratch` folder.  
-List the content of our `Data` folder and only copy your own Nanopore reads (your own barcode). You can also copy the Illumina data, if you would like to analyse Illumina data as well  
+List the content of our `Data` folder and only copy your own Nanopore reads (your own barcode). You can also copy the Illumina data, if you would like to analyse that as well. Choose one of the isolates.  
 To keep things organised, we'll make separate folders for Nanopore and Illumina reads.  
 The command `cp` will copy the files to a speficified location, so make sure you have the `.` at the end (`.` means "here").
 
@@ -90,8 +90,9 @@ cd data
 mkdir nanopore
 mkdir illumina
 # list the files
-ls /scratch/project_2006616/Data/
-# copy your  
+ls /scratch/project_2006616/Data/nanopore
+ls /scratch/project_2006616/Data/illumina
+# copy your own sequence file
 cd nanopore
 cp /scratch/project_2006616/Data/nanopore/your_sequences .
 cd ..
