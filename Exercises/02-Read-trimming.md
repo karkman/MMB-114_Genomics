@@ -8,16 +8,8 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 Let's make a new folder for the course, but this time in the `/scratch` folder for the course. But first, let's see where we are; how to do that?
 
-<details>
-<summary>
-HINT (CLICK TO EXPAND)
-</summary>
+<details><summary>HINT (CLICK TO EXPAND)</summary>pwd</details>  
 
-> pwd
-
-</details>  
-
----
 
 If you are in your home directory (**/users/yourusername**), then you're golden. Let's now check that the folder we created yesterday is still there; how to do that?
 
