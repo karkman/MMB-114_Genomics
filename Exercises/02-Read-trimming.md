@@ -8,14 +8,14 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 Let's make a new folder for the course, but this time in the `/scratch` folder for the course. But first, let's see where we are; how to do that?
 
-<dl>
+<details>
 <summary>
 HINT (CLICK TO EXPAND)
 </summary>
 
 > pwd
 
-</dl>  
+</details>  
 
 ---
 
