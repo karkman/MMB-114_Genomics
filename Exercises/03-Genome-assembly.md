@@ -7,16 +7,77 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 ## Navigating to the  right folder
 
 First things first.  
-When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.   
+When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
 In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER`.
 
 ```bash
 /scratch/project_2006616/$USER/MMB-114_Genomics
 ```
 
-When your ready and can see your own course folder, you can move on. 
+When your ready and can see your own course folder, you can move on.  
 
-## Submitting the genome assembly jobs
+## Nanoopore assembly
+
+We will use [FLye](https://github.com/fenderglass/Flye) to assemble our nanopore data.  
+You will need to estimate the genome size of your own isolate. Use the approx. genome size of the closest relatives.  
+Go to https://www.ncbi.nlm.nih.gov/datasets/genome/ and check how many whole genome sequences are available for the genus of your own isolate.  
+
+Allocate a computing node
+
+```bash
+sinteractive -A project_2006616 -m 40000 --cores 6
+```
+
+```bash
+/scratch/project_2006616/Envs/nano_assembly/bin/flye \
+    --nano-corr # your trimmed reads here \
+    --genome-size # your estimated genome size \
+    --threads 6 \
+    --out-dir flye_out \
+```
+
+## Nanopore assembly quality
+
+Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading the QUAST module:
+
+```bash
+sinteractive -A project_2006616
+module load quast/5.2.0
+```
+
+First have a look at the different options you have with QUAST.
+
+```bash 
+quast.py --help
+```
+
+And now let's run QUAST:
+
+```bash
+quast.py flye_out/assembly.fasta -o QUAST_nanopore
+```
+
+When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
+
+* report.html
+* report.pdf
+* icarus.html
+* icarus_viewers (folder)
+
+Open the file "report.html" in a web browser. How does the assemblies look like?
+
+* How many contigs?
+* What is the longest contig?
+* Total size of the assembly? Is this more or less in the ballpark of what you expected for these genomes?
+
+## Assembly graphs
+
+Flye also outputs an assembly graph. It's a visual representation of the assembly.  
+Download the file `assembly_graph.gfa` from thee Flye output folder and open it with `Bandage`.
+
+We will go thru the steps together once the file is loaded in `Bandage`.
+
+## Submitting the Illumina genome assembly jobs
 
 The first thing we will do is to launch the genome assembly job. We will do this using the batch job system. This is different from the interactive partition in that jobs go to a queue and are executed when the required resources are available. We use the batch system when we are running jobs which 1) take longer to run, so we can logout the system and come back when the job has finished; 2) require more resources than the interactive partition provides (which is set at 8 cores and 76 GB of RAM).  
 
@@ -96,7 +157,7 @@ quast.py --help
 And now let's run QUAST:
 
 ```bash
-quast.py results/SPADES/contigs.fasta -o results/QUAST
+quast.py spades_out/contigs.fasta -o QUAST_spades
 ```
 
 When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
@@ -139,8 +200,8 @@ singularity exec --bind $PWD:$PWD \
     /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
     sourmash sketch dna \
     -p scaled=1000,k=31 \
-    results/SPADES/contigs.fasta \
-    -o results/MMB114.sig
+    spades_out/contigs.fasta \
+    -o MMB114.sig
 ```
 
 When we have the signature, we can run a search against the database. 
@@ -149,7 +210,7 @@ When we have the signature, we can run a search against the database.
 singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
     /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
      sourmash search \
-     results/MMB114.sig \
+     MMB114.sig \
      /db/gtdb-rs207.genomic-reps.dna.k31.zip \
      -n 20
 ```
@@ -163,7 +224,7 @@ You can also use another command `gather` in sourmash to look for more broadly m
 singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
     /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
      sourmash gather \
-     results/MMB114.sig \
+     MMB114.sig \
      /db/gtdb-rs207.genomic-reps.dna.k31.zip \
      -n 20  \
      2> /dev/null

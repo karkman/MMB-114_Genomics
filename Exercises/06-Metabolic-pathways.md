@@ -4,7 +4,7 @@
 
 To investigate the pathways further we will use a tool from KEGG called "KEGG mapper". For this:
 
-* Download to your computer the file `MMB114_kegg_ids.txt`.
+* Download to your computer the file `kegg_ids.txt`.
 * Go to https://www.genome.jp/kegg/mapper/search.html
 * Copy and paste the file in the box
 * In "Search mode", select **Reference**

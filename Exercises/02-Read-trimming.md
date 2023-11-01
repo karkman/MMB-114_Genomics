@@ -56,47 +56,57 @@ git clone https://github.com/karkman/MMB-114_Genomics.git
 ```
 
 Now you should have your own copy of the repository in Puhti.  
-Next we make a folder for the raw sequencing data.   
+Next we make a folder for the raw sequencing data.  
 
 ```bash
 cd MMB-114_Genomics
-mkdir Data
+mkdir data
 ```
 
-If you feel lost, don't worry. Breathe, relax, think and check once more with `pwd`.   
-You can always get to your home folder with typing only `cd` and pressing enter. 
+If you feel lost, don't worry. Breathe, relax, think and check once more with `pwd`.  
+You can always get to your home folder with typing only `cd` and pressing enter.  
 
 Actually everyone can do that and we'll open the whole course folder to the `Explorer` tab in VS Code.  
-When you are in your home folder, open the `Explorer`tab on the left and click `Open Folder`. 
-Paste this path, but change `$USER` to your actual username. 
+When you are in your home folder, open the `Explorer`tab on the left and click `Open Folder`.  
+Paste this path, but change `$USER` to your actual username.  
 
-```
+```bash
 /scratch/project_2006616/$USER/MMB-114_Genomics
 ```
 
-Now you should see the files and folders on the left. Also you terminal should be there as well.  
-Let's continue from here. 
+Now you should see the files and folders on the left.  
+Let's continue from here.  
 
 ## The sequencing data
 
-Next you will copy the sequence data to your own `Data` folder. So everyone will have their own copy. The sequencing data can be found from `Data` folder under the course `scratch` folder.   
-List the content of our `Data` folder and only copy the R1 and R2 reads.    
+Next you will copy the sequence data to your own `data` folder. So everyone will have their own copy. The sequencing data can be found from `data` folder under the course `scratch` folder.  
+List the content of our `Data` folder and only copy your own Nanopore reads (your own barcode). You can also copy the Illumina data, if you would like to analyse Illumina data as well  
+To keep things organised, we'll make separate folders for Nanopore and Illumina reads.  
 The command `cp` will copy the files to a speficified location, so make sure you have the `.` at the end (`.` means "here").
 
 ```bash
-cd Data
+cd data
+# make folders for different data types
+mkdir nanopore
+mkdir illumina
 # list the files
 ls /scratch/project_2006616/Data/
-# copy one set of sequencing reads. Replace the names below and copy both R1 and R2 files. 
-cp /scratch/project_2006616/Data/R1_FILE_NAME_HERE .
-cp /scratch/project_2006616/Data/R2_FILE_NAME_HERE .
+# copy your  
+cd nanopore
+cp /scratch/project_2006616/Data/nanopore/your_sequences .
+cd ..
+# copy one set of Illumina sequencing reads. Replace the names below and copy both R1 and R2 files. 
+cd illumina
+cp /scratch/project_2006616/Data/illumina/R1_FILE_NAME_HERE .
+cp /scratch/project_2006616/Data/illumina/R2_FILE_NAME_HERE .
 ```
 
-Now you can check what is in your `Data` folder.  
-You should see two GZIP files (**.gz**), one for the R1 and one for the R2 reads of our genome. GZIP is a compressed file like a ZIP file.
+Now you can check what is in the folders inside your `data` folder.  
+You should see GZIP files (**.gz**) in borth folders, one for your Nanopore reads and two for the Illumina (R1 & R2). GZIP is a compressed file like a ZIP file.
 And before the `.gz` you can see that they have another ending, `fastq`, this is a sequence file format that has in addition to the sequence also the sequence quality values (PHRED scores encoded as ASCII charaters).
 
-Compressing sequence files with GZIP is advisable, since the files might be very big. And most bioinformatic software can handle compressed sequence files. But this time we'll decompress them just because we can. And because they are easier to view then. And anyways they are not that big in our case. And we will compress them again during trimming. 
+Compressing sequence files with GZIP is unnecessary, since the files might be very big and most bioinformatic software can handle compressed sequence files. But this time we'll decompress them just because we can. And because they are easier to view then. And anyways they are not that big in our case. And we will compress them again during trimming.  
+Go to the nanopore folder and decompress the file.
 
 ```bash
 gunzip # FILE_NAME_HERE
@@ -113,7 +123,68 @@ less # FILE_NAME_HERE
 # To quit, hit "q"
 ```
 
-## Performing a quality assessment of the raw data
+## Quality control and trimming for Nanopore reads
+
+The QC for the Nanopore reads can be done with NanoPlot and NanoQC. They are plotting tools for long read sequencing data and alignments. You can read more about them in: [NanoPlot](https://github.com/wdecoster/NanoPlot) and [NanoQC](https://github.com/wdecoster/nanoQC)
+
+NanoPlot and NanoQC are not pre-installed to Puhti, but have been installed for the course using CSC software installation tool [Tykky](https://docs.csc.fi/computing/containers/tykky/).
+
+Heavier computation should always be done at computing nodes on Puhti (you're on a login node when you connect). We need to allocate some resources from a computing node using the command `sinteractive`.  
+It might take a couple of seconds to minutes until the needed resources become available.  
+
+### QC
+
+```bash
+sinteractive -A project_2006616 -m 20000
+```
+
+Generate graphs for visualizing read quality and length distribution
+Make sure that your in the course folder (`/scratch/project_2006616/$USER/MMB-114_Genomics`) before you run the command.  
+
+```bash
+/scratch/project_2006616/Envs/nano_tools/bin/NanoPlot -o nanoplot_out -t 4 -f png --fastq path-to/your_raw_nanopore_reads.fastq
+```
+
+Transfer the nanoplot output folder to your computer and open the report `NanoPlot-report.html`
+
+* How much sequencing data you have in base pairs?
+* How many reads in total?
+* How much of the data would be left if you would discard all reads that are below Q12?
+* How does your quality distribution look like?
+* And how about the length distribution?
+
+Run the other QC program on your reads. 
+```bash
+/scratch/project_2006616/Envs/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
+```
+
+Copy the resulting `nanoQC.html` file inside the ouput folder of nanoQC to your local computer and open it.  
+
+* How is the quality at the beginning and at the end of the reads? How many bases would you cut from these regions?
+* Can you estimate the GC % of your isolate? Does it match the GC % of the closest relatives?
+
+### Trimming and quality filtering of reads
+
+We'll use a program called [chopper](https://github.com/wdecoster/chopper) for quality filtering and trimming.  
+
+The following command will trim the first 30 bases and the last 20 bases of each read, exclude reads with a phred score below 12 and exclude reads with less than 1000 bp. Depending on your own results, you should probably change these, so you won't end up discarding all of your reads.
+
+```bash
+mkdir trimmed_nanopore
+
+chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 | gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
+```
+
+### Optional - Visualizing the trimmed data
+```bash
+NanoPlot -o nanoplot_out -t 4 -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+```
+
+If everything looks ok, the sequence data is ready for assembly.  
+We will assemble the genome on the next exercise session.  
+
+
+## QC and trimming for Illumina reads (OPTIONAL)
 
 Now we will run a program called FASTQC for quality assessment of the raw genome data. The tasks we are performing from now on require more memory than simple bash commands. Running them on the login node would make the system slow, and if a task takes more than 30 minutes to complete, it is killed automatically. Instead, we have to connect to another node, called the interactive partition:
 
@@ -121,7 +192,6 @@ Now we will run a program called FASTQC for quality assessment of the raw genome
 sinteractive -A project_2006616
 ```
 
-It might take a couple of seconds to minutes until the needed resources become available.  
 The next step is to load the **biokit** module, which is a module in CSC containing several programs widely used in bioinformatics:
 
 ```bash
@@ -132,12 +202,6 @@ And now we run FASTQC, once for each FASTQ file:
 ```bash
 fastqc  # R1_reads here
 fastqc  # R2 reads here
-```
-
-After all tasks are completed, we exit the interactive partition by typing:
-
-```bash
-exit
 ```
 
 One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop. You should see them on the left. Right-click it and select `Download ...`.  
@@ -163,8 +227,14 @@ Now we will run a program called CUTADAPT to trim the reads of adapters and low-
 First, let's connect to the interactive partition and load the **cutadapt** module:
 
 ```bash
-sinteractive -A project_2006616
+module purge
 module load cutadapt/3.5
+```
+
+Then make folder for trimmed data.  
+
+```bash
+mkdir trimmed_illumina
 ```
 
 And now we run CUTADAPT. But first, take a moment to familiarize yourself the tool. Look at the command below and see which flags (**-LETTER**) we are passing to CUTADAPT (**DO NOT RUN**):
@@ -172,8 +242,8 @@ And now we run CUTADAPT. But first, take a moment to familiarize yourself the to
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT
          -A CTGTCTCTTATACACATCT
-         -o MMB-114_trimmed_1.fastq.gz
-         -p MMB-114_trimmed_2.fastq.gz
+         -o trimmed_illumina/MMB-114_trimmed_1.fastq.gz
+         -p trimmed_illumina/MMB-114_trimmed_2.fastq.gz
          -m 50
          # R1_reads here
          # R2_reads here
@@ -195,8 +265,8 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT \
          -A CTGTCTCTTATACACATCT \
-         -o MMB-114_trimmed_1.fastq.gz \
-         -p MMB-114_trimmed_2.fastq.gz \
+         -o trimmed_illumina/MMB-114_trimmed_1.fastq.gz \
+         -p trimmed_illumina/MMB-114_trimmed_2.fastq.gz \
          -m 50 \
          # R1_reads \
          # R2_reads \
@@ -222,8 +292,8 @@ module load biokit
 And then run FASTQC on the trimmed sequence data.
 
 ```bash
-fastqc MMB-114_trimmed_1.fastq.gz 
-fastqc MMB-114_trimmed_2.fastq.gz
+fastqc trimmed_illumina/MMB-114_trimmed_1.fastq.gz 
+fastqc trimmed_illumina/MMB-114_trimmed_2.fastq.gz
 ```
 
 After both tasks are completed, we exit the interactive partition:
@@ -240,4 +310,4 @@ Move the new HTML documents to your laptop and open them in a web browser. Compa
 * Are there still adapter sequences in our reads?
 
 If everything looks ok, the sequence data is ready for assembly.  
-We will assemble the genome on the next exercise session. 
+We will assemble the genome on the next exercise session.  
