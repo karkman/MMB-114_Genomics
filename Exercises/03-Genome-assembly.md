@@ -26,7 +26,7 @@ Allocate a computing node.
 sinteractive -A project_2006616 -m 40000 --cores 6
 ```
 
-Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md).
+Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md). Would you add any additional options to the run?
 
 ```bash
 /scratch/project_2006616/Envs/nano_assembly/bin/flye \
