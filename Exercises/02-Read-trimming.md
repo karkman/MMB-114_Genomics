@@ -88,7 +88,7 @@ Now you can check what is in the folders inside your `data` folder.
 You should see GZIP files (**.gz**) in borth folders, one for your Nanopore reads and two for the Illumina (R1 & R2). GZIP is a compressed file like a ZIP file.
 And before the `.gz` you can see that they have another ending, `fastq`, this is a sequence file format that has in addition to the sequence also the sequence quality values (PHRED scores encoded as ASCII charaters).
 
-Compressing sequence files with GZIP is unnecessary, since the files might be very big and most bioinformatic software can handle compressed sequence files. But this time we'll decompress them just because we can. And because they are easier to view then. And anyways they are not that big in our case. And we will compress them again during trimming.  
+Uncompressing sequence files with GZIP is unnecessary, since the files might be very big and most bioinformatic software can handle compressed sequence files. But this time we'll decompress them just because we can. And because they are easier to view then. And anyways they are not that big in our case. And we will compress them again during trimming.  
 Go to the nanopore folder and decompress the file.
 
 ```bash
