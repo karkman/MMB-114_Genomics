@@ -165,7 +165,7 @@ cat path-to/your_raw_nanopore_reads.fastq |\
 ### Optional - Visualizing the trimmed data
 
 ```bash
-NanoPlot -o nanoplot_out -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+/scratch/project_2006616/Envs/nano_tools/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  
