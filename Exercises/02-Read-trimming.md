@@ -126,7 +126,7 @@ Make sure that your in the course folder (`/scratch/project_2006616/$USER/MMB-11
 
 ```bash
 /scratch/project_2006616/Envs/nano_tools/bin/NanoPlot \
-  -o nanoplot_out -t 4 -f png --fastq path-to/your_raw_nanopore_reads.fastq
+  -o nanoplot_out -f png --fastq path-to/your_raw_nanopore_reads.fastq
 ```
 
 Transfer the nanoplot output folder to your computer and open the report `NanoPlot-report.html`
@@ -165,7 +165,7 @@ cat path-to/your_raw_nanopore_reads.fastq |\
 ### Optional - Visualizing the trimmed data
 
 ```bash
-NanoPlot -o nanoplot_out -t 4 -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+NanoPlot -o nanoplot_out -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  
