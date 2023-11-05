@@ -20,5 +20,8 @@ By looking at the different metabolic pathways encoded by our genome, let's try 
   * Survives in stress
   * Move around
 
-This will be a collaborative effort. Once you found something interesting, add it to our metabolic map [here](https://docs.google.com/presentation/d/1YgfunCfAhrPy1pcNvLfgUGHzgj_fYwcIyQ88bVbcv8I/edit?usp=sharing).  
-Feel free to add addtional headers if you find something interesting.
+What other interesting traits can you find from your genome?  
+
+## Secondary metabolites
+
+If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules), you can submit the assembled genome (fasta file) to [antiSMASH server](https://antismash.secondarymetabolites.org/). antiSMASH identifies, annotates and analyses secondary metabolite biosynthesis gene clusters from bacterial (and fungal) genomes.
