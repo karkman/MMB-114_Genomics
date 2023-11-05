@@ -56,12 +56,7 @@ And now let's run QUAST:
 quast.py flye_out/assembly.fasta -o QUAST_nanopore
 ```
 
-When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
-
-* report.html
-* report.pdf
-* icarus.html
-* icarus_viewers (folder)
+When QUAST has finished, you can close the interactive session with `exit` and download the the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
 
 Open the file "report.html" in a web browser. How does the assemblies look like?
 
