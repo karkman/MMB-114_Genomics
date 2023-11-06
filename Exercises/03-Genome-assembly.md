@@ -32,7 +32,7 @@ Before running the command, have a look at the [Flye usage manual](https://githu
 /scratch/project_2006616/Envs/nano_assembly/bin/flye \
     --nano-corr # your trimmed reads here \
     --threads 6 \
-    --out-dir flye_out \
+    --out-dir flye_out
 ```
 
 ## Nanopore assembly quality
