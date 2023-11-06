@@ -40,7 +40,7 @@ Before running the command, have a look at the [Flye usage manual](https://githu
 Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
-sinteractive -A project_2006616
+# sinteractive -A project_2006616
 module load quast/5.2.0
 ```
 
