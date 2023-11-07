@@ -5,7 +5,7 @@
 To investigate the pathways further we will use a tool from KEGG called "KEGG mapper". For this:
 
 * Download to your computer the file `kegg_ids.txt`.
-* Go to https://www.genome.jp/kegg/mapper/search.html
+* Go to [KEGG Mapper search site](https://www.genome.jp/kegg/mapper/search.html)
 * Copy and paste the file in the box
 * In "Search mode", select **Reference**
 * Click "Exec"
@@ -25,3 +25,7 @@ What other interesting traits can you find from your genome?
 ## Secondary metabolites
 
 If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules), you can submit the assembled genome (fasta file) to [antiSMASH server](https://antismash.secondarymetabolites.org/). antiSMASH identifies, annotates and analyses secondary metabolite biosynthesis gene clusters from bacterial (and fungal) genomes.
+
+## Summarise your results
+
+As the last step, summarize all the information you gather from your isolate to this shared Google Sheet [MMB-114_2023](https://docs.google.com/spreadsheets/d/1cGT7cBV5O3hnmoQvU77iYlCwkGLT9kw2E-tXV8Oy61k/edit?usp=sharing).  

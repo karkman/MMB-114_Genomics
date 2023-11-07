@@ -26,7 +26,7 @@ Let's start by connecting to the interactive partition. Now we will need a littl
 sinteractive -A project_2006616 -m 10000 -c 4
 ```
 
-Bakta is not found (yet) from Puhti, so I have installed it under the `Envs` folder on the course project folder.  
+Bakta is not found from Puhti, but it has been installed under the `Envs` folder on the course project folder (as many other tools used so far).  
 It also needs its own database files and that they can be found from the `DB` folder.  
 We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
 
@@ -64,3 +64,55 @@ This will allow us to put the gene annotations in the context of metabolic pathw
 We will use `IGV` to visualise the annotations and to extract genes for more exact taxonomic annotation.  
 For this you need to download the `.fna` and `.gff3` files from bakta annotations folder to your own computer.  
 We will go thru the steps in `IGV` together.  
+
+## Genome completeness estimation
+
+The completeness of a genome can be estimated using [CheckM2](https://github.com/chklovski/CheckM2). CheckM2 uses a machine learning model o predict the compeleteness and contamination of a genome. The tools was developed for metagenome-assembled genomes, so it also predicts contamination. Contamination is not such a big problem for us as we work with isolate genomes.  
+
+So first go to the right folder and allocate resources from a computing node.  
+
+```bash
+cd /scratch/project_2006616/$USER/MMB-114_Genomics
+sinteractive -A project_2006616 -m 60000 --tmp 100
+```
+
+Then run CheckM2 on your own genome.  
+
+```bash
+/scratch/project_2006616/Envs/tax_tools/bin/checkm2 predict \
+      --output-directory CheckM2_out \
+      --lowmem \
+      --extension .fasta \
+      --tmpdir $TMPDIR \
+      --input # your assembly output folder
+```
+
+Open the output folder of CheckM2 and find a file called `quality_report.tsv`.  
+
+## Taxonomic annotation
+
+The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html) against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)).  
+
+GTDB-Tk has its own database that has been downloaded to our database folder (`/scratch/project_2006616/DB/`). We need to set an environmental variable pointing to the database.  
+
+```bash
+export GTDBTK_DATA_PATH="/scratch/project_2006616/DB/XXX"
+```
+
+Then we can run the taxonomic annotation with GTDB-Tk.  
+
+```bash
+/scratch/project_2006616/Envs/tax_tools/bin/gtdbtk classify_wf \
+      --out_dir GTDBTK_out \
+      --extension .fasta \
+       --scratch_dir $TMPDIR \
+       --tmpdir $TMPDIR \
+      --genome_dir # the assembly output folder 
+```
+
+Open the output folder of GTDB-Tk and find a file called `XXX.txt`.  
+
+Two most important questions from the above steps:
+
+* How complete was the genome you obtained from the assembly based on CheckM2?  
+* What was the taxonomic annotation of your genome based on GTDB-Tk?  
