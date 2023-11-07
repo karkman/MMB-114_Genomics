@@ -74,7 +74,7 @@ So first go to the right folder and allocate resources from a computing node.
 
 ```bash
 cd /scratch/project_2006616/$USER/MMB-114_Genomics
-sinteractive -A project_2006616 -m 60000 --tmp 100
+sinteractive -A project_2006616 -m 75000 --tmp 200 -c 4
 ```
 
 Then run CheckM2 on your own genome.  
@@ -97,7 +97,7 @@ The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomi
 GTDB-Tk has its own database that has been downloaded to our database folder (`/scratch/project_2006616/DB/`). We need to set an environmental variable pointing to the database.  
 
 ```bash
-export GTDBTK_DATA_PATH="/scratch/project_2006616/DB/XXX"
+export GTDBTK_DATA_PATH="/scratch/project_2006616/DB/GTDB/release214"
 ```
 
 Then we can run the taxonomic annotation with GTDB-Tk.  
@@ -106,12 +106,16 @@ Then we can run the taxonomic annotation with GTDB-Tk.
 /scratch/project_2006616/Envs/tax_tools/bin/gtdbtk classify_wf \
       --out_dir GTDBTK_out \
       --extension .fasta \
-       --scratch_dir $TMPDIR \
-       --tmpdir $TMPDIR \
+      --scratch_dir $TMPDIR \
+      --tmpdir $TMPDIR \
+      --skip_ani_screen \
+      --min_perc_aa 0 \
+      --pplacer_cpus 1 \
+      --cpus $SLURM_CPUS_PER_TASK \
       --genome_dir # the assembly output folder 
 ```
 
-Open the output folder of GTDB-Tk and find a file called `XXX.txt`.  
+Open the output folder of GTDB-Tk and find a file called `/gtdbtk.bac120.summary.tsv`.  
 
 Two most important questions from the above steps:
 
