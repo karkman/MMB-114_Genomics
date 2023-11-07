@@ -18,7 +18,7 @@ When your ready and can see your own course folder, you can move on.
 
 ## Annotating the genome using Bakta
 
-First we will annotate our genome using a program called [Bakta](https://github.com/oschwengers/bakta). Among other things, Bakta uses a program called PRODIGAL to find genes and then annotates them using several tools.s
+First we will annotate our genome using a program called [Bakta](https://github.com/oschwengers/bakta). Among other things, Bakta uses a program called [Prodigal](https://github.com/hyattpd/Prodigal) to find genes and then annotates them using several tools.
 
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
@@ -44,18 +44,19 @@ We can also add some additional data about the strain to guide the annotation. S
 
 Take a look inside the output folder using **ls**. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
 
-Now take a look at the file ending in `*.tsv` file using **less**. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
+Now take a look at the file ending in `*.tsv` file using `less`. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?
 Look for the 16S rRNA gene from the annotations. Can you locate it from the assembly? We will need this information later today.  
 
 ## Extracting KEGG annotations from Bakta output
 
 Bakta also gives the KEGG IDs for different metabolic enzymes in our genome. To reconstruct metabolic pathways based on these annotations, we need to extract them from one the annotation files.  
+Navigate to the Bakta output folder and run the following command:  
 
 ```bash
 grep -o "KEGG:K....." *.gff3 | tr ":" "\t" > kegg_ids.txt 
 ```
 
-Investigate the file `kegg_ids.txt` using **less**.  
+Investigate the file `kegg_ids.txt` using `less`.  
 These are known as KO identifiers and is how we link genes to metabolic pathways in the KEGG database.  
 This will allow us to put the gene annotations in the context of metabolic pathways.
 
