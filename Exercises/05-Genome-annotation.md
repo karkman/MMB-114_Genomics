@@ -35,7 +35,6 @@ We can also add some additional data about the strain to guide the annotation. S
        flye_out/assembly.fasta \
        --db /scratch/project_2006616/DB/bakta/db/ \
        --prefix # our strain name \
-       --gram # if you know it \
        --genus # type here \
        --locus # your strain name \
        --threads 4 \
