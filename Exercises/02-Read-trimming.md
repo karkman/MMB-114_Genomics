@@ -125,7 +125,7 @@ Generate graphs for visualizing read quality and length distribution
 Make sure that your in the course folder (`/scratch/project_2006616/$USER/MMB-114_Genomics`) before you run the command.  
 
 ```bash
-/scratch/project_2006616/Envs/nano_tools/bin/NanoPlot \
+/projappl/project_2006616/nano_tools/bin/NanoPlot \
   -o nanoplot_out -f png --fastq path-to/your_raw_nanopore_reads.fastq
 ```
 
@@ -140,7 +140,7 @@ Transfer the nanoplot output folder to your computer and open the report `NanoPl
 Run the other QC program on your reads.  
 
 ```bash
-/scratch/project_2006616/Envs/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
+/projappl/project_2006616/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
 ```
 
 Copy the resulting `nanoQC.html` file inside the ouput folder of nanoQC to your local computer and open it.  
@@ -158,14 +158,14 @@ The following command will trim the first 30 bases and the last 20 bases of each
 mkdir trimmed_nanopore
 
 cat path-to/your_raw_nanopore_reads.fastq |\
-  /scratch/project_2006616/Envs/nano_tools/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  /projappl/project_2006616/nano_tools/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
   gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 ### Optional - Visualizing the trimmed data
 
 ```bash
-/scratch/project_2006616/Envs/nano_tools/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+/projappl/project_2006616/nano_tools/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  

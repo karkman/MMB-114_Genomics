@@ -31,9 +31,9 @@ It also needs its own database files and that they can be found from the `DB` fo
 We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
 
 ```bash
- /scratch/project_2006616/Envs/bakta/bin/bakta \
+ /projappl/project_2006616/bakta/bin/bakta \
        flye_out/assembly.fasta \
-       --db /scratch/project_2006616/DB/bakta/db/ \
+       --db /projappl/project_2006616/Databases/bakta/db-light/ \
        --prefix # our strain name \
        --genus # type here \
        --locus # your strain name \

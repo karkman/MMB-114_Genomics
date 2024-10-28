@@ -29,7 +29,7 @@ sinteractive -A project_2006616 -m 40000 --cores 6
 Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md). Would you add any additional options to the run?
 
 ```bash
-/scratch/project_2006616/Envs/nano_assembly/bin/flye \
+/projappl/project_2006616/nano_assembly/bin/flye \
     --nano-corr # your trimmed reads here \
     --threads 6 \
     --out-dir flye_out
@@ -191,8 +191,7 @@ sinteractive -A project_2006616 -m 10000
 Then the signature.  
 
 ```bash
-singularity exec --bind $PWD:$PWD \
-    /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
+/projappl/project_2006616/sourmash/bin/sourmash \
     sourmash sketch dna \
     -p scaled=1000,k=31 \
     spades_out/contigs.fasta \
@@ -202,12 +201,11 @@ singularity exec --bind $PWD:$PWD \
 When we have the signature, we can run a search against the database.  
 
 ```bash
-singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
-    /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
-     sourmash search \
-     MMB114.sig \
-     /db/gtdb-rs207.genomic-reps.dna.k31.zip \
-     -n 20
+/projappl/project_2006616/sourmash/bin/sourmash \
+    sourmash search \
+    MMB114.sig \
+    /projappl/project_2006616/Databases/sourmash/gtdb-rs214-reps.k31.zip \
+    -n 20
 ```
 
 You should get a list of possible matches in the database and how similar our genome is to those matches.
@@ -216,13 +214,12 @@ The `search` command in sourmash finds only hits with high similarity in terms o
 You can also use another command `gather` in sourmash to look for more broadly matching signatures in the database.  
 
 ```bash
-singularity exec --bind $PWD:$PWD,/scratch/project_2006616/DB/sourmash:/db \
-    /scratch/project_2006616//Envs/sourmash_4.4.0.sif \
-     sourmash gather \
-     MMB114.sig \
-     /db/gtdb-rs207.genomic-reps.dna.k31.zip \
-     -n 20  \
-     2> /dev/null
+/projappl/project_2006616/sourmash/bin/sourmash \
+    sourmash gather \
+    MMB114.sig \
+    /projappl/project_2006616/Databases/sourmash/gtdb-rs214-reps.k31.zip \
+    -n 20  \
+    2> /dev/null
 ```
 
 Some questions on these results:
