@@ -30,7 +30,7 @@ Before running the command, have a look at the [Flye usage manual](https://githu
 
 ```bash
 /projappl/project_2006616/nano_assembly/bin/flye \
-    --nano-corr # your trimmed reads here \
+    --nano-raw # your trimmed reads here \
     --threads 6 \
     --out-dir flye_out
 ```
