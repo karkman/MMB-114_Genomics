@@ -192,7 +192,7 @@ Then the signature.
 
 ```bash
 /projappl/project_2006616/sourmash/bin/sourmash \
-    sourmash sketch dna \
+    sketch dna \
     -p scaled=1000,k=31 \
     spades_out/contigs.fasta \
     -o MMB114.sig
@@ -202,7 +202,7 @@ When we have the signature, we can run a search against the database.
 
 ```bash
 /projappl/project_2006616/sourmash/bin/sourmash \
-    sourmash search \
+    search \
     MMB114.sig \
     /projappl/project_2006616/Databases/sourmash/gtdb-rs214-reps.k31.zip \
     -n 20
@@ -215,7 +215,7 @@ You can also use another command `gather` in sourmash to look for more broadly m
 
 ```bash
 /projappl/project_2006616/sourmash/bin/sourmash \
-    sourmash gather \
+    gather \
     MMB114.sig \
     /projappl/project_2006616/Databases/sourmash/gtdb-rs214-reps.k31.zip \
     -n 20  \
