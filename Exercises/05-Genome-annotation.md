@@ -96,7 +96,7 @@ The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomi
 GTDB-Tk has its own database that has been downloaded to our database folder (`/scratch/project_2006616/DB/`). We need to set an environmental variable pointing to the database.  
 
 ```bash
-export GTDBTK_DATA_PATH="/scratch/project_2006616/DB/GTDB/release220"
+export GTDBTK_DATA_PATH="/scratch/project_2006616/GTDB/release220"
 ```
 
 Then we can run the taxonomic annotation with GTDB-Tk.  
