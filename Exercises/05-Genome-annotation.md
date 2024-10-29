@@ -79,7 +79,7 @@ sinteractive -A project_2006616 -m 75000 --tmp 200 -c 4
 Then run CheckM2 on your own genome.  
 
 ```bash
-/scratch/project_2006616/Envs/tax_tools/bin/checkm2 predict \
+/projappl/project_2006616/tax_tools/bin/checkm2 predict \
       --output-directory CheckM2_out \
       --lowmem \
       --extension .fasta \
@@ -96,13 +96,13 @@ The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomi
 GTDB-Tk has its own database that has been downloaded to our database folder (`/scratch/project_2006616/DB/`). We need to set an environmental variable pointing to the database.  
 
 ```bash
-export GTDBTK_DATA_PATH="/scratch/project_2006616/DB/GTDB/release214"
+export GTDBTK_DATA_PATH="/scratch/project_2006616/DB/GTDB/release220"
 ```
 
 Then we can run the taxonomic annotation with GTDB-Tk.  
 
 ```bash
-/scratch/project_2006616/Envs/tax_tools/bin/gtdbtk classify_wf \
+/projappl/project_2006616/tax_tools/bin/gtdbtk classify_wf \
       --out_dir GTDBTK_out \
       --extension .fasta \
       --scratch_dir $TMPDIR \
