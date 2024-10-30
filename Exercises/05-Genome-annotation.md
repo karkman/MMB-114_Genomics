@@ -65,6 +65,8 @@ We will use `IGV` to visualise the annotations and to extract genes for more exa
 For this you need to download the `.fna` and `.gff3` files from bakta annotations folder to your own computer.  
 We will go thru the steps in `IGV` together.  
 
+In case you don't have `IGV` on your own computer, you can use [Proksee](https://proksee.ca/). For that you will need the Genbank file (`.gbff` from Bakta).  
+
 ## Genome completeness estimation
 
 The completeness of a genome can be estimated using [CheckM2](https://github.com/chklovski/CheckM2). CheckM2 uses a machine learning model o predict the compeleteness and contamination of a genome. The tools was developed for metagenome-assembled genomes, so it also predicts contamination. Contamination is not such a big problem for us as we work with isolate genomes.  
