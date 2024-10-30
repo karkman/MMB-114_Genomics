@@ -26,19 +26,19 @@ Let's start by connecting to the interactive partition. Now we will need a littl
 sinteractive -A project_2006616 -m 10000 -c 4
 ```
 
-Bakta is not found from Puhti, but it has been installed under the `Envs` folder on the course project folder (as many other tools used so far).  
-It also needs its own database files and that they can be found from the `DB` folder.  
+Bakta is not found from Puhti, but it has been installed into the project applications folder (as many other tools used so far).  
+It also needs its own database files and that they can be found from the `Databases` folder.  
 We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
 
 ```bash
- /projappl/project_2006616/bakta/bin/bakta \
-       flye_out/assembly.fasta \
-       --db /projappl/project_2006616/Databases/bakta/db-light/ \
-       --prefix # our strain name \
-       --genus # type here \
-       --locus # your strain name \
-       --threads 4 \
-       --output results/annotation
+/projappl/project_2006616/bakta/bin/bakta \
+      flye_out/assembly.fasta \
+      --db /projappl/project_2006616/Databases/bakta/db-light/ \
+      --prefix # our strain name \
+      --genus # type here \
+      --locus # your strain name \
+      --threads 4 \
+      --output bakta
 ```
 
 Take a look inside the output folder using `ls`. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
