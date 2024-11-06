@@ -33,7 +33,7 @@ We can also add some additional data about the strain to guide the annotation. S
 ```bash
 /projappl/project_2006616/bakta/bin/bakta \
       flye_out/assembly.fasta \
-      --db /projappl/project_2006616/Databases/bakta/db-light/ \
+      --db /projappl/project_2006616/Databases/bakta/db/ \
       --prefix # our strain name \
       --genus # type here \
       --locus # your strain name \
