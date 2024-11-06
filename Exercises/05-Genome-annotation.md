@@ -95,7 +95,7 @@ Open the output folder of CheckM2 and find a file called `quality_report.tsv`.
 
 The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html) against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)).  
 
-GTDB-Tk has its own database that has been downloaded to our database folder (`/scratch/project_2006616/DB/`). We need to set an environmental variable pointing to the database.  
+GTDB-Tk has its own database that has been downloaded to our project application folder (`/scratch/project_2006616/GTDB/release220`). We need to set an environmental variable pointing to the database.  
 
 ```bash
 export GTDBTK_DATA_PATH="/scratch/project_2006616/GTDB/release220"
