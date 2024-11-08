@@ -23,7 +23,7 @@ First we will annotate our genome using a program called [Bakta](https://github.
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
-sinteractive -A project_2006616 -m 10000 -c 4
+sinteractive -A project_2006616 -m 20000 -c 4
 ```
 
 Bakta is not found from Puhti, but it has been installed into the project applications folder (as many other tools used so far).  
