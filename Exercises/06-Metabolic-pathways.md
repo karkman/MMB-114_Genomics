@@ -28,4 +28,4 @@ If you're interested on the secondary metabolites your strain produces (such as 
 
 ## Summarise your results
 
-As the last step, summarize all the information you have gathered from your isolate to this shared Google Sheet [MMB-114_2023](https://docs.google.com/spreadsheets/d/1cGT7cBV5O3hnmoQvU77iYlCwkGLT9kw2E-tXV8Oy61k/edit?usp=sharing).  
+As the last step, summarize all the information you have gathered from your isolate to this shared Google Sheet [MMB-114_GenomeSummary](https://docs.google.com/spreadsheets/d/1cGT7cBV5O3hnmoQvU77iYlCwkGLT9kw2E-tXV8Oy61k/edit?usp=sharing).  
