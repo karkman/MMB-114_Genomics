@@ -21,7 +21,7 @@ To find the path to this folder we can first list all available projects with `c
 csc-workspaces
 ```
 
-Then look for the `/scratch` folder under the project `project_2006616 "MMB-114_Genomics"` and move there with `cd`.  
+Then look for the `/scratch` folder under the project `MMB-114_Genomics` and move there with `cd`.  
 
 After that check once more where you are with `pwd`.  
 If you are in the right folder, make a subfolder for yourself. Name it with your username (`$USER`).
@@ -50,14 +50,21 @@ You can always get to your home folder with typing only `cd` and pressing enter.
 
 Actually everyone can do that and we'll open the whole course folder to the `Explorer` tab in VS Code.  
 When you are in your home folder, open the `Explorer`tab on the left and click `Open Folder`.  
-Paste this path, but change `$USER` to your actual username.  
+Paste this path, but change `$PROJECT` to the project code and `$USER` to your actual username.  
 
 ```bash
-/scratch/project_2006616/$USER/MMB-114_Genomics
+/scratch/$PROJECT/$USER/MMB-114_Genomics
 ```
 
 Now you should see the files and folders on the left.  
-Let's continue from here.  
+When your ready and can see your own course folder, you can move on.  
+
+To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
+
+```bash
+PROJECT="project_2015844"
+echo $PROJECT
+```
 
 ## The sequencing data
 
@@ -72,16 +79,16 @@ cd data
 mkdir nanopore
 mkdir illumina
 # list the files
-ls /scratch/project_2006616/Data/nanopore
-ls /scratch/project_2006616/Data/illumina
+ls /scratch/$PROJECT/Data/nanopore
+ls /scratch/$PROJECT/Data/illumina
 # copy your own sequence file
 cd nanopore
-cp /scratch/project_2006616/Data/nanopore/your_sequences .
+cp /scratch/$PROJECT/Data/nanopore/your_sequences .
 cd ..
 # copy one set of Illumina sequencing reads. Replace the names below and copy both R1 and R2 files. 
 cd illumina
-cp /scratch/project_2006616/Data/illumina/R1_FILE_NAME_HERE .
-cp /scratch/project_2006616/Data/illumina/R2_FILE_NAME_HERE .
+cp /scratch/$PROJECT/Data/illumina/R1_FILE_NAME_HERE .
+cp /scratch/$PROJECT/Data/illumina/R2_FILE_NAME_HERE .
 ```
 
 Now you can check what is in the folders inside your `data` folder.  
@@ -118,14 +125,14 @@ It might take a couple of seconds to minutes until the needed resources become a
 ### Nanopore QC
 
 ```bash
-sinteractive -A project_2006616 -m 20000
+sinteractive -A $PROJECT -m 20000
 ```
 
 Generate graphs for visualizing read quality and length distribution
-Make sure that your in the course folder (`/scratch/project_2006616/$USER/MMB-114_Genomics`) before you run the command.  
+Make sure that your in the course folder (`/scratch/$PROJECT/$USER/MMB-114_Genomics`) before you run the command.  
 
 ```bash
-/projappl/project_2006616/nano_tools/bin/NanoPlot \
+/projappl/$PROJECT/nano_tools/bin/NanoPlot \
   -o nanoplot_out -f png --fastq path-to/your_raw_nanopore_reads.fastq
 ```
 
@@ -140,7 +147,7 @@ Transfer the nanoplot output folder to your computer and open the report `NanoPl
 Run the other QC program on your reads.  
 
 ```bash
-/projappl/project_2006616/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
+/projappl/$PROJECT/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
 ```
 
 Copy the resulting `nanoQC.html` file inside the ouput folder of nanoQC to your local computer and open it.  
@@ -158,14 +165,14 @@ The following command will trim the first 30 bases and the last 20 bases of each
 mkdir trimmed_nanopore
 
 cat path-to/your_raw_nanopore_reads.fastq |\
-  /projappl/project_2006616/nano_tools/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  /projappl/$PROJECT/nano_tools/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
   gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 ### Optional - Visualizing the trimmed data
 
 ```bash
-/projappl/project_2006616/nano_tools/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+/projappl/$PROJECT/nano_tools/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  
@@ -176,7 +183,7 @@ We will assemble the genome on the next exercise session.
 Now we will run a program called FASTQC for quality assessment of the raw genome data. The tasks we are performing from now on require more memory than simple bash commands. Running them on the login node would make the system slow, and if a task takes more than 30 minutes to complete, it is killed automatically. Instead, we have to connect to another node, called the interactive partition:
 
 ```bash
-sinteractive -A project_2006616
+sinteractive -A $PROJECT
 ```
 
 The next step is to load the **biokit** module, which is a module in CSC containing several programs widely used in bioinformatics:

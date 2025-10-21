@@ -11,7 +11,7 @@ When you connect to Puhti, you will be in your home folder. You have all your co
 In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER`.
 
 ```bash
-/scratch/project_2006616/$USER/MMB-114_Genomics
+/scratch/$PROJECT/$USER/MMB-114_Genomics
 ```
 
 When your ready and can see your own course folder, you can move on.  
@@ -23,7 +23,7 @@ First we will annotate our genome using a program called [Bakta](https://github.
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
-sinteractive -A project_2006616 -m 20000 -c 4
+sinteractive -A $PROJECT -m 20000 -c 4
 ```
 
 Bakta is not found from Puhti, but it has been installed into the project applications folder (as many other tools used so far).  
@@ -31,9 +31,9 @@ It also needs its own database files and that they can be found from the `Databa
 We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
 
 ```bash
-/projappl/project_2006616/bakta/bin/bakta \
+/projappl/$PROJECT/bakta/bin/bakta \
       flye_out/assembly.fasta \
-      --db /projappl/project_2006616/Databases/bakta/db/ \
+      --db /projappl/$PROJECT/Databases/bakta/db/ \
       --prefix # our strain name \
       --genus # type here \
       --locus # your strain name \
@@ -74,14 +74,14 @@ The completeness of a genome can be estimated using [CheckM2](https://github.com
 So first go to the right folder and allocate resources from a computing node.  
 
 ```bash
-cd /scratch/project_2006616/$USER/MMB-114_Genomics
-sinteractive -A project_2006616 -m 75000 --tmp 200 -c 4
+cd /scratch/$PROJECT/$USER/MMB-114_Genomics
+sinteractive -A $PROJECT -m 75000 --tmp 200 -c 4
 ```
 
 Then run CheckM2 on your own genome.  
 
 ```bash
-/projappl/project_2006616/tax_tools/bin/checkm2 predict \
+/projappl/$PROJECT/tax_tools/bin/checkm2 predict \
       --output-directory CheckM2_out \
       --lowmem \
       --extension .fasta \
@@ -95,16 +95,16 @@ Open the output folder of CheckM2 and find a file called `quality_report.tsv`.
 
 The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html) against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)).  
 
-GTDB-Tk has its own database that has been downloaded to our course scratch folder (`/scratch/project_2006616/GTDB/`) due to its large size. We need to set an environmental variable pointing to the database.  
+GTDB-Tk has its own database that has been downloaded to our course scratch folder (`/scratch/$PROJECT/GTDB/`) due to its large size. We need to set an environmental variable pointing to the database.  
 
 ```bash
-export GTDBTK_DATA_PATH="/scratch/project_2006616/GTDB/release220"
+export GTDBTK_DATA_PATH="/scratch/$PROJECT/GTDB/release220"
 ```
 
 Then we can run the taxonomic annotation with GTDB-Tk.  
 
 ```bash
-/projappl/project_2006616/tax_tools/bin/gtdbtk classify_wf \
+/projappl/$PROJECT/tax_tools/bin/gtdbtk classify_wf \
       --out_dir GTDBTK_out \
       --extension .fasta \
       --scratch_dir $TMPDIR \

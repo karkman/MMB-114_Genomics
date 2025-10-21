@@ -8,13 +8,19 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
 
 First things first.  
 When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
-In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER`.
+In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER` and the project in place of `$PROJECT`.
 
 ```bash
-/scratch/project_2006616/$USER/MMB-114_Genomics
+/scratch/$PROJECT/$USER/MMB-114_Genomics
 ```
 
 When your ready and can see your own course folder, you can move on.  
+To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
+
+```bash
+PROJECT="project_2015844"
+echo $PROJECT
+```
 
 ## Nanopore assembly
 
@@ -23,13 +29,13 @@ We will use [Flye](https://github.com/fenderglass/Flye) to assemble our nanopore
 Allocate a computing node.
 
 ```bash
-sinteractive -A project_2006616 -m 40000 --cores 6
+sinteractive -A $PROJECT -m 40000 --cores 6
 ```
 
 Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md). Would you add any additional options to the run?
 
 ```bash
-/projappl/project_2006616/nano_assembly/bin/flye \
+/projappl/$PROJECT/nano_assembly/bin/flye \
     --nano-raw # your trimmed reads here \
     --threads 6 \
     --out-dir flye_out
@@ -40,7 +46,7 @@ Before running the command, have a look at the [Flye usage manual](https://githu
 Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
-# sinteractive -A project_2006616
+# sinteractive -A $PROJECT
 module load quast/5.2.0
 ```
 
@@ -139,7 +145,7 @@ If all looks ok, we can move to the assembly QC.
 Now we will run [QUAST](https://quast.sourceforge.net/quast) on the spades assembly. Start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
-sinteractive -A project_2006616
+sinteractive -A $PROJECT
 module load quast/5.2.0
 ```
 
@@ -185,13 +191,13 @@ The Singularity container can be found from The `Env` folder and the GTDB databa
 First we need to build a hash sketchs from our assembly. And we need an interactive session for that.  
 
 ```bash
-sinteractive -A project_2006616 -m 10000 
+sinteractive -A $PROJECT -m 10000 
 ```
 
 Then the signature.  
 
 ```bash
-/projappl/project_2006616/sourmash/bin/sourmash \
+/projappl/$PROJECT/sourmash/bin/sourmash \
     sketch dna \
     -p scaled=1000,k=31 \
     spades_out/contigs.fasta \
@@ -201,10 +207,10 @@ Then the signature.
 When we have the signature, we can run a search against the database.  
 
 ```bash
-/projappl/project_2006616/sourmash/bin/sourmash \
+/projappl/$PROJECT/sourmash/bin/sourmash \
     search \
     MMB114.sig \
-    /projappl/project_2006616/Databases/sourmash/gtdb-rs214-reps.k31.zip \
+    /projappl/$PROJECT/Databases/sourmash/gtdb-rs214-reps.k31.zip \
     -n 20
 ```
 
@@ -214,10 +220,10 @@ The `search` command in sourmash finds only hits with high similarity in terms o
 You can also use another command `gather` in sourmash to look for more broadly matching signatures in the database.  
 
 ```bash
-/projappl/project_2006616/sourmash/bin/sourmash \
+/projappl/$PROJECT/sourmash/bin/sourmash \
     gather \
     MMB114.sig \
-    /projappl/project_2006616/Databases/sourmash/gtdb-rs214-reps.k31.zip \
+    /projappl/$PROJECT/Databases/sourmash/gtdb-rs214-reps.k31.zip \
     -n 20  \
     2> /dev/null
 ```
