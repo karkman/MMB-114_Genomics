@@ -33,7 +33,7 @@ We can also add some additional data about the strain to guide the annotation. S
 ```bash
 /projappl/$PROJECT/bakta/bin/bakta \
       flye_out/assembly.fasta \
-      --db /projappl/$PROJECT/Databases/bakta/db/ \
+      --db /scratch/project_2015844/bakta/db/ \
       --prefix # our strain name \
       --genus # type here \
       --locus # your strain name \
@@ -82,6 +82,7 @@ Then run CheckM2 on your own genome.
 
 ```bash
 /projappl/$PROJECT/tax_tools/bin/checkm2 predict \
+      --database_path /projappl/project_2015844/Databases/checkm2/uniref100.KO.1.dmnd
       --output-directory CheckM2_out \
       --lowmem \
       --extension .fasta \
