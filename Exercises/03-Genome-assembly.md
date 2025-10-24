@@ -223,7 +223,7 @@ You can also use another command `gather` in sourmash to look for more broadly m
 /projappl/$PROJECT/sourmash/bin/sourmash \
     gather \
     MMB114.sig \
-    /projappl/$PROJECT/Databases/sourmash/gtdb-rs214-reps.k31.zip \
+    /projappl/$PROJECT/Databases/sourmash/gtdb-rs220/gtdb-reps-rs220-k31.dna.zip \
     -n 20  \
     2> /dev/null
 ```
