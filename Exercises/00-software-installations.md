@@ -5,7 +5,7 @@ If you run into problems, just send me an [e-mail](mailto:antti.karkman@helsinki
 
 ## Download and install the following software to your own computer
 
-* [Visual Studio Code v.1.99 or earlier](https://code.visualstudio.com/updates/v1_99) 
+* [Visual Studio Code (v.1.99 or earlier)](https://code.visualstudio.com/updates/v1_99) 
 * [Bandage](https://rrwick.github.io/Bandage/)
 * [IGV](https://software.broadinstitute.org/software/igv/download)
 
