@@ -62,7 +62,7 @@ When your ready and can see your own course folder, you can move on.
 To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
 
 ```bash
-PROJECT="project_2015844"
+PROJECT="project_XXXXXXX"
 echo $PROJECT
 ```
 
@@ -132,7 +132,7 @@ Now you're connected to a computing node in Puhti. The environmental variables a
 Or you can just type the project on each occassion where there is `$PROJECT` in the examples.  
 
 ```bash
-PROJECT="project_2015844"
+PROJECT="project_XXXXXXXX"
 echo $PROJECT
 ```
 
