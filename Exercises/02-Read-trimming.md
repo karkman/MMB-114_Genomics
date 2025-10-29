@@ -62,7 +62,7 @@ When your ready and can see your own course folder, you can move on.
 To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
 
 ```bash
-PROJECT="project_XXXXXXX"
+PROJECT="project_XXXXXXX" # REPLACE HERE THE CORRECT PROJECT NUMBER
 echo $PROJECT
 ```
 
