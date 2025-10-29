@@ -128,6 +128,14 @@ It might take a couple of seconds to minutes until the needed resources become a
 sinteractive -A $PROJECT -m 20000
 ```
 
+Now you're connected to a computing node in Puhti. The environmental variables are not inherited from the login node, so you should set the env variable for the project again.  
+Or you can just type the project on each occassion where there is `$PROJECT` in the examples.  
+
+```bash
+PROJECT="project_2015844"
+echo $PROJECT
+```
+
 Generate graphs for visualizing read quality and length distribution
 Make sure that your in the course folder (`/scratch/$PROJECT/$USER/MMB-114_Genomics`) before you run the command.  
 
