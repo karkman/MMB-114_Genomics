@@ -2,6 +2,15 @@
 
 ## Connecting to Puhti
 
+### SSH key
+
+You need to set up SSH key before you can connect to CSC from your local machine using SSH.  
+If you're not sure whether you have done it, you can check it from [my.csc.fi](my.csc.fi) under your profile and SSH public keys.  
+
+In case you haven't set up SSH key, follow the instructions at [CSC webpages](https://docs.csc.fi/computing/connecting/ssh-keys/).  
+
+### SSH connection
+
 * Launch Visual Studio Code
 * _Only on the first time:_ 
     - _Open `Extensions` (one of the icons on the left) and install `Remote - SSH`_  
