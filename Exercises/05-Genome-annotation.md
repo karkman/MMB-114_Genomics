@@ -75,7 +75,7 @@ So first go to the right folder and allocate resources from a computing node.
 
 ```bash
 cd /scratch/$PROJECT/$USER/MMB-114_Genomics
-sinteractive -A $PROJECT -m 75000 --tmp 200 -c 4
+sinteractive -A $PROJECT -m 100G --tmp 200 -c 4
 ```
 
 Then run CheckM2 on your own genome.  
