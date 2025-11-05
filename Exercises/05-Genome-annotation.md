@@ -139,4 +139,4 @@ And check how abricate works with:
 /projappl/project_2015844/abricate/bin/abricate --help
 ```
 
-If you want to run abricate against the bacmet database, you need to specify the database directory with `--datadir /projappl/project_2015844/Databases/` and the database name with `--db bacmet`.
+If you wnat to use the bacmet database, specify database directory with `--datadir /projappl/project_2015844/Databases/` and the database name with `--db bacmet`.
