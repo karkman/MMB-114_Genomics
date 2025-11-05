@@ -85,6 +85,7 @@ Then run CheckM2 on your own genome.
       --database_path /projappl/project_2015844/Databases/checkm2/uniref100.KO.1.dmnd
       --output-directory CheckM2_out \
       --lowmem \
+      --threads $SLURM_CPUS_PER_TASK \
       --extension .fasta \
       --tmpdir $TMPDIR \
       --input # your assembly output folder
