@@ -126,7 +126,7 @@ Two most important questions from the above steps:
 
 ## Resistance gene annotation with abricate
 
-To annotate resistance or virulence genes we can use [abricate](https://github.com/tseemann/abricate). Abricate comes with a bunch of pre-installed databases, but additional database can also be installed. For biocide and metal resistacne genes, [BacMet database](http://bacmet.biomedicine.gu.se/) has been downloaded to our projects database folder.  
+To annotate resistance or virulence genes we can use [abricate](https://github.com/tseemann/abricate). Abricate comes with a bunch of pre-installed databases, but additional database can also be installed. For biocide and metal resistance genes, [BacMet database](http://bacmet.biomedicine.gu.se/) has been downloaded to our projects database folder.  
 You can check which databases are available with:
 
 ```bash
@@ -139,4 +139,4 @@ And check how abricate works with:
 /projappl/project_2015844/abricate/bin/abricate --help
 ```
 
-If you want to run abricate against the bacmet database, you need to specify the database direcroty with `--datadir /projappl/project_2015844/Databases/` and the database name with `--db bacmet`.
+If you want to run abricate against the bacmet database, you need to specify the database directory with `--datadir /projappl/project_2015844/Databases/` and the database name with `--db bacmet`.
